@@ -11,8 +11,13 @@ public class main
         Runtime rt = Runtime.instance();
         Profile p = new ProfileImpl();
 
-        ContainerController cc = rt.createAgentContainer(p);
-        AgentController ac = cc.createNewAgent("Name","classe",new Object[1]);
+        ContainerController cc = rt.createMainContainer(p);
+        Object[] params = new Object[1];
+        params[0] = new String("Charlie");
+        AgentController ac = cc.createNewAgent("Name","InvestorAgent",params);
         ac.start();
+
+        AgentController ac2 = cc.createNewAgent("Ding Dong","InvestorAgent",new Object[]{"Cuck McCuck"});
+        ac2.start();
     }
 }
