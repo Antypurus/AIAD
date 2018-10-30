@@ -1,7 +1,9 @@
+package Agents.InvestorAgents;
+
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
 
-public class InvestorAgent extends Agent {
+public class Investor extends Agent {
 
     private String name;
 

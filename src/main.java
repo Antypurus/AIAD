@@ -5,19 +5,26 @@ import jade.wrapper.AgentController;
 import jade.wrapper.ContainerController;
 import jade.wrapper.StaleProxyException;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Random;
+
 public class main
 {
+
     public static void main(String[] args) throws StaleProxyException {
+
         Runtime rt = Runtime.instance();
         Profile p = new ProfileImpl();
 
         ContainerController cc = rt.createMainContainer(p);
         Object[] params = new Object[1];
         params[0] = new String("Charlie");
-        AgentController ac = cc.createNewAgent("Name","InvestorAgent",params);
+        AgentController ac = cc.createNewAgent("Name","Agents.InvestorAgents.Investor",params);
         ac.start();
 
-        AgentController ac2 = cc.createNewAgent("Ding Dong","InvestorAgent",new Object[]{"Cuck McCuck"});
+        AgentController ac2 = cc.createNewAgent("Ding Dong","Agents.InvestorAgents.Investor",new Object[]{"Cuck McCuck"});
         ac2.start();
+
     }
 }
