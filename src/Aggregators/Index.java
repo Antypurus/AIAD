@@ -2,7 +2,7 @@ package Aggregators;
 
 import Company.Company;
 import Components.Stock;
-import Components.Transcation;
+import Components.Transaction;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,5 +17,5 @@ public class Index {
     private HashMap<String,Company> companyAcronyms; //maps an acronym to its
     //company
     private HashMap<String,Company> companyNames; //maps an name to its company
-    private ArrayList<Transcation> transcationRecords;
+    private ArrayList<Transaction> transactionRecords;
 }
