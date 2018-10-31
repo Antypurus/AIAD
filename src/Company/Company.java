@@ -2,6 +2,7 @@ package Company;
 
 import Aggregators.Index;
 import Components.StockValue;
+import Components.Yield;
 
 import java.util.ArrayList;
 
@@ -15,11 +16,17 @@ public class Company {
     private Index index;
     private CompanyStatus status = CompanyStatus.OPERATIONAL;
     private StockValue stockValue;
+    private Yield yield;
 
 
     public StockValue getStockValue()
     {
         return this.stockValue;
+    }
+
+    public Yield getYield()
+    {
+        return this.yield;
     }
 
 }

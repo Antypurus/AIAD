@@ -11,8 +11,7 @@ public class Stock {
     private int shareCount;
     private StockValue valuePerShader;
     private double totalValue;
-    private boolean hasYield = false;
-    private Double yield = null;
+    private Yield yield = null;
     private double riskFactor;
     private Investor owner;
 
@@ -24,19 +23,7 @@ public class Stock {
         this.owner = owner;
         this.valuePerShader = this.company.getStockValue();
         this.riskFactor = this.calculateRikst();
-    }
-
-    public Stock(Company company, Index index, int shareCount, Investor owner
-            , double yield)
-    {
-        this.company = company;
-        this.index = index;
-        this.shareCount = shareCount;
-        this.owner = owner;
-        this.valuePerShader = this.company.getStockValue();
-        this.riskFactor = this.calculateRikst();
-        this.hasYield = true;
-        this.yield = yield;
+        this.yield = this.company.getYield();
     }
 
     private double calculateRikst()
@@ -46,16 +33,12 @@ public class Stock {
 
     public boolean hasYield()
     {
-        return this.hasYield;
+        return this.yield.hasYield();
     }
 
     public double getYield()
     {
-        if(this.hasYield)
-        {
-            return this.yield;
-        }
-        return 0.0;
+        return this.yield.getYield();
     }
 
 }
