@@ -20,10 +20,13 @@ public class main
         ContainerController cc = rt.createMainContainer(p);
         Object[] params = new Object[1];
         params[0] = new String("Charlie");
-        AgentController ac = cc.createNewAgent("Name","Investor.Investor",params);
+        AgentController ac = cc.createNewAgent("Name","Investor.Agents" +
+                ".InvestorAgent",params);
         ac.start();
 
-        AgentController ac2 = cc.createNewAgent("Ding Dong","Investor.Investor",new Object[]{"Cuck McCuck"});
+        AgentController ac2 = cc.createNewAgent("Ding Dong","Investor.Agents" +
+                        ".InvestorAgent",
+                new Object[]{"Cuck McCuck"});
         ac2.start();
 
     }
