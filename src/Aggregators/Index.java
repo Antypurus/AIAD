@@ -12,5 +12,4 @@ public class Index {
     private Stock[] stocks;
     private HashMap<String,Stock> acronymToStocks; //maps company acronym to
     // all its stocks
-
 }
