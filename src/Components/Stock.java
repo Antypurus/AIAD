@@ -6,12 +6,12 @@ import Investor.Investor;
 
 public class Stock {
 
-    private Company company = null;
-    private Index index = null;
+    private Company company;
+    private Index index;
     private int shareCount;
-    private StockValue valuePerShader;
+    private StockValue stockValue;
     private double totalValue;
-    private Yield yield = null;
+    private Yield yield;
     private double riskFactor;
     private Investor owner;
 
@@ -21,12 +21,49 @@ public class Stock {
         this.index = index;
         this.shareCount = shareCount;
         this.owner = owner;
-        this.valuePerShader = this.company.getStockValue();
-        this.riskFactor = this.calculateRikst();
+        this.stockValue = this.company.getStockValue();
+        this.riskFactor = this.calculateRiskFactor();
         this.yield = this.company.getYield();
     }
 
-    private double calculateRikst()
+    public double getStockValue()
+    {
+        return this.stockValue.getStockValue();
+    }
+
+    public double getTotalValue()
+    {
+        this.totalValue = this.shareCount * this.getStockValue();
+        return this.totalValue;
+    }
+
+    public void setOwner(Investor owner)
+    {
+        this.owner = owner;
+    }
+
+    public Investor getOwner()
+    {
+        return this.owner;
+    }
+
+    public double getRiskFactor()
+    {
+        this.riskFactor = this.calculateRiskFactor();
+        return this.riskFactor;
+    }
+
+    public int getShareCount()
+    {
+        return this.shareCount;
+    }
+
+    public Index getIndex()
+    {
+        return this.index;
+    }
+
+    private double calculateRiskFactor()
     {
         return 0.0;
     }

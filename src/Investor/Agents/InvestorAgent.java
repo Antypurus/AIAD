@@ -24,7 +24,7 @@ public class InvestorAgent extends Agent {
 
         @Override
         public boolean done() {
-            return false;
+            return true;
         }
     }
 
