@@ -58,6 +58,15 @@ public class Stock {
         return this.shareCount;
     }
 
+    public void setShareCount(int shareCount)
+    {
+        if(shareCount<0)
+        {
+            return;
+        }
+        this.shareCount = shareCount;
+    }
+
     public Index getIndex()
     {
         return this.index;
