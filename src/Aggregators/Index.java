@@ -22,6 +22,12 @@ public class Index {
     public Index(String name)
     {
         this.name = name;
+        this.companies = new ArrayList<Company>();
+        this.stocks = new ArrayList<>();
+        this.acronymToStocks = new HashMap<>();
+        this.companyAcronyms = new HashMap<>();
+        this.companyNames = new HashMap<>();
+        this.transactionRecords = new ArrayList<>();
     }
 
     public String getName()

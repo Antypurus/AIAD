@@ -95,7 +95,7 @@ public class Investor {
     }
 
     public void removeMoney(double moneyDelta) throws Exception {
-        if (moneyDelta > 0) {
+        if (moneyDelta < 0) {
             return;
         }
         if ((this.money - moneyDelta) < 0) {
