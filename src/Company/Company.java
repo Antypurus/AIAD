@@ -29,4 +29,14 @@ public class Company {
         return this.yield;
     }
 
+    public String getName()
+    {
+        return this.name;
+    }
+
+    public String getAcronym()
+    {
+        return this.acronym;
+    }
+
 }
