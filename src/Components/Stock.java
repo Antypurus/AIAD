@@ -15,8 +15,7 @@ public class Stock {
     private double riskFactor;
     private Investor owner;
 
-    public Stock(Company company, Index index, int shareCount, Investor owner)
-    {
+    public Stock(Company company, Index index, int shareCount, Investor owner) {
         this.company = company;
         this.index = index;
         this.shareCount = shareCount;
@@ -26,65 +25,71 @@ public class Stock {
         this.yield = this.company.getYield();
     }
 
-    public double getStockValue()
-    {
+    public double getStockValue() {
         return this.stockValue.getStockValue();
     }
 
-    public double getTotalValue()
-    {
+    public double getTotalValue() {
         this.totalValue = this.shareCount * this.getStockValue();
         return this.totalValue;
     }
 
-    public void setOwner(Investor owner)
-    {
+    public void setOwner(Investor owner) {
         this.owner = owner;
     }
 
-    public Investor getOwner()
-    {
+    public Investor getOwner() {
         return this.owner;
     }
 
-    public double getRiskFactor()
-    {
+    public double getRiskFactor() {
         this.riskFactor = this.calculateRiskFactor();
         return this.riskFactor;
     }
 
-    public int getShareCount()
-    {
+    public int getShareCount() {
         return this.shareCount;
     }
 
-    public void setShareCount(int shareCount)
-    {
-        if(shareCount<0)
-        {
+    public void setShareCount(int shareCount) {
+        if (shareCount < 0) {
             return;
         }
         this.shareCount = shareCount;
     }
 
-    public Index getIndex()
-    {
+    public void increaseShareCount(int shareCountDelta) {
+        if (shareCountDelta < 0) {
+            return;
+        }
+        this.shareCount += shareCountDelta;
+    }
+
+    public void decreaseShareCount(int shareCountDelta) {
+        if (shareCountDelta > 0) {
+            return;
+        }
+        this.shareCount -= shareCountDelta;
+    }
+
+    public Index getIndex() {
         return this.index;
     }
 
-    private double calculateRiskFactor()
-    {
+    private double calculateRiskFactor() {
         return 0.0;
     }
 
-    public boolean hasYield()
-    {
+    public boolean hasYield() {
         return this.yield.hasYield();
     }
 
-    public double getYield()
-    {
+    public double getYield() {
         return this.yield.getYield();
+    }
+
+    public Company getCompany() {
+        return this.company;
     }
 
 }
