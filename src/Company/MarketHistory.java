@@ -49,8 +49,7 @@ public class MarketHistory {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        for (int i = 1; i < daysToGenerate; ++i) {
-            currentDate = currentDate.getNextDay();
+        for (int i = 1; i <= daysToGenerate; ++i) {
             Random rand = new Random();
             double improveOrDecrease = rand.nextDouble();
             boolean improve = false;
