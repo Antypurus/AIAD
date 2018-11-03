@@ -94,32 +94,26 @@ public class Company {
         }
     }
 
-    public CompanyStatus getCompanyStatus()
-    {
+    public CompanyStatus getCompanyStatus() {
         return this.status;
     }
 
-    public void setCompanyStatus(CompanyStatus status)
-    {
+    public void setCompanyStatus(CompanyStatus status) {
         this.status = status;
     }
 
-    public void addManager(Manager manager)
-    {
-        if(this.managers.contains(manager))
-        {
+    public void addManager(Manager manager) {
+        if (this.managers.contains(manager)) {
             return;
         }
         this.managers.add(manager);
     }
 
-    public void removeManager(Manager manager)
-    {
+    public void removeManager(Manager manager) {
         this.managers.remove(manager);
     }
 
-    public ArrayList<Manager> getManagers()
-    {
+    public ArrayList<Manager> getManagers() {
         return this.managers;
     }
 }

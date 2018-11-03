@@ -11,11 +11,10 @@ public class InvestorAgent extends Agent {
         Object[] args = getArguments();
         this.name = args[0].toString();
 
-        System.out.println("Hello "+this.name);
+        System.out.println("Hello " + this.name);
     }
 
-    public class InvestmentBehavior extends Behaviour
-    {
+    public class InvestmentBehavior extends Behaviour {
 
         @Override
         public void action() {

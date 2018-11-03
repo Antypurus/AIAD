@@ -51,8 +51,8 @@ public class Investor {
         } else {
             stock.setOwner(this);
             this.portfolio.add(stock);
-            this.acronymToStock.put(stock.getCompany().getAcronym(),stock);
-            this.nameToStock.put(stock.getCompany().getName(),stock);
+            this.acronymToStock.put(stock.getCompany().getAcronym(), stock);
+            this.nameToStock.put(stock.getCompany().getName(), stock);
             this.agency.registerStock(stock);
             //register stock in the index
         }

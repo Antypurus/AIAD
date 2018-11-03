@@ -12,8 +12,7 @@ public class Transaction {
     private double shareValue;
     private Date transactionDate;
 
-    public Transaction()
-    {
+    public Transaction() {
 
     }
 

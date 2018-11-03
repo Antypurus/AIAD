@@ -10,8 +10,7 @@ public class Manager {
     private double money;
 
     public Manager(String name, Company company, double stupidity_factor,
-                   double inteligence_factor, double salary, double money)
-    {
+                   double inteligence_factor, double salary, double money) {
         this.name = name;
         this.company = company;
         this.company.addManager(this);
@@ -21,61 +20,49 @@ public class Manager {
         this.money = money;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return this.name;
     }
 
-    public double getSalary()
-    {
+    public double getSalary() {
         return this.salary;
     }
 
-    public void setSalary(double salary)
-    {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
-    public double getStupidityFactor()
-    {
+    public double getStupidityFactor() {
         return this.stupidity_factor;
     }
 
-    public double getInteligenceFactor()
-    {
+    public double getInteligenceFactor() {
         return this.inteligence_factor;
     }
 
-    public void setInteligenceFactor(double inteligence_factor)
-    {
+    public void setInteligenceFactor(double inteligence_factor) {
         this.inteligence_factor = inteligence_factor;
     }
 
-    public void setStupidityFactor(double stupidity_factor)
-    {
+    public void setStupidityFactor(double stupidity_factor) {
         this.stupidity_factor = stupidity_factor;
     }
 
-    public void addMoney(double money)
-    {
-        if(money<0)
-        {
+    public void addMoney(double money) {
+        if (money < 0) {
             return;
         }
-        this.money+=money;
+        this.money += money;
     }
 
-    public void removeMoney(double money)
-    {
-        if(money<0)
-        {
+    public void removeMoney(double money) {
+        if (money < 0) {
             return;
         }
-        this.money -=money;
+        this.money -= money;
     }
 
-    public double getMoney()
-    {
+    public double getMoney() {
         return this.money;
     }
 

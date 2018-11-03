@@ -4,13 +4,11 @@ public class StockValue {
 
     private double stockValue;
 
-    public StockValue(double stockValue)
-    {
+    public StockValue(double stockValue) {
         this.stockValue = stockValue;
     }
 
-    public double getStockValue()
-    {
+    public double getStockValue() {
         return this.stockValue;
     }
 
