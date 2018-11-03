@@ -76,4 +76,30 @@ public class MarketHistory {
         return history;
     }
 
+    @Override
+    public String toString()
+    {
+        String ret = "";
+        for(int i=0;i<this.dates.size();++i)
+        {
+            ret+=this.dates.get(i)+" : "+this.values.get(i).getStockValue()+
+                    "\n";
+        }
+        return ret;
+    }
+
+    public ArrayList<StockValue> getStockValues()
+    {
+        return this.values;
+    }
+
+    public ArrayList<Date> getDates()
+    {
+        return this.dates;
+    }
+
+    public HashMap<Date,StockValue> getHistory()
+    {
+        return this.history;
+    }
 }

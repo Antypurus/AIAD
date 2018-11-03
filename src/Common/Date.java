@@ -98,4 +98,10 @@ public class Date {
         return nDate1 < nDate2;
     }
 
+    @Override
+    public String toString()
+    {
+        return ""+this.getDay()+"/"+this.getMonth()+"/"+this.getYear();
+    }
+
 }
