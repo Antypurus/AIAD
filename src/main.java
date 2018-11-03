@@ -1,3 +1,6 @@
+import Aggregators.Index;
+import Common.Date;
+import Company.Company;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.core.Runtime;
@@ -28,6 +31,11 @@ public class main
                         ".InvestorAgent",
                 new Object[]{"Cuck McCuck"});
         ac2.start();
+
+        Index index = new Index("NASDAQ");
+        Company company = new Company("Tesla","TSLA",index,0.67,new Date(1,1,
+                2010));
+        System.out.println(company.getMarketHistory());
 
     }
 }

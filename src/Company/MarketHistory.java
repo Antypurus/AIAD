@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class MarketHistory {
 
-    private static final double MAX_CHANGE = 0.3;
+    private static final double MAX_CHANGE = 0.01;
 
     private HashMap<Date, StockValue> history;
     private ArrayList<Date> dates;
@@ -40,7 +40,7 @@ public class MarketHistory {
     public static MarketHistory generateMarketHistory(Company company) {
         int daysToGenerate = Date.daysBetweenDates(company.getFoundationDate(),
                 Date.CURRENT_DATE);
-        double currentValues = 0;
+        double currentValues = 1;
         MarketHistory history = new MarketHistory();
         Date currentDate = company.getFoundationDate();
         try {
@@ -60,15 +60,15 @@ public class MarketHistory {
             double delta = 0;
             if (improve) {
                 delta =
-                        1 + (MarketHistory.MAX_CHANGE + company.getQualityBias()) * rand.nextDouble();
+                        1 + (MarketHistory.MAX_CHANGE) * rand.nextDouble();
             } else {
                 delta =
                         1 - (MarketHistory.MAX_CHANGE) * rand.nextDouble();
             }
-            currentValues = currentValues*delta;
+            currentValues = currentValues * delta;
             currentDate = currentDate.getNextDay();
             try {
-                history.addHistoricValue(currentDate,new StockValue(currentValues));
+                history.addHistoricValue(currentDate, new StockValue(currentValues));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -77,29 +77,24 @@ public class MarketHistory {
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         String ret = "";
-        for(int i=0;i<this.dates.size();++i)
-        {
-            ret+=this.dates.get(i)+" : "+this.values.get(i).getStockValue()+
+        for (int i = 0; i < this.dates.size(); ++i) {
+            ret += this.dates.get(i) + " : " + this.values.get(i).getStockValue() +
                     "\n";
         }
         return ret;
     }
 
-    public ArrayList<StockValue> getStockValues()
-    {
+    public ArrayList<StockValue> getStockValues() {
         return this.values;
     }
 
-    public ArrayList<Date> getDates()
-    {
+    public ArrayList<Date> getDates() {
         return this.dates;
     }
 
-    public HashMap<Date,StockValue> getHistory()
-    {
+    public HashMap<Date, StockValue> getHistory() {
         return this.history;
     }
 }

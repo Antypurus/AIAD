@@ -34,11 +34,11 @@ public class Company {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        this.history = MarketHistory.generateMarketHistory(this);
         this.subsidiaries = new ArrayList<>();
         this.yield = new Yield();
         this.managers = new ArrayList<>();
         this.foundationDate = foundationDate;
+        this.history = MarketHistory.generateMarketHistory(this);
     }
 
     public Company(String name, String acronym, Index index, double qualityBias,
@@ -52,11 +52,11 @@ public class Company {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        this.history = MarketHistory.generateMarketHistory(this);
         this.subsidiaries = new ArrayList<>();
         this.yield = yield;
         this.managers = new ArrayList<>();
         this.foundationDate = foundationDate;
+        this.history = MarketHistory.generateMarketHistory(this);
     }
 
     public StockValue getStockValue() {
@@ -136,5 +136,10 @@ public class Company {
 
     public Date getFoundationDate() {
         return this.foundationDate;
+    }
+
+    public MarketHistory getMarketHistory()
+    {
+        return this.history;
     }
 }
