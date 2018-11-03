@@ -9,6 +9,8 @@ public class Date {
     private static final int daysInMonth = 30;
     private static final int monthsInYear = 12;
 
+    public static Date CURRENT_DATE = new Date(1,1,2018);
+
     public Date(int day, int month, int year) {
         this.day = day;
         this.month = month;
@@ -86,6 +88,14 @@ public class Date {
 
     public int getYear() {
         return this.year;
+    }
+
+    public static boolean isSmaller(Date date1, Date date2) {
+        int nDate1 =
+                date1.getDay() + date1.getMonth() * Date.daysInMonth + date1.getYear() * Date.monthsInYear * Date.daysInMonth;
+        int nDate2 =
+                date2.getDay() + date2.getMonth() * Date.daysInMonth + date2.getYear() * Date.monthsInYear * Date.daysInMonth;
+        return nDate1 < nDate2;
     }
 
 }

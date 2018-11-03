@@ -1,6 +1,7 @@
 package Company;
 
 import Aggregators.Index;
+import Common.Date;
 import Components.StockValue;
 import Components.Yield;
 
@@ -19,8 +20,11 @@ public class Company {
     private Yield yield;
     private double qualityBias;
     private ArrayList<Manager> managers;
+    private Date foundationDate;
+    private MarketHistory history;
 
-    public Company(String name, String acronym, Index index, double qualityBias) {
+    public Company(String name, String acronym, Index index,
+                   double qualityBias, Date foundationDate) {
         this.qualityBias = qualityBias;
         this.name = name;
         this.acronym = acronym;
@@ -30,14 +34,15 @@ public class Company {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        ///generate stock value
+        this.history = MarketHistory.generateMarketHistory(this);
         this.subsidiaries = new ArrayList<>();
         this.yield = new Yield();
         this.managers = new ArrayList<>();
+        this.foundationDate = foundationDate;
     }
 
     public Company(String name, String acronym, Index index, double qualityBias,
-                   Yield yield) {
+                   Yield yield, Date foundationDate) {
         this.qualityBias = qualityBias;
         this.name = name;
         this.acronym = acronym;
@@ -47,10 +52,11 @@ public class Company {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        ///generate stock value
+        this.history = MarketHistory.generateMarketHistory(this);
         this.subsidiaries = new ArrayList<>();
         this.yield = yield;
         this.managers = new ArrayList<>();
+        this.foundationDate = foundationDate;
     }
 
     public StockValue getStockValue() {
@@ -115,5 +121,20 @@ public class Company {
 
     public ArrayList<Manager> getManagers() {
         return this.managers;
+    }
+
+    public double getQualityBias() {
+        return this.qualityBias;
+    }
+
+    public void setQualityBias(double bias) {
+        if (bias < 0 || bias > 1) {
+            return;
+        }
+        this.qualityBias = qualityBias;
+    }
+
+    public Date getFoundationDate() {
+        return this.foundationDate;
     }
 }
