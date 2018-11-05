@@ -25,11 +25,16 @@ public class CompanyAgent extends Agent {
 
         if (yield == null) {
             this.company = new Company(name, acronym, index, qualityBias,
-                    foundationDate);
+                    foundationDate, this);
         } else {
             this.company = new Company(name, acronym, index, qualityBias,
-                    yield, foundationDate);
+                    yield, foundationDate, this);
         }
+    }
+
+    public Company getCompany()
+    {
+        return this.company;
     }
 
 }

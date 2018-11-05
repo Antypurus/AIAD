@@ -2,6 +2,7 @@ package Company;
 
 import Aggregators.Index;
 import Common.Date;
+import Company.Agents.CompanyAgent;
 import Components.StockValue;
 import Components.Yield;
 
@@ -22,43 +23,48 @@ public class Company {
     private ArrayList<Manager> managers;
     private Date foundationDate;
     private MarketHistory history;
+    private CompanyAgent agent;
 
     public Company(String name, String acronym, Index index,
-                   double qualityBias, Date foundationDate) {
+                   double qualityBias, Date foundationDate, CompanyAgent agent) {
         this.qualityBias = qualityBias;
         this.name = name;
         this.acronym = acronym;
         this.index = index;
-        try {
-            this.index.registerCompany(this);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         this.subsidiaries = new ArrayList<>();
         this.yield = new Yield();
         this.managers = new ArrayList<>();
         this.foundationDate = foundationDate;
         this.history = MarketHistory.generateMarketHistory(this);
-        this.stockValue = this.history.getStockValueByDate(Date.CURRENT_DATE);
-    }
-
-    public Company(String name, String acronym, Index index, double qualityBias,
-                   Yield yield, Date foundationDate) {
-        this.qualityBias = qualityBias;
-        this.name = name;
-        this.acronym = acronym;
-        this.index = index;
+        this.stockValue =
+                this.history.getStockValues().get(this.history.getStockValues().size() - 1);
+        this.agent = agent;
         try {
             this.index.registerCompany(this);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public Company(String name, String acronym, Index index, double qualityBias,
+                   Yield yield, Date foundationDate, CompanyAgent agent) {
+        this.qualityBias = qualityBias;
+        this.name = name;
+        this.acronym = acronym;
+        this.index = index;
         this.subsidiaries = new ArrayList<>();
         this.yield = yield;
         this.managers = new ArrayList<>();
         this.foundationDate = foundationDate;
         this.history = MarketHistory.generateMarketHistory(this);
-        this.stockValue = this.history.getStockValueByDate(Date.CURRENT_DATE);
+        this.stockValue =
+                this.history.getStockValues().get(this.history.getStockValues().size() - 1);
+        this.agent = agent;
+        try {
+            this.index.registerCompany(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public StockValue getStockValue() {
@@ -140,8 +146,16 @@ public class Company {
         return this.foundationDate;
     }
 
-    public MarketHistory getMarketHistory()
-    {
+    public MarketHistory getMarketHistory() {
         return this.history;
+    }
+
+    public CompanyAgent getAgent() {
+        return agent;
+    }
+
+    public Index getIndex()
+    {
+        return this.index;
     }
 }
