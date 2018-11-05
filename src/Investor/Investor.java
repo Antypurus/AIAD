@@ -118,4 +118,9 @@ public class Investor {
         this.agent = agent;
     }
 
+    public String getName()
+    {
+        return this.name;
+    }
+
 }

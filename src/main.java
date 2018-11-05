@@ -22,19 +22,18 @@ public class main
         Profile p = new ProfileImpl();
 
         ContainerController cc = rt.createMainContainer(p);
-        Object[] params = new Object[2];
-        params[0] = new String("Charlie");
 
         InvestorAgency agency = new InvestorAgency("NASDAQ");
-        params[1] = agency;
 
-        AgentController ac = cc.createNewAgent("Name","Investor.Agents" +
-                ".InvestorAgent",params);
+        String n1 = "Cuck McCuck";
+        AgentController ac = cc.createNewAgent(n1,"Investor.Agents" +
+                ".InvestorAgent",new Object[]{n1,0.5,agency,500.0});
         ac.start();
 
-        AgentController ac2 = cc.createNewAgent("Ding Dong","Investor.Agents" +
+        String n2 = "Doris Beata";
+        AgentController ac2 = cc.createNewAgent(n2,"Investor.Agents" +
                         ".InvestorAgent",
-                new Object[]{"Cuck McCuck",agency});
+                new Object[]{n2,0.5,agency,500.0});
         ac2.start();
 
         Index index = new Index("NASDAQ");
