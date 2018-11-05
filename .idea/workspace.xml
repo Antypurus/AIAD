@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1a69af64-037f-4b2a-8fa3-68b3c2328643" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Management/DayTrackerAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Management/DayTrackerAgent.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -87,8 +86,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Management/DayTrackerAgent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+            <state relative-caret-position="205">
+              <caret line="14" column="39" lean-forward="true" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#226#227#0" expanded="true" />
@@ -259,7 +258,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541381560473" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541381849332" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/dependencies/jade.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -326,7 +325,7 @@
       <workItem from="1541165202993" duration="6748000" />
       <workItem from="1541186856904" duration="5174000" />
       <workItem from="1541255896144" duration="9923000" />
-      <workItem from="1541367306120" duration="12024000" />
+      <workItem from="1541367306120" duration="12603000" />
     </task>
     <task id="LOCAL-00001" summary="Added classes to start working&#10;&#10;+ - Agents Package + - This package holds agents&#10;|                  |&#10;|                  + - Company Agents Package + - This package holds company related agents&#10;|                  |                          |&#10;|                  |                          + - Company - Agent For a company&#10;|                  |                          + - Manager - Agent for a company manager&#10;|                  |&#10;|                  + - Investor Agents Package + - This package hold investor agents&#10;|                                              |&#10;|                                              + - Investor - Agent for an investor&#10;|                                          &#10;+ - Aggregators Package + - This package hold classes for aggregation entities&#10;|                       |&#10;|                       + - Index - Stock Market Index&#10;|                       + - Investor Agency - Agency that aggregates investors&#10;|&#10;+ - Investment Components Package + - Generic Package that defines abstract components of investing&#10;                                  |&#10;                                  + - Stock - Represent the concept of a stock">
       <created>1540930304736</created>
@@ -496,17 +495,24 @@
       <option name="project" value="LOCAL" />
       <updated>1541381517311</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="added a day tracker that can also be considerer a tick handler">
+      <created>1541381571501</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1541381571501</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66107000" />
+    <option name="totallyTimeSpent" value="66686000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49916247" visible="true" weight="0.18305598" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49916247" visible="true" weight="0.18305598" />
       <window_info id="Structure" order="1" sideWeight="0.5008375" side_tool="true" weight="0.1762481" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -515,7 +521,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32854864" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32376397" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32376397" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39966556" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -800,8 +806,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Management/DayTrackerAgent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+        <state relative-caret-position="205">
+          <caret line="14" column="39" lean-forward="true" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#226#227#0" expanded="true" />
