@@ -39,6 +39,7 @@ public class Company {
         this.managers = new ArrayList<>();
         this.foundationDate = foundationDate;
         this.history = MarketHistory.generateMarketHistory(this);
+        this.stockValue = this.history.getStockValueByDate(Date.CURRENT_DATE);
     }
 
     public Company(String name, String acronym, Index index, double qualityBias,
@@ -57,6 +58,7 @@ public class Company {
         this.managers = new ArrayList<>();
         this.foundationDate = foundationDate;
         this.history = MarketHistory.generateMarketHistory(this);
+        this.stockValue = this.history.getStockValueByDate(Date.CURRENT_DATE);
     }
 
     public StockValue getStockValue() {

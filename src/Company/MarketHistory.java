@@ -96,4 +96,13 @@ public class MarketHistory {
     public HashMap<Date, StockValue> getHistory() {
         return this.history;
     }
+
+    public StockValue getStockValueByDate(Date date)
+    {
+        if(this.history.containsKey(date))
+        {
+            return null;
+        }
+        return this.history.get(date);
+    }
 }
