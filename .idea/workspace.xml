@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a69af64-037f-4b2a-8fa3-68b3c2328643" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Messages/RegisterAgentMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Company/MarketHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Company/MarketHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Aggregators/InvestorAgency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aggregators/InvestorAgency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Investor/Agents/InvestorAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Investor/Agents/InvestorAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Investor/Investor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Investor/Investor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,8 +19,9 @@
     <session id="-1898631608">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="10" />
           <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.131" value="1" />
           <entry key="project.open.time.50" value="1" />
           <entry key="project.open.time.60" value="1" />
           <entry key="project.open.time.62" value="1" />
@@ -25,13 +30,13 @@
           <entry key="project.open.time.92" value="1" />
           <entry key="project.open.time.93" value="1" />
           <entry key="project.open.time.99" value="1" />
-          <entry key="project.opened" value="10" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="1" />
-          <entry key="java" value="100" />
+          <entry key="java" value="113" />
           <entry key="md" value="1" />
           <entry key="testfile" value="6" />
           <entry key="testname" value="1" />
@@ -41,7 +46,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="100" />
+          <entry key="JAVA" value="113" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="9" />
         </counts>
@@ -49,14 +54,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="19" />
-          <entry key="java" value="13502" />
-          <entry key="txt" value="2229" />
+          <entry key="java" value="15291" />
+          <entry key="txt" value="2269" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="13502" />
-          <entry key="PLAIN_TEXT" value="2248" />
+          <entry key="JAVA" value="15291" />
+          <entry key="PLAIN_TEXT" value="2288" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -67,13 +72,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Company/MarketHistory.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Investor/Agents/InvestorAgent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="83" column="9" lean-forward="true" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
+            <state relative-caret-position="153">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#970#971#0" expanded="true" />
+                <element signature="e#1007#1008#0" expanded="true" />
+                <element signature="e#882#883#0" expanded="true" />
+                <element signature="e#918#919#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -82,8 +90,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+            <state relative-caret-position="143">
+              <caret line="36" column="52" lean-forward="true" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Investor/Investor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -110,18 +130,21 @@
         <option value="$PROJECT_DIR$/src/Company/CompanyStatus.java" />
         <option value="$PROJECT_DIR$/src/Components/Transcation.java" />
         <option value="$PROJECT_DIR$/src/Components/Stock.java" />
-        <option value="$PROJECT_DIR$/src/Aggregators/InvestorAgency.java" />
         <option value="$PROJECT_DIR$/src/Company/Manager.java" />
         <option value="$PROJECT_DIR$/src/Aggregators/Index.java" />
         <option value="$PROJECT_DIR$/src/Components/StockValue.java" />
         <option value="$PROJECT_DIR$/src/Components/Transaction.java" />
         <option value="$PROJECT_DIR$/src/Components/Yield.java" />
-        <option value="$PROJECT_DIR$/src/Investor/Investor.java" />
-        <option value="$PROJECT_DIR$/src/Investor/Agents/InvestorAgent.java" />
         <option value="$PROJECT_DIR$/src/Common/Date.java" />
         <option value="$PROJECT_DIR$/src/Company/Company.java" />
-        <option value="$PROJECT_DIR$/src/main.java" />
         <option value="$PROJECT_DIR$/src/Company/MarketHistory.java" />
+        <option value="$PROJECT_DIR$/src/Messages/RegisterAgentMessage.java" />
+        <option value="$PROJECT_DIR$/src/Aggregators/Agents/InvestorAgencyAgent.java" />
+        <option value="$PROJECT_DIR$/src/Investor/Behaviors/RegisterAgentBehavior.java" />
+        <option value="$PROJECT_DIR$/src/main.java" />
+        <option value="$PROJECT_DIR$/src/Aggregators/InvestorAgency.java" />
+        <option value="$PROJECT_DIR$/src/Investor/Agents/InvestorAgent.java" />
+        <option value="$PROJECT_DIR$/src/Investor/Investor.java" />
       </list>
     </option>
   </component>
@@ -155,6 +178,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -177,31 +201,6 @@
               <item name="AIAD" type="b2602c69:ProjectViewProjectNode" />
               <item name="AIAD" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AIAD" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AIAD" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Company" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AIAD" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AIAD" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Company" type="462c0819:PsiDirectoryNode" />
-              <item name="Agents" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AIAD" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AIAD" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AIAD" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AIAD" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Investor" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -216,14 +215,13 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541263752576" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541379085646" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/dependencies/jade.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -289,7 +287,8 @@
       <workItem from="1541068353257" duration="597000" />
       <workItem from="1541165202993" duration="6748000" />
       <workItem from="1541186856904" duration="5174000" />
-      <workItem from="1541255896144" duration="7770000" />
+      <workItem from="1541255896144" duration="9923000" />
+      <workItem from="1541367306120" duration="9503000" />
     </task>
     <task id="LOCAL-00001" summary="Added classes to start working&#10;&#10;+ - Agents Package + - This package holds agents&#10;|                  |&#10;|                  + - Company Agents Package + - This package holds company related agents&#10;|                  |                          |&#10;|                  |                          + - Company - Agent For a company&#10;|                  |                          + - Manager - Agent for a company manager&#10;|                  |&#10;|                  + - Investor Agents Package + - This package hold investor agents&#10;|                                              |&#10;|                                              + - Investor - Agent for an investor&#10;|                                          &#10;+ - Aggregators Package + - This package hold classes for aggregation entities&#10;|                       |&#10;|                       + - Index - Stock Market Index&#10;|                       + - Investor Agency - Agency that aggregates investors&#10;|&#10;+ - Investment Components Package + - Generic Package that defines abstract components of investing&#10;                                  |&#10;                                  + - Stock - Represent the concept of a stock">
       <created>1540930304736</created>
@@ -424,17 +423,24 @@
       <option name="project" value="LOCAL" />
       <updated>1541263631290</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="fixed bug in market history generation.">
+      <created>1541263769772</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1541263769772</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51930000" />
+    <option name="totallyTimeSpent" value="63586000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49916247" visible="true" weight="0.18078668" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49916247" visible="true" weight="0.18305598" />
       <window_info id="Structure" order="1" sideWeight="0.5008375" side_tool="true" weight="0.1762481" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -442,8 +448,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32943144" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32663316" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32854864" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32376397" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39966556" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -463,6 +469,36 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Maven Projects" order="8" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49916247" visible="true" weight="0.18305598" />
+      <window_info id="Structure" order="1" sideWeight="0.5008375" side_tool="true" weight="0.1762481" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32854864" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32376397" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39966556" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32998326" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -489,7 +525,8 @@
     <MESSAGE value="added market history to company and methods to generate a market history" />
     <MESSAGE value="added methods to the Market history class and to string converstions to&#10;the market history and to the date class." />
     <MESSAGE value="fixed in company and messes around with market history generation parameters" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed in company and messes around with market history generation parameters" />
+    <MESSAGE value="fixed bug in market history generation." />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bug in market history generation." />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$PROJECT_DIR$/dependencies/jade.jar!/jade/wrapper/ContainerController.class">
@@ -519,40 +556,6 @@
           <folding>
             <element signature="e#770#771#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Aggregators/Index.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Aggregators/InvestorAgency.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Investor/Investor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="84" column="19" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Investor/Agents/InvestorAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="55" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -625,17 +628,99 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.java">
+    <entry file="file://$PROJECT_DIR$/src/Company/MarketHistory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+        <state relative-caret-position="289">
+          <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Company/MarketHistory.java">
+    <entry file="file://$PROJECT_DIR$/src/Aggregators/Index.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="83" column="9" lean-forward="true" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
+        <state relative-caret-position="629">
+          <caret line="39" column="63" lean-forward="true" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="936" selection-start-line="936" selection-end-line="936" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Messages/RegisterAgentMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#257#258#0" expanded="true" />
+            <element signature="e#296#297#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Aggregators/Agents/InvestorAgencyAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Investor/Behaviors/RegisterAgentBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="36" column="52" lean-forward="true" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Aggregators/InvestorAgency.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Investor/Agents/InvestorAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#970#971#0" expanded="true" />
+            <element signature="e#1007#1008#0" expanded="true" />
+            <element signature="e#882#883#0" expanded="true" />
+            <element signature="e#918#919#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Investor/Investor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

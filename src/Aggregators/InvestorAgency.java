@@ -5,19 +5,19 @@ import Components.Stock;
 import Investor.Investor;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class InvestorAgency {
 
     private String name;
-    private ArrayList<Investor> investors;
-    private HashMap<Company, ArrayList<Investor>> investorWithStock;
+    private CopyOnWriteArrayList<Investor> investors;
+    private ConcurrentHashMap<Company, ArrayList<Investor>> investorWithStock;
 
     public InvestorAgency(String name) {
         this.name = name;
-        this.investors = new ArrayList<Investor>();
-        this.investorWithStock = new HashMap<Company,
-                ArrayList<Investor>>();
+        this.investors = new CopyOnWriteArrayList<Investor>();
+        this.investorWithStock = new ConcurrentHashMap<Company, ArrayList<Investor>>();
     }
 
     public void registerInvestor(Investor investor) throws Exception {
@@ -52,4 +52,10 @@ public class InvestorAgency {
             this.investorWithStock.put(stock.getCompany(), companyInvestors);
         }
     }
+
+    public CopyOnWriteArrayList<Investor> getInvestors()
+    {
+        return this.investors;
+    }
+
 }

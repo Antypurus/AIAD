@@ -2,6 +2,7 @@ package Investor;
 
 import Aggregators.InvestorAgency;
 import Components.Stock;
+import Investor.Agents.InvestorAgent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,8 +18,10 @@ public class Investor {
     private HashMap<String, Stock> nameToStock;
     private HashMap<String, Stock> acronymToStock;
 
+    private InvestorAgent agent;
+
     public Investor(String name, double riskBiasFactor, InvestorAgency agency,
-                    double startingMoney) {
+                    double startingMoney, InvestorAgent investorAgent) {
         this.name = name;
         this.money = startingMoney;
         this.riskBiasFactor = riskBiasFactor;
@@ -26,6 +29,7 @@ public class Investor {
         this.portfolio = new ArrayList<>();
         this.nameToStock = new HashMap<>();
         this.acronymToStock = new HashMap<>();
+        this.agent = investorAgent;
         try {
             this.agency.registerInvestor(this);
         } catch (Exception e) {
@@ -53,7 +57,7 @@ public class Investor {
             this.portfolio.add(stock);
             this.acronymToStock.put(stock.getCompany().getAcronym(), stock);
             this.nameToStock.put(stock.getCompany().getName(), stock);
-            this.agency.registerStock(stock);
+            //this.agency.registerStock(stock);
             //register stock in the index
         }
     }
@@ -102,6 +106,16 @@ public class Investor {
             throw new Exception("Investor does not have enough money for that");
         }
         this.money -= moneyDelta;
+    }
+
+    public InvestorAgent getAgent()
+    {
+        return this.agent;
+    }
+
+    public void setAgent(InvestorAgent agent)
+    {
+        this.agent = agent;
     }
 
 }

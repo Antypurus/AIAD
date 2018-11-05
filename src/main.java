@@ -1,4 +1,5 @@
 import Aggregators.Index;
+import Aggregators.InvestorAgency;
 import Common.Date;
 import Company.Company;
 import jade.core.Profile;
@@ -21,21 +22,25 @@ public class main
         Profile p = new ProfileImpl();
 
         ContainerController cc = rt.createMainContainer(p);
-        Object[] params = new Object[1];
+        Object[] params = new Object[2];
         params[0] = new String("Charlie");
+
+        InvestorAgency agency = new InvestorAgency("NASDAQ");
+        params[1] = agency;
+
         AgentController ac = cc.createNewAgent("Name","Investor.Agents" +
                 ".InvestorAgent",params);
         ac.start();
 
         AgentController ac2 = cc.createNewAgent("Ding Dong","Investor.Agents" +
                         ".InvestorAgent",
-                new Object[]{"Cuck McCuck"});
+                new Object[]{"Cuck McCuck",agency});
         ac2.start();
 
         Index index = new Index("NASDAQ");
-        Company company = new Company("Tesla","TSLA",index,0.67,new Date(1,1,
+        Company company = new Company("Tesla","TSLA",index,0.5001012432,
+                new Date(1,1,
                 2010));
-        System.out.println(company.getMarketHistory());
 
     }
 }
