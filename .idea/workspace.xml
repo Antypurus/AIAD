@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a69af64-037f-4b2a-8fa3-68b3c2328643" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Management/DayTrackerAgent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Management/DayTrackerAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Management/DayTrackerAgent.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,14 +50,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="19" />
-          <entry key="java" value="16085" />
-          <entry key="txt" value="2316" />
+          <entry key="java" value="16124" />
+          <entry key="txt" value="2386" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="16085" />
-          <entry key="PLAIN_TEXT" value="2335" />
+          <entry key="JAVA" value="16124" />
+          <entry key="PLAIN_TEXT" value="2405" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -88,8 +87,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Management/DayTrackerAgent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+            <state relative-caret-position="238">
+              <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#226#227#0" expanded="true" />
@@ -260,7 +259,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541381491559" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541381560473" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/dependencies/jade.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -327,7 +326,7 @@
       <workItem from="1541165202993" duration="6748000" />
       <workItem from="1541186856904" duration="5174000" />
       <workItem from="1541255896144" duration="9923000" />
-      <workItem from="1541367306120" duration="11955000" />
+      <workItem from="1541367306120" duration="12024000" />
     </task>
     <task id="LOCAL-00001" summary="Added classes to start working&#10;&#10;+ - Agents Package + - This package holds agents&#10;|                  |&#10;|                  + - Company Agents Package + - This package holds company related agents&#10;|                  |                          |&#10;|                  |                          + - Company - Agent For a company&#10;|                  |                          + - Manager - Agent for a company manager&#10;|                  |&#10;|                  + - Investor Agents Package + - This package hold investor agents&#10;|                                              |&#10;|                                              + - Investor - Agent for an investor&#10;|                                          &#10;+ - Aggregators Package + - This package hold classes for aggregation entities&#10;|                       |&#10;|                       + - Index - Stock Market Index&#10;|                       + - Investor Agency - Agency that aggregates investors&#10;|&#10;+ - Investment Components Package + - Generic Package that defines abstract components of investing&#10;                                  |&#10;                                  + - Stock - Represent the concept of a stock">
       <created>1540930304736</created>
@@ -490,11 +489,18 @@
       <option name="project" value="LOCAL" />
       <updated>1541380440196</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="added a day tracker that can also be considerer a tick handler">
+      <created>1541381517311</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1541381517311</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66038000" />
+    <option name="totallyTimeSpent" value="66107000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -587,7 +593,8 @@
     <MESSAGE value="fixed in company and messes around with market history generation parameters" />
     <MESSAGE value="fixed bug in market history generation." />
     <MESSAGE value="started working on implementing agent behaviors" />
-    <option name="LAST_COMMIT_MESSAGE" value="started working on implementing agent behaviors" />
+    <MESSAGE value="added a day tracker that can also be considerer a tick handler" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a day tracker that can also be considerer a tick handler" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$PROJECT_DIR$/dependencies/jade.jar!/jade/wrapper/ContainerController.class">
@@ -793,8 +800,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Management/DayTrackerAgent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+        <state relative-caret-position="238">
+          <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#226#227#0" expanded="true" />

@@ -18,6 +18,7 @@ public class DayTrackerAgent extends Agent {
         @Override
         public void action() {
             Date.CURRENT_DATE.incrementDay();
+            // do any updates that need to be done
             try {
                 Thread.sleep((int)((1.0/DayTrackerAgent.TICK_RATE)*1000));
             } catch (InterruptedException e) {
