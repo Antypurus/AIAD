@@ -8,6 +8,7 @@ import Components.Transaction;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Index
 {
@@ -22,9 +23,9 @@ public class Index
     private HashMap<String, Company> companyNames; //maps an name to its company
     private ArrayList<Transaction> transactionRecords;
 
-    private ConcurrentLinkedQueue<Transaction> transactionQueue;
-    private ConcurrentLinkedQueue<Transaction> secondaryTransactionQueye;
-    private boolean endOfDay = false;
+    private ConcurrentLinkedQueue<Transaction> primaryTransactionQueue;
+    private ConcurrentLinkedQueue<Transaction> secondaryTransactionQueue;
+    private AtomicBoolean endOfDay = new AtomicBoolean(false);
 
     private IndexAgent agent = null;
     /*<--------------FIELDS--------------------------->*/
@@ -94,12 +95,15 @@ public class Index
     {
         //TODO: validate transaction
         //TODO: execute transaction
-        if (!this.endOfDay)
+        this.transactionRecords.add(transaction);
+        if (!this.endOfDay.get())
         {
-            this.transactionQueue.add(transaction);
+            //day transaction
+            this.primaryTransactionQueue.add(transaction);
         } else
         {
-            this.secondaryTransactionQueye.add(transaction);
+            //after hours transaction
+            this.secondaryTransactionQueue.add(transaction);
         }
     }
 
@@ -111,6 +115,33 @@ public class Index
     public IndexAgent getAgent()
     {
         return this.agent;
+    }
+
+    public void endDay()
+    {
+        this.endOfDay.compareAndSet(false, true);
+    }
+
+    public void startDay()
+    {
+        boolean stateChanged = this.endOfDay.compareAndSet(true, false);
+        if (stateChanged)
+        {
+            this.squashSecondaryTransactionQueue();
+        }
+    }
+
+    private void squashSecondaryTransactionQueue()
+    {
+        while (!this.secondaryTransactionQueue.isEmpty())
+        {
+            this.primaryTransactionQueue.add(this.secondaryTransactionQueue.poll());
+        }
+    }
+
+    public ConcurrentLinkedQueue<Transaction> getPrimaryTransactionQueue()
+    {
+        return this.primaryTransactionQueue;
     }
 
     /*<--------------METHODS--------------------------->*/

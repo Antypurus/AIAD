@@ -16,4 +16,19 @@ public class Transaction {
 
     }
 
+    public Stock getStock()
+    {
+        return this.stock;
+    }
+
+    public double getShareValue()
+    {
+        return this.shareValue;
+    }
+
+    public int getAmmount()
+    {
+        return this.ammount;
+    }
+
 }
