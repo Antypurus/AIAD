@@ -42,6 +42,12 @@ public class main {
                 new Object[]{"Tesla","TSLA",index,0.56,new Date(1,1,2010)});
         ac4.start();
 
+
+        AgentController ac5 = cc.createNewAgent("NASDAQ","Aggregators.Agents" +
+                        ".IndexAgent",
+                new Object[]{index});
+        ac5.start();
+
         AgentController ac3 = cc.createNewAgent("Day Tracker", "Management" +
                         ".DayTrackerAgent",
                 new Object[]{index});

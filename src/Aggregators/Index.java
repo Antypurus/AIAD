@@ -23,8 +23,10 @@ public class Index
     private HashMap<String, Company> companyNames; //maps an name to its company
     private ArrayList<Transaction> transactionRecords;
 
-    private ConcurrentLinkedQueue<Transaction> primaryTransactionQueue;
-    private ConcurrentLinkedQueue<Transaction> secondaryTransactionQueue;
+    private ConcurrentLinkedQueue<Transaction> primaryTransactionQueue =
+            new ConcurrentLinkedQueue<>();
+    private ConcurrentLinkedQueue<Transaction> secondaryTransactionQueue =
+            new ConcurrentLinkedQueue<>();
     private AtomicBoolean endOfDay = new AtomicBoolean(false);
 
     private IndexAgent agent = null;

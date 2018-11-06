@@ -1,6 +1,7 @@
 package Aggregators.Behaviors;
 
 import Aggregators.Index;
+import Common.Date;
 import Common.Pair;
 import Company.Company;
 import Components.Transaction;
@@ -26,6 +27,8 @@ public class IndexStockUpdateBehavior extends Behaviour
     public void action()
     {
         this.index.endDay();
+
+        System.out.println(this.index.getName()+" :: End of day :: "+ Date.CURRENT_DATE.getPreviousDay());
 
         ConcurrentLinkedQueue<Transaction> transactions =
                 this.index.getPrimaryTransactionQueue();
@@ -66,6 +69,7 @@ public class IndexStockUpdateBehavior extends Behaviour
         }
 
         this.index.startDay();
+        System.out.println(this.index.getName()+" :: Start of Day :: "+ Date.CURRENT_DATE);
         this.done = true;
     }
 
