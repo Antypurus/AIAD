@@ -1,6 +1,7 @@
 package Company;
 
-public enum CompanyStatus {
+public enum CompanyStatus
+{
 
     OPERATIONAL,
     BANKRUPT,

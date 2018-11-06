@@ -8,7 +8,8 @@ import Components.Yield;
 
 import java.util.ArrayList;
 
-public class Company {
+public class Company
+{
 
     private String name;
     private String acronym;
@@ -26,7 +27,8 @@ public class Company {
     private CompanyAgent agent;
 
     public Company(String name, String acronym, Index index,
-                   double qualityBias, Date foundationDate, CompanyAgent agent) {
+                   double qualityBias, Date foundationDate, CompanyAgent agent)
+    {
         this.qualityBias = qualityBias;
         this.name = name;
         this.acronym = acronym;
@@ -39,15 +41,18 @@ public class Company {
         this.stockValue =
                 this.history.getStockValues().get(this.history.getStockValues().size() - 1);
         this.agent = agent;
-        try {
+        try
+        {
             this.index.registerCompany(this);
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             e.printStackTrace();
         }
     }
 
     public Company(String name, String acronym, Index index, double qualityBias,
-                   Yield yield, Date foundationDate, CompanyAgent agent) {
+                   Yield yield, Date foundationDate, CompanyAgent agent)
+    {
         this.qualityBias = qualityBias;
         this.name = name;
         this.acronym = acronym;
@@ -60,97 +65,122 @@ public class Company {
         this.stockValue =
                 this.history.getStockValues().get(this.history.getStockValues().size() - 1);
         this.agent = agent;
-        try {
+        try
+        {
             this.index.registerCompany(this);
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             e.printStackTrace();
         }
     }
 
-    public StockValue getStockValue() {
+    public StockValue getStockValue()
+    {
         return this.stockValue;
     }
 
-    public Yield getYield() {
+    public Yield getYield()
+    {
         return this.yield;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return this.name;
     }
 
-    public String getAcronym() {
+    public String getAcronym()
+    {
         return this.acronym;
     }
 
-    public ArrayList<Company> getSubsidiaries() {
+    public ArrayList<Company> getSubsidiaries()
+    {
         return this.subsidiaries;
     }
 
-    public void addSubsidiary(Company subsidiary) {
-        if (this.subsidiaries.contains(subsidiary)) {
+    public void addSubsidiary(Company subsidiary)
+    {
+        if (this.subsidiaries.contains(subsidiary))
+        {
             return;
         }
         this.subsidiaries.add(subsidiary);
     }
 
-    public void removeSubsidiary(Company subsidiary) {
+    public void removeSubsidiary(Company subsidiary)
+    {
         this.subsidiaries.remove(subsidiary);
     }
 
-    public void setOwner(Company owner) {
-        if (owner == null) {
+    public void setOwner(Company owner)
+    {
+        if (owner == null)
+        {
             this.hasOwner = false;
             this.owner = null;
-        } else {
+        } else
+        {
             this.hasOwner = true;
             this.owner = owner;
         }
     }
 
-    public CompanyStatus getCompanyStatus() {
+    public CompanyStatus getCompanyStatus()
+    {
         return this.status;
     }
 
-    public void setCompanyStatus(CompanyStatus status) {
+    public void setCompanyStatus(CompanyStatus status)
+    {
         this.status = status;
     }
 
-    public void addManager(Manager manager) {
-        if (this.managers.contains(manager)) {
+    public void addManager(Manager manager)
+    {
+        if (this.managers.contains(manager))
+        {
             return;
         }
         this.managers.add(manager);
     }
 
-    public void removeManager(Manager manager) {
+    public void removeManager(Manager manager)
+    {
         this.managers.remove(manager);
     }
 
-    public ArrayList<Manager> getManagers() {
+    public ArrayList<Manager> getManagers()
+    {
         return this.managers;
     }
 
-    public double getQualityBias() {
+    public double getQualityBias()
+    {
         return this.qualityBias;
     }
 
-    public void setQualityBias(double bias) {
-        if (bias < 0 || bias > 1) {
+    public void setQualityBias(double bias)
+    {
+        if (bias < 0 || bias > 1)
+        {
             return;
         }
         this.qualityBias = qualityBias;
     }
 
-    public Date getFoundationDate() {
+    public Date getFoundationDate()
+    {
         return this.foundationDate;
     }
 
-    public MarketHistory getMarketHistory() {
+    public MarketHistory getMarketHistory()
+    {
         return this.history;
     }
 
-    public CompanyAgent getAgent() {
+    public CompanyAgent getAgent()
+    {
         return agent;
     }
 

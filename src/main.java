@@ -13,9 +13,11 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class main {
+public class main
+{
 
-    public static void main(String[] args) throws StaleProxyException {
+    public static void main(String[] args) throws StaleProxyException
+    {
 
         Runtime rt = Runtime.instance();
         Profile p = new ProfileImpl();
@@ -39,11 +41,11 @@ public class main {
 
         AgentController ac4 = cc.createNewAgent("TESLA", "Company.Agents" +
                         ".CompanyAgent",
-                new Object[]{"Tesla","TSLA",index,0.56,new Date(1,1,2010)});
+                new Object[]{"Tesla", "TSLA", index, 0.56, new Date(1, 1, 2010)});
         ac4.start();
 
 
-        AgentController ac5 = cc.createNewAgent("NASDAQ","Aggregators.Agents" +
+        AgentController ac5 = cc.createNewAgent("NASDAQ", "Aggregators.Agents" +
                         ".IndexAgent",
                 new Object[]{index});
         ac5.start();

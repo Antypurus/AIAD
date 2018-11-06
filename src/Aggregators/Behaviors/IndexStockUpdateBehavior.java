@@ -28,7 +28,7 @@ public class IndexStockUpdateBehavior extends Behaviour
     {
         this.index.endDay();
 
-        System.out.println(this.index.getName()+" :: End of day :: "+ Date.CURRENT_DATE.getPreviousDay());
+        System.out.println(this.index.getName() + " :: End of day :: " + Date.CURRENT_DATE.getPreviousDay());
 
         ConcurrentLinkedQueue<Transaction> transactions =
                 this.index.getPrimaryTransactionQueue();
@@ -58,18 +58,18 @@ public class IndexStockUpdateBehavior extends Behaviour
             double comulativeShareValue = 0.0;
             int shareCount = 0;
 
-            for(Pair<Double, Integer> shareValue:values)
+            for (Pair<Double, Integer> shareValue : values)
             {
-                comulativeShareValue+=(shareValue.left*shareValue.right);
-                shareCount+=shareValue.right;
+                comulativeShareValue += (shareValue.left * shareValue.right);
+                shareCount += shareValue.right;
             }
 
-            double newStockValue = comulativeShareValue/shareCount;
+            double newStockValue = comulativeShareValue / shareCount;
             company.getStockValue().setStockValue(newStockValue);
         }
 
         this.index.startDay();
-        System.out.println(this.index.getName()+" :: Start of Day :: "+ Date.CURRENT_DATE);
+        System.out.println(this.index.getName() + " :: Start of Day :: " + Date.CURRENT_DATE);
         this.done = true;
     }
 

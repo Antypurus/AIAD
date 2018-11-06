@@ -5,8 +5,23 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Aggregators/Agents/IndexAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aggregators/Agents/IndexAgent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Aggregators/Behaviors/IndexStockUpdateBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aggregators/Behaviors/IndexStockUpdateBehavior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aggregators/Index.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aggregators/Index.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Management/DayTrackerAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Management/DayTrackerAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Aggregators/InvestorAgency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aggregators/InvestorAgency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Common/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Common/Date.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Common/Pair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Common/Pair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Company/Agents/CompanyAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Company/Agents/CompanyAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Company/Agents/ManagerAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Company/Agents/ManagerAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Company/Behaviors/CompanyListStockValueBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Company/Behaviors/CompanyListStockValueBehavior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Company/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Company/Company.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Company/CompanyStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Company/CompanyStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Company/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Company/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Company/MarketHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Company/MarketHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Stock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/StockValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/StockValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Yield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Yield.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Investor/Agents/InvestorAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Investor/Agents/InvestorAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Investor/Behavior/FindCompanyToInvestBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Investor/Behavior/FindCompanyToInvestBehavior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Investor/Investor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Investor/Investor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,7 +55,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="1" />
-          <entry key="java" value="153" />
+          <entry key="java" value="175" />
           <entry key="md" value="1" />
           <entry key="testfile" value="6" />
           <entry key="testname" value="1" />
@@ -50,7 +65,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="153" />
+          <entry key="JAVA" value="175" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="9" />
         </counts>
@@ -79,29 +94,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Management/DayTrackerAgent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="51" column="51" selection-start-line="51" selection-start-column="51" selection-end-line="51" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="623">
-              <caret line="52" column="37" lean-forward="true" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Aggregators/Index.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="26" column="42" lean-forward="true" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
+            <state relative-caret-position="335">
+              <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -110,10 +104,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Aggregators/Behaviors/IndexStockUpdateBehavior.java">
+        <entry file="file://$PROJECT_DIR$/src/main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
+            <state relative-caret-position="335">
+              <caret line="39" column="20" lean-forward="true" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Company/MarketHistory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="337">
+              <caret line="115" column="34" selection-start-line="115" selection-start-column="34" selection-end-line="115" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -122,10 +125,73 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Aggregators/Agents/IndexAgent.java">
+        <entry file="file://$PROJECT_DIR$/src/Components/Stock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="21" column="68" selection-start-line="21" selection-start-column="68" selection-end-line="21" selection-end-column="68" />
+            <state relative-caret-position="303">
+              <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/StockValue.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="256">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/Transaction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/Yield.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Investor/Agents/InvestorAgent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="367">
+              <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Investor/Behavior/FindCompanyToInvestBehavior.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="351">
+              <caret line="52" column="9" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Investor/Investor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="135" column="17" selection-start-line="135" selection-start-column="17" selection-end-line="135" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -152,31 +218,32 @@
         <option value="$PROJECT_DIR$/src/LineChartSample.java" />
         <option value="$PROJECT_DIR$/src/InvestorAgent.java" />
         <option value="$PROJECT_DIR$/src/Agents/InvestorAgents/Investor.java" />
-        <option value="$PROJECT_DIR$/src/Company/CompanyStatus.java" />
         <option value="$PROJECT_DIR$/src/Components/Transcation.java" />
-        <option value="$PROJECT_DIR$/src/Components/Stock.java" />
-        <option value="$PROJECT_DIR$/src/Company/Manager.java" />
-        <option value="$PROJECT_DIR$/src/Components/StockValue.java" />
-        <option value="$PROJECT_DIR$/src/Components/Yield.java" />
-        <option value="$PROJECT_DIR$/src/Common/Date.java" />
         <option value="$PROJECT_DIR$/src/Messages/RegisterAgentMessage.java" />
         <option value="$PROJECT_DIR$/src/Aggregators/Agents/InvestorAgencyAgent.java" />
         <option value="$PROJECT_DIR$/src/Investor/Behaviors/RegisterAgentBehavior.java" />
-        <option value="$PROJECT_DIR$/src/Aggregators/InvestorAgency.java" />
-        <option value="$PROJECT_DIR$/src/Investor/Investor.java" />
-        <option value="$PROJECT_DIR$/src/Investor/Agents/InvestorAgent.java" />
-        <option value="$PROJECT_DIR$/src/Company/MarketHistory.java" />
-        <option value="$PROJECT_DIR$/src/Investor/Behavior/FindCompanyToInvestBehavior.java" />
-        <option value="$PROJECT_DIR$/src/Company/Company.java" />
-        <option value="$PROJECT_DIR$/src/Company/Behaviors/CompanyListStockValueBehavior.java" />
-        <option value="$PROJECT_DIR$/src/Company/Agents/CompanyAgent.java" />
-        <option value="$PROJECT_DIR$/src/Components/Transaction.java" />
-        <option value="$PROJECT_DIR$/src/Common/Pair.java" />
-        <option value="$PROJECT_DIR$/src/Aggregators/Agents/IndexAgent.java" />
-        <option value="$PROJECT_DIR$/src/main.java" />
         <option value="$PROJECT_DIR$/src/Aggregators/Index.java" />
         <option value="$PROJECT_DIR$/src/Management/DayTrackerAgent.java" />
+        <option value="$PROJECT_DIR$/src/Aggregators/Agents/IndexAgent.java" />
         <option value="$PROJECT_DIR$/src/Aggregators/Behaviors/IndexStockUpdateBehavior.java" />
+        <option value="$PROJECT_DIR$/src/Aggregators/InvestorAgency.java" />
+        <option value="$PROJECT_DIR$/src/Common/Date.java" />
+        <option value="$PROJECT_DIR$/src/Common/Pair.java" />
+        <option value="$PROJECT_DIR$/src/Company/Agents/CompanyAgent.java" />
+        <option value="$PROJECT_DIR$/src/Company/Agents/ManagerAgent.java" />
+        <option value="$PROJECT_DIR$/src/Company/Behaviors/CompanyListStockValueBehavior.java" />
+        <option value="$PROJECT_DIR$/src/Company/Company.java" />
+        <option value="$PROJECT_DIR$/src/Company/CompanyStatus.java" />
+        <option value="$PROJECT_DIR$/src/Company/Manager.java" />
+        <option value="$PROJECT_DIR$/src/Company/MarketHistory.java" />
+        <option value="$PROJECT_DIR$/src/Components/Stock.java" />
+        <option value="$PROJECT_DIR$/src/Components/StockValue.java" />
+        <option value="$PROJECT_DIR$/src/Components/Transaction.java" />
+        <option value="$PROJECT_DIR$/src/Components/Yield.java" />
+        <option value="$PROJECT_DIR$/src/Investor/Agents/InvestorAgent.java" />
+        <option value="$PROJECT_DIR$/src/Investor/Behavior/FindCompanyToInvestBehavior.java" />
+        <option value="$PROJECT_DIR$/src/Investor/Investor.java" />
+        <option value="$PROJECT_DIR$/src/main.java" />
       </list>
     </option>
   </component>
@@ -312,7 +379,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541547862728" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541548203673" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/dependencies/jade.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -383,7 +450,7 @@
       <workItem from="1541416083844" duration="3900000" />
       <workItem from="1541425467644" duration="945000" />
       <workItem from="1541457517534" duration="5034000" />
-      <workItem from="1541540178284" duration="4200000" />
+      <workItem from="1541540178284" duration="4541000" />
     </task>
     <task id="LOCAL-00001" summary="Added classes to start working&#10;&#10;+ - Agents Package + - This package holds agents&#10;|                  |&#10;|                  + - Company Agents Package + - This package holds company related agents&#10;|                  |                          |&#10;|                  |                          + - Company - Agent For a company&#10;|                  |                          + - Manager - Agent for a company manager&#10;|                  |&#10;|                  + - Investor Agents Package + - This package hold investor agents&#10;|                                              |&#10;|                                              + - Investor - Agent for an investor&#10;|                                          &#10;+ - Aggregators Package + - This package hold classes for aggregation entities&#10;|                       |&#10;|                       + - Index - Stock Market Index&#10;|                       + - Investor Agency - Agency that aggregates investors&#10;|&#10;+ - Investment Components Package + - Generic Package that defines abstract components of investing&#10;                                  |&#10;                                  + - Stock - Represent the concept of a stock">
       <created>1540930304736</created>
@@ -602,17 +669,24 @@
       <option name="project" value="LOCAL" />
       <updated>1541547352073</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="added behavior for index updating stock value of companies based on the&#10;daily transaction executed for that company">
+      <created>1541547872224</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1541547872224</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82329000" />
+    <option name="totallyTimeSpent" value="82670000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49916247" visible="true" weight="0.19486405" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49916247" visible="true" weight="0.19486405" />
       <window_info id="Structure" order="1" sideWeight="0.5008375" side_tool="true" weight="0.1762481" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -621,7 +695,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32854864" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32222223" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32222223" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3984127" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -727,44 +801,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Company/Manager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="26" column="31" lean-forward="true" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
-          <folding>
-            <element signature="e#770#771#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Company/Agents/ManagerAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Company/CompanyStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Yield.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Common/Date.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -775,147 +811,20 @@
     <entry file="file://$PROJECT_DIR$/src/Messages/RegisterAgentMessage.java" />
     <entry file="file://$PROJECT_DIR$/src/Aggregators/Agents/InvestorAgencyAgent.java" />
     <entry file="file://$PROJECT_DIR$/src/Investor/Behaviors/RegisterAgentBehavior.java" />
-    <entry file="file://$PROJECT_DIR$/src/Aggregators/InvestorAgency.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Investor/Investor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="122" column="25" selection-start-line="122" selection-start-column="25" selection-end-line="122" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3427#3428#0" expanded="true" />
-            <element signature="e#3453#3454#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Investor/Agents/InvestorAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="21" column="52" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/StockValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Investor/Behavior/FindCompanyToInvestBehavior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="51" column="59" lean-forward="true" selection-start-line="51" selection-start-column="59" selection-end-line="51" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Company/Company.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1362">
-          <caret line="157" column="5" lean-forward="true" selection-start-line="157" selection-start-column="5" selection-end-line="157" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4241#4242#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Company/MarketHistory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="105" column="38" selection-start-line="105" selection-start-column="38" selection-end-line="105" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Company/Agents/CompanyAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Company/Behaviors/CompanyListStockValueBehavior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Stock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="44" column="23" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Common/Pair.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Transaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="30" column="28" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#339#340#0" expanded="true" />
-            <element signature="e#365#366#0" expanded="true" />
-            <element signature="e#414#415#0" expanded="true" />
-            <element signature="e#440#441#0" expanded="true" />
-            <element signature="e#487#488#0" expanded="true" />
-            <element signature="e#513#514#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="623">
-          <caret line="52" column="37" lean-forward="true" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Management/DayTrackerAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="51" column="51" selection-start-line="51" selection-start-column="51" selection-end-line="51" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Aggregators/Agents/IndexAgent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="21" column="68" selection-start-line="21" selection-start-column="68" selection-end-line="21" selection-end-column="68" />
+        <state relative-caret-position="272">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Aggregators/Behaviors/IndexStockUpdateBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -925,20 +834,179 @@
     <entry file="file://$PROJECT_DIR$/src/Aggregators/Index.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
-          <caret line="26" column="42" lean-forward="true" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
+          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Aggregators/Behaviors/IndexStockUpdateBehavior.java">
+    <entry file="file://$PROJECT_DIR$/src/Aggregators/InvestorAgency.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
+        <state relative-caret-position="273">
+          <caret line="30" column="3" selection-start-line="30" selection-start-column="3" selection-end-line="30" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Common/Date.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Common/Pair.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Company/Agents/CompanyAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Company/Agents/ManagerAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Company/Behaviors/CompanyListStockValueBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Company/Company.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="157" column="19" selection-start-line="157" selection-start-column="19" selection-end-line="157" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4208#4209#0" expanded="true" />
+            <element signature="e#4241#4242#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Company/CompanyStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Company/Manager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="e#736#737#0" expanded="true" />
+            <element signature="e#770#771#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Company/MarketHistory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="115" column="34" selection-start-line="115" selection-start-column="34" selection-end-line="115" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Stock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/StockValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Transaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Yield.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Investor/Agents/InvestorAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Investor/Behavior/FindCompanyToInvestBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="52" column="9" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Investor/Investor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="135" column="17" selection-start-line="135" selection-start-column="17" selection-end-line="135" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Management/DayTrackerAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="39" column="20" lean-forward="true" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
         </state>
       </provider>
     </entry>

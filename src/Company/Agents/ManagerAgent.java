@@ -1,4 +1,5 @@
 package Company.Agents;
 
-public class ManagerAgent {
+public class ManagerAgent
+{
 }

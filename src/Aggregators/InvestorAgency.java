@@ -8,28 +8,36 @@ import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class InvestorAgency {
+public class InvestorAgency
+{
 
     private String name;
     private CopyOnWriteArrayList<Investor> investors;
     private ConcurrentHashMap<Company, ArrayList<Investor>> investorWithStock;
 
-    public InvestorAgency(String name) {
+    public InvestorAgency(String name)
+    {
         this.name = name;
         this.investors = new CopyOnWriteArrayList<Investor>();
         this.investorWithStock = new ConcurrentHashMap<Company, ArrayList<Investor>>();
     }
 
-    public void registerInvestor(Investor investor) throws Exception {
-        if (investors.contains(investor)) {
+    public void registerInvestor(Investor investor) throws Exception
+    {
+        if (investors.contains(investor))
+        {
             throw new Exception("Investor already registered here");
         }
         this.investors.add(investor);
-        for (Stock stock : investor.getPortfolio()) {
-            if (stock.getShareCount() != 0) {
-                if (this.investorWithStock.containsKey(stock.getCompany())) {
+        for (Stock stock : investor.getPortfolio())
+        {
+            if (stock.getShareCount() != 0)
+            {
+                if (this.investorWithStock.containsKey(stock.getCompany()))
+                {
                     this.investorWithStock.get(stock.getCompany()).add(investor);
-                } else {
+                } else
+                {
                     ArrayList<Investor> companyInvestors =
                             new ArrayList<Investor>();
                     companyInvestors.add(investor);
@@ -39,14 +47,19 @@ public class InvestorAgency {
         }
     }
 
-    public void registerStock(Stock stock) {
-        if (this.investorWithStock.containsKey(stock.getCompany())) {
-            if (this.investorWithStock.get(stock.getCompany()).contains(stock.getOwner())) {
+    public void registerStock(Stock stock)
+    {
+        if (this.investorWithStock.containsKey(stock.getCompany()))
+        {
+            if (this.investorWithStock.get(stock.getCompany()).contains(stock.getOwner()))
+            {
                 return;
-            } else {
+            } else
+            {
                 this.investorWithStock.get(stock.getCompany()).add(stock.getOwner());
             }
-        } else {
+        } else
+        {
             ArrayList<Investor> companyInvestors = new ArrayList<>();
             companyInvestors.add(stock.getOwner());
             this.investorWithStock.put(stock.getCompany(), companyInvestors);

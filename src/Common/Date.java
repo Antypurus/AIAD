@@ -1,6 +1,7 @@
 package Common;
 
-public class Date {
+public class Date
+{
 
     private int day;
     private int month;
@@ -9,15 +10,17 @@ public class Date {
     private static final int daysInMonth = 30;
     private static final int monthsInYear = 12;
 
-    public static Date CURRENT_DATE = new Date(1,1,2018);
+    public static Date CURRENT_DATE = new Date(1, 1, 2018);
 
-    public Date(int day, int month, int year) {
+    public Date(int day, int month, int year)
+    {
         this.day = day;
         this.month = month;
         this.year = year;
     }
 
-    public static int daysBetweenDates(Date date1, Date date2) {
+    public static int daysBetweenDates(Date date1, Date date2)
+    {
         int end =
                 date2.getYear() * monthsInYear * daysInMonth +
                         date2.getMonth() * daysInMonth + date2.getDay();
@@ -27,17 +30,20 @@ public class Date {
         return (end - start);
     }
 
-    public Date getNextDay() {
+    public Date getNextDay()
+    {
         int day = this.day;
         int month = this.month;
         int year = this.year;
 
         day++;
-        if (day > daysInMonth) {
+        if (day > daysInMonth)
+        {
             day = 1;
             month++;
         }
-        if (month > monthsInYear) {
+        if (month > monthsInYear)
+        {
             month = 1;
             year++;
         }
@@ -45,24 +51,28 @@ public class Date {
         return new Date(day, month, year);
     }
 
-    public void incrementDay() {
+    public void incrementDay()
+    {
         Date nextDay = this.getNextDay();
         this.day = nextDay.getDay();
         this.month = nextDay.getMonth();
         this.year = nextDay.getYear();
     }
 
-    public Date getPreviousDay() {
+    public Date getPreviousDay()
+    {
         int day = this.day;
         int month = this.month;
         this.year = this.year;
 
         day--;
-        if (day <= 0) {
+        if (day <= 0)
+        {
             day = daysInMonth;
             month--;
         }
-        if (month <= 0) {
+        if (month <= 0)
+        {
             month = monthsInYear;
             year--;
         }
@@ -70,7 +80,8 @@ public class Date {
         return new Date(day, month, year);
     }
 
-    public void decrementDay() {
+    public void decrementDay()
+    {
         Date previousDay = this.getPreviousDay();
         this.day = previousDay.getDay();
         this.month = previousDay.getMonth();
@@ -78,19 +89,23 @@ public class Date {
     }
 
 
-    public int getDay() {
+    public int getDay()
+    {
         return this.day;
     }
 
-    public int getMonth() {
+    public int getMonth()
+    {
         return this.month;
     }
 
-    public int getYear() {
+    public int getYear()
+    {
         return this.year;
     }
 
-    public static boolean isSmaller(Date date1, Date date2) {
+    public static boolean isSmaller(Date date1, Date date2)
+    {
         int nDate1 =
                 date1.getDay() + date1.getMonth() * Date.daysInMonth + date1.getYear() * Date.monthsInYear * Date.daysInMonth;
         int nDate2 =
@@ -101,7 +116,7 @@ public class Date {
     @Override
     public String toString()
     {
-        return ""+this.getDay()+"/"+this.getMonth()+"/"+this.getYear();
+        return "" + this.getDay() + "/" + this.getMonth() + "/" + this.getYear();
     }
 
 }

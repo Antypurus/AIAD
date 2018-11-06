@@ -5,11 +5,13 @@ import Investor.Investor;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
 
-public class InvestorAgent extends Agent {
+public class InvestorAgent extends Agent
+{
 
     private Investor investor;
 
-    public void setup() {
+    public void setup()
+    {
         Object[] args = getArguments();
 
         String name = args[0].toString();
@@ -17,7 +19,7 @@ public class InvestorAgent extends Agent {
         InvestorAgency agency = (InvestorAgency) args[2];
         double startingMoney = (Double) args[3];
 
-        this.investor = new Investor(name,riskBias,agency,startingMoney,this);
+        this.investor = new Investor(name, riskBias, agency, startingMoney, this);
 
         this.addBehaviour(new IntroductionBehavior());
     }
@@ -33,15 +35,17 @@ public class InvestorAgent extends Agent {
         private boolean done = false;
 
         @Override
-        public void action() {
+        public void action()
+        {
             String name =
-                    ((InvestorAgent)(this.myAgent)).getInvestor().getName();
-            System.out.println("Investor "+name+" Has Entered the Battlefield");
+                    ((InvestorAgent) (this.myAgent)).getInvestor().getName();
+            System.out.println("Investor " + name + " Has Entered the Battlefield");
             this.done = true;
         }
 
         @Override
-        public boolean done() {
+        public boolean done()
+        {
             return this.done;
         }
     }

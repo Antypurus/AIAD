@@ -13,7 +13,7 @@ public class IndexAgent extends Agent
     {
         Object[] args = this.getArguments();
 
-        this.index = (Index)args[0];
+        this.index = (Index) args[0];
         this.index.setAgent(this);
     }
 

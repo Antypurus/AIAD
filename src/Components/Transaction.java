@@ -3,7 +3,8 @@ package Components;
 import Common.Date;
 import Investor.Investor;
 
-public class Transaction {
+public class Transaction
+{
 
     private Stock stock;
     private Investor seller;
@@ -12,7 +13,8 @@ public class Transaction {
     private double shareValue;
     private Date transactionDate;
 
-    public Transaction() {
+    public Transaction()
+    {
 
     }
 
