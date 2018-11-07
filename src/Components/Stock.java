@@ -13,7 +13,6 @@ public class Stock
     private StockValue stockValue;
     private double totalValue;
     private Yield yield;
-    private double riskFactor;
     private Investor owner;
 
     public Stock(Company company, Index index, int shareCount, Investor owner)
@@ -23,7 +22,6 @@ public class Stock
         this.shareCount = shareCount;
         this.owner = owner;
         this.stockValue = this.company.getStockValue();
-        this.riskFactor = this.calculateRiskFactor();
         this.yield = this.company.getYield();
     }
 
@@ -46,12 +44,6 @@ public class Stock
     public Investor getOwner()
     {
         return this.owner;
-    }
-
-    public double getRiskFactor()
-    {
-        this.riskFactor = this.calculateRiskFactor();
-        return this.riskFactor;
     }
 
     public int getShareCount()
@@ -89,11 +81,6 @@ public class Stock
     public Index getIndex()
     {
         return this.index;
-    }
-
-    private double calculateRiskFactor()
-    {
-        return 0.0;
     }
 
     public boolean hasYield()
