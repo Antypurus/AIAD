@@ -26,7 +26,7 @@ public class DayTrackerAgent extends Agent
         this.index = (Index) args[0];
         this.agency = (InvestorAgency) args[1];
 
-        this.addBehaviour(new TickingBehavior(this.index));
+        this.addBehaviour(new TickingBehavior(this.index, this.agency));
     }
 
     class TickingBehavior extends CyclicBehaviour
@@ -34,9 +34,10 @@ public class DayTrackerAgent extends Agent
         private Index index;
         private InvestorAgency agency;
 
-        public TickingBehavior(Index index)
+        public TickingBehavior(Index index, InvestorAgency agency)
         {
             this.index = index;
+            this.agency = agency;
         }
 
         @Override
@@ -63,7 +64,7 @@ public class DayTrackerAgent extends Agent
             }
 
             CopyOnWriteArrayList<Investor> investors = this.agency.getInvestors();
-            for(Investor investor:investors)
+            for (Investor investor : investors)
             {
                 investor.getAgent().newDayProtocol();
             }
