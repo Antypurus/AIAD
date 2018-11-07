@@ -98,4 +98,10 @@ public class Stock
         return this.company;
     }
 
+    public Stock split(int shareAmmount)
+    {
+        this.shareCount-=shareAmmount;
+        return new Stock(this.company,this.index,shareAmmount,this.owner);
+    }
+
 }
