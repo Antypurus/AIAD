@@ -41,7 +41,7 @@ public class CheckForBankrupcyBehavior extends Behaviour
                 return;
             }
 
-            if (this.investor.getReserverMoney() >= company.getStockValue().getStockValue())
+            if (this.investor.getReservedMoney() >= company.getStockValue().getStockValue())
             {
                 this.done = true;
                 return;
