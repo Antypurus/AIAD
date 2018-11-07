@@ -5,8 +5,8 @@ import Company.Company;
 import Investor.Agents.InvestorAgent;
 import jade.core.behaviours.Behaviour;
 
-import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class FindCompanyToInvestBehavior extends Behaviour
 {
@@ -31,7 +31,7 @@ public class FindCompanyToInvestBehavior extends Behaviour
     @Override
     public void action()
     {
-        ArrayList<Company> companies = this.index.getAllCompanies();
+        CopyOnWriteArrayList<Company> companies = this.index.getAllCompanies();
         int numberOfCompanies = companies.size();
         Random rand = new Random();
 

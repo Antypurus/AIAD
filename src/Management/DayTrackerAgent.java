@@ -9,7 +9,6 @@ import Investor.Investor;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 
-import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class DayTrackerAgent extends Agent
@@ -25,6 +24,8 @@ public class DayTrackerAgent extends Agent
         Object args[] = this.getArguments();
         this.index = (Index) args[0];
         this.agency = (InvestorAgency) args[1];
+
+        System.out.println("---------Started Daily Processing-------");
 
         this.addBehaviour(new TickingBehavior(this.index, this.agency));
     }
@@ -57,7 +58,7 @@ public class DayTrackerAgent extends Agent
         private void newDayProtocol()
         {
             this.index.getAgent().newDayProtocol();
-            ArrayList<Company> companies = index.getAllCompanies();
+            CopyOnWriteArrayList<Company> companies = index.getAllCompanies();
             for (Company company : companies)
             {
                 company.getAgent().addBehaviour(new CompanyListStockValueBehavior(company.getAgent()));

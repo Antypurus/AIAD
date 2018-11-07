@@ -7,21 +7,24 @@ import Components.Transaction;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Index
 {
     /*<--------------FIELDS--------------------------->*/
     private String name;
-    private ArrayList<Company> companies;
-    private ArrayList<Stock> stocks;
-    private HashMap<String, Stock> acronymToStocks; //maps company acronym to
+    private CopyOnWriteArrayList<Company> companies;
+    private CopyOnWriteArrayList<Stock> stocks;
+    private ConcurrentHashMap<String, Stock> acronymToStocks; //maps company
+    // acronym to
     // all its stocks
-    private HashMap<String, Company> companyAcronyms; //maps an acronym to its
+    private ConcurrentHashMap<String, Company> companyAcronyms; //maps an acronym to its
     //company
-    private HashMap<String, Company> companyNames; //maps an name to its company
-    private ArrayList<Transaction> transactionRecords;
+    private ConcurrentHashMap<String, Company> companyNames; //maps an name to its company
+    private CopyOnWriteArrayList<Transaction> transactionRecords;
 
     private ConcurrentLinkedQueue<Transaction> primaryTransactionQueue =
             new ConcurrentLinkedQueue<>();
@@ -37,12 +40,12 @@ public class Index
     public Index(String name)
     {
         this.name = name;
-        this.companies = new ArrayList<Company>();
-        this.stocks = new ArrayList<>();
-        this.acronymToStocks = new HashMap<>();
-        this.companyAcronyms = new HashMap<>();
-        this.companyNames = new HashMap<>();
-        this.transactionRecords = new ArrayList<>();
+        this.companies = new CopyOnWriteArrayList<Company>();
+        this.stocks = new CopyOnWriteArrayList<>();
+        this.acronymToStocks = new ConcurrentHashMap<>();
+        this.companyAcronyms = new ConcurrentHashMap<>();
+        this.companyNames = new ConcurrentHashMap<>();
+        this.transactionRecords = new CopyOnWriteArrayList<>();
     }
 
     public String getName()
@@ -88,7 +91,7 @@ public class Index
         return null;
     }
 
-    public ArrayList<Company> getAllCompanies()
+    public CopyOnWriteArrayList<Company> getAllCompanies()
     {
         return this.companies;
     }
