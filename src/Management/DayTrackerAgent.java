@@ -5,10 +5,12 @@ import Aggregators.InvestorAgency;
 import Common.Date;
 import Company.Behaviors.CompanyListStockValueBehavior;
 import Company.Company;
+import Investor.Investor;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class DayTrackerAgent extends Agent
 {
@@ -30,6 +32,7 @@ public class DayTrackerAgent extends Agent
     class TickingBehavior extends CyclicBehaviour
     {
         private Index index;
+        private InvestorAgency agency;
 
         public TickingBehavior(Index index)
         {
@@ -57,6 +60,12 @@ public class DayTrackerAgent extends Agent
             for (Company company : companies)
             {
                 company.getAgent().addBehaviour(new CompanyListStockValueBehavior(company.getAgent()));
+            }
+
+            CopyOnWriteArrayList<Investor> investors = this.agency.getInvestors();
+            for(Investor investor:investors)
+            {
+                investor.getAgent().newDayProtocol();
             }
         }
     }

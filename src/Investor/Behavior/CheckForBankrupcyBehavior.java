@@ -13,6 +13,12 @@ public class CheckForBankrupcyBehavior extends Behaviour
     private Investor investor;
     private Index index;
 
+    public CheckForBankrupcyBehavior(Investor investor,Index index)
+    {
+        this.investor = investor;
+        this.index = index;
+    }
+
     @Override
     public void action()
     {
