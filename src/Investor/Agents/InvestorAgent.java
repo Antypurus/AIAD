@@ -1,6 +1,8 @@
 package Investor.Agents;
 
+import Aggregators.Index;
 import Aggregators.InvestorAgency;
+import Investor.Behavior.CheckForBankrupcyBehavior;
 import Investor.Investor;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
@@ -9,6 +11,7 @@ public class InvestorAgent extends Agent
 {
 
     private Investor investor;
+    private Index index;
 
     public void setup()
     {
@@ -20,6 +23,8 @@ public class InvestorAgent extends Agent
         double startingMoney = (Double) args[3];
 
         this.investor = new Investor(name, riskBias, agency, startingMoney, this);
+
+        this.index = (Index)args[4];
 
         this.addBehaviour(new IntroductionBehavior());
     }
@@ -48,6 +53,11 @@ public class InvestorAgent extends Agent
         {
             return this.done;
         }
+    }
+
+    public void newDayProtocol()
+    {
+        this.addBehaviour(new CheckForBankrupcyBehavior(this.investor,this.index));
     }
 
 }
