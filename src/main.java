@@ -52,7 +52,7 @@ public class main
 
         AgentController ac3 = cc.createNewAgent("Day Tracker", "Management" +
                         ".DayTrackerAgent",
-                new Object[]{index});
+                new Object[]{index, agency});
         ac3.start();
     }
 }

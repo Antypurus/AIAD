@@ -1,6 +1,7 @@
 package Management;
 
 import Aggregators.Index;
+import Aggregators.InvestorAgency;
 import Common.Date;
 import Company.Behaviors.CompanyListStockValueBehavior;
 import Company.Company;
@@ -15,11 +16,13 @@ public class DayTrackerAgent extends Agent
     public static final int TICK_RATE = 60;
 
     private Index index;
+    private InvestorAgency agency;
 
     public void setup()
     {
         Object args[] = this.getArguments();
         this.index = (Index) args[0];
+        this.agency = (InvestorAgency) args[1];
 
         this.addBehaviour(new TickingBehavior(this.index));
     }

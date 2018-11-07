@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a69af64-037f-4b2a-8fa3-68b3c2328643" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Investor/Behavior/CheckForBankrupcyBehavior.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Investor/Investor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Investor/Investor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Company/Agents/ManagerAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Company/Agents/ManagerAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Management/DayTrackerAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Management/DayTrackerAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +39,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="1" />
-          <entry key="java" value="198" />
+          <entry key="java" value="201" />
           <entry key="md" value="1" />
           <entry key="testfile" value="6" />
           <entry key="testname" value="1" />
@@ -48,7 +49,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="198" />
+          <entry key="JAVA" value="201" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="9" />
         </counts>
@@ -56,14 +57,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="19" />
-          <entry key="java" value="21532" />
-          <entry key="txt" value="2777" />
+          <entry key="java" value="21663" />
+          <entry key="txt" value="2891" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="21532" />
-          <entry key="PLAIN_TEXT" value="2796" />
+          <entry key="JAVA" value="21663" />
+          <entry key="PLAIN_TEXT" value="2910" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -77,8 +78,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Management/DayTrackerAgent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
-              <caret line="47" column="9" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
+            <state relative-caret-position="298">
+              <caret line="52" column="37" lean-forward="true" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -87,15 +88,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Investor/Behavior/CheckForBankrupcyBehavior.java">
+        <entry file="file://$PROJECT_DIR$/src/Company/Agents/ManagerAgent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="42" column="59" selection-start-line="42" selection-start-column="59" selection-end-line="42" selection-end-column="59" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#232#233#0" expanded="true" />
-                <element signature="e#260#261#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="128">
+              <caret line="8" column="5" lean-forward="true" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="54" column="44" selection-start-line="54" selection-start-column="44" selection-end-line="54" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -124,14 +129,12 @@
         <option value="$PROJECT_DIR$/src/Aggregators/Agents/InvestorAgencyAgent.java" />
         <option value="$PROJECT_DIR$/src/Investor/Behaviors/RegisterAgentBehavior.java" />
         <option value="$PROJECT_DIR$/src/Aggregators/Index.java" />
-        <option value="$PROJECT_DIR$/src/Management/DayTrackerAgent.java" />
         <option value="$PROJECT_DIR$/src/Aggregators/Agents/IndexAgent.java" />
         <option value="$PROJECT_DIR$/src/Aggregators/Behaviors/IndexStockUpdateBehavior.java" />
         <option value="$PROJECT_DIR$/src/Aggregators/InvestorAgency.java" />
         <option value="$PROJECT_DIR$/src/Common/Date.java" />
         <option value="$PROJECT_DIR$/src/Common/Pair.java" />
         <option value="$PROJECT_DIR$/src/Company/Agents/CompanyAgent.java" />
-        <option value="$PROJECT_DIR$/src/Company/Agents/ManagerAgent.java" />
         <option value="$PROJECT_DIR$/src/Company/Behaviors/CompanyListStockValueBehavior.java" />
         <option value="$PROJECT_DIR$/src/Company/Company.java" />
         <option value="$PROJECT_DIR$/src/Company/CompanyStatus.java" />
@@ -143,9 +146,11 @@
         <option value="$PROJECT_DIR$/src/Components/Yield.java" />
         <option value="$PROJECT_DIR$/src/Investor/Agents/InvestorAgent.java" />
         <option value="$PROJECT_DIR$/src/Investor/Behavior/FindCompanyToInvestBehavior.java" />
-        <option value="$PROJECT_DIR$/src/main.java" />
         <option value="$PROJECT_DIR$/src/Investor/Investor.java" />
         <option value="$PROJECT_DIR$/src/Investor/Behavior/CheckForBankrupcyBehavior.java" />
+        <option value="$PROJECT_DIR$/src/Management/DayTrackerAgent.java" />
+        <option value="$PROJECT_DIR$/src/main.java" />
+        <option value="$PROJECT_DIR$/src/Company/Agents/ManagerAgent.java" />
       </list>
     </option>
   </component>
@@ -281,7 +286,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541594751339" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541604112899" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/dependencies/jade.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -353,7 +358,7 @@
       <workItem from="1541425467644" duration="945000" />
       <workItem from="1541457517534" duration="5034000" />
       <workItem from="1541540178284" duration="4976000" />
-      <workItem from="1541593922790" duration="789000" />
+      <workItem from="1541593922790" duration="2028000" />
     </task>
     <task id="LOCAL-00001" summary="Added classes to start working&#10;&#10;+ - Agents Package + - This package holds agents&#10;|                  |&#10;|                  + - Company Agents Package + - This package holds company related agents&#10;|                  |                          |&#10;|                  |                          + - Company - Agent For a company&#10;|                  |                          + - Manager - Agent for a company manager&#10;|                  |&#10;|                  + - Investor Agents Package + - This package hold investor agents&#10;|                                              |&#10;|                                              + - Investor - Agent for an investor&#10;|                                          &#10;+ - Aggregators Package + - This package hold classes for aggregation entities&#10;|                       |&#10;|                       + - Index - Stock Market Index&#10;|                       + - Investor Agency - Agency that aggregates investors&#10;|&#10;+ - Investment Components Package + - Generic Package that defines abstract components of investing&#10;                                  |&#10;                                  + - Stock - Represent the concept of a stock">
       <created>1540930304736</created>
@@ -586,11 +591,25 @@
       <option name="project" value="LOCAL" />
       <updated>1541548221160</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="started working on behavior to check when investor has gone bankrupt">
+      <created>1541594789109</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1541594789109</updated>
+    </task>
+    <task id="LOCAL-00035" summary="checking for bankrupcy should be finished">
+      <created>1541595014455</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1541595014455</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83894000" />
+    <option name="totallyTimeSpent" value="85133000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -663,8 +682,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="started adding fields to hold dat to the various classes" />
-    <MESSAGE value="added enum to handle company status" />
     <MESSAGE value="Added transcation class to hold a stock exchange between two investors,&#10;also refactored some arrays to arraylists" />
     <MESSAGE value="added constructor to stock method and added methods and fields to support&#10;easy stock value calculation" />
     <MESSAGE value="added class to handle stock yield and modified stock class to get a&#10;consistent yield from the company." />
@@ -688,7 +705,9 @@
     <MESSAGE value="started working on index agent and started working on methods for processing&#10;transactions for the day." />
     <MESSAGE value="added behavior for index updating stock value of companies based on the&#10;daily transaction executed for that company" />
     <MESSAGE value="code formating" />
-    <option name="LAST_COMMIT_MESSAGE" value="code formating" />
+    <MESSAGE value="started working on behavior to check when investor has gone bankrupt" />
+    <MESSAGE value="checking for bankrupcy should be finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="checking for bankrupcy should be finished" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$PROJECT_DIR$/dependencies/jade.jar!/jade/wrapper/ContainerController.class">
@@ -721,13 +740,6 @@
     <entry file="file://$PROJECT_DIR$/src/Messages/RegisterAgentMessage.java" />
     <entry file="file://$PROJECT_DIR$/src/Aggregators/Agents/InvestorAgencyAgent.java" />
     <entry file="file://$PROJECT_DIR$/src/Investor/Behaviors/RegisterAgentBehavior.java" />
-    <entry file="file://$PROJECT_DIR$/src/main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="39" column="20" lean-forward="true" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Aggregators/Agents/IndexAgent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -742,6 +754,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-438">
           <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -783,13 +798,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
           <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Company/Agents/ManagerAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -882,16 +893,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Management/DayTrackerAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="47" column="9" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Investor/Investor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="506">
@@ -906,13 +907,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Investor/Behavior/CheckForBankrupcyBehavior.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="42" column="59" selection-start-line="42" selection-start-column="59" selection-end-line="42" selection-end-column="59" />
+        <state relative-caret-position="362">
+          <caret line="44" column="5" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#232#233#0" expanded="true" />
             <element signature="e#260#261#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="54" column="44" selection-start-line="54" selection-start-column="44" selection-end-line="54" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="351" column="29" selection-start-line="351" selection-start-column="29" selection-end-line="351" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Management/DayTrackerAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="52" column="37" lean-forward="true" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Company/Agents/ManagerAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="8" column="5" lean-forward="true" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
         </state>
       </provider>
     </entry>
