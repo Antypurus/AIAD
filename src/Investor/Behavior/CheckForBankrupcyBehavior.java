@@ -38,7 +38,7 @@ public class CheckForBankrupcyBehavior extends Behaviour
             }
         }
 
-        //kill agent
+        this.investor.getAgent().doDelete();//kills the agent
         System.out.println("Investor "+this.investor.getName()+" has gone " +
                 "bankrupt and can no longer invest money");
         this.done = true;
