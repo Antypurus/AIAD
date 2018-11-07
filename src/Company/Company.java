@@ -25,9 +25,10 @@ public class Company
     private Date foundationDate;
     private MarketHistory history;
     private CompanyAgent agent;
+    private Stock stock;
 
     public Company(String name, String acronym, Index index,
-                   double qualityBias, Date foundationDate, CompanyAgent agent)
+                   double qualityBias, Date foundationDate, CompanyAgent agent, int shareCount)
     {
         this.qualityBias = qualityBias;
         this.name = name;
@@ -48,10 +49,12 @@ public class Company
         {
             e.printStackTrace();
         }
+
+        this.stock = new Stock(this, this.index, shareCount, null);
     }
 
     public Company(String name, String acronym, Index index, double qualityBias,
-                   Yield yield, Date foundationDate, CompanyAgent agent)
+                   Yield yield, Date foundationDate, CompanyAgent agent, int shareCount)
     {
         this.qualityBias = qualityBias;
         this.name = name;
@@ -72,6 +75,8 @@ public class Company
         {
             e.printStackTrace();
         }
+
+        this.stock = new Stock(this, this.index, shareCount, null);
     }
 
     public StockValue getStockValue()
