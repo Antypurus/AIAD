@@ -63,7 +63,7 @@ public class Date
     {
         int day = this.day;
         int month = this.month;
-        this.year = this.year;
+        int year = this.year;
 
         day--;
         if (day <= 0)
