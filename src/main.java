@@ -36,7 +36,7 @@ public class main
         String n2 = "Doris Beata";
         AgentController ac2 = cc.createNewAgent(n2, "Investor.Agents" +
                         ".InvestorAgent",
-                new Object[]{n2, 0.5, agency, 5000.0, index});
+                new Object[]{n2, 0.5, agency, 0.0, index});
         ac2.start();
 
         AgentController ac4 = cc.createNewAgent("TESLA", "Company.Agents" +
