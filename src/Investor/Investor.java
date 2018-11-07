@@ -15,6 +15,8 @@ public class Investor
     private InvestorAgency agency;
 
     private double money;
+    private double reserverMoney = 0;
+
     private ArrayList<Stock> portfolio;
     private HashMap<String, Stock> nameToStock;
     private HashMap<String, Stock> acronymToStock;
@@ -144,6 +146,11 @@ public class Investor
     public String getName()
     {
         return this.name;
+    }
+
+    public double getReserverMoney()
+    {
+        return this.reserverMoney;
     }
 
 }
