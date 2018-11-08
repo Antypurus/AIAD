@@ -1,8 +1,10 @@
 package Investor.Behavior;
 
 import Aggregators.Index;
+import Aggregators.InvestorAgency;
 import Company.Company;
 import Investor.Agents.InvestorAgent;
+import Investor.Investor;
 import jade.core.behaviours.Behaviour;
 
 import java.util.Random;
@@ -14,18 +16,16 @@ public class FindCompanyToInvestBehavior extends Behaviour
     private Index index;
     private InvestorAgent agent;
     private boolean done = false;
+    private InvestorAgency agency;
 
     private static final int MAX_ROUNDS = 5;
 
-    FindCompanyToInvestBehavior(Index index) throws Exception
+    FindCompanyToInvestBehavior(Investor investor, Index index,
+                                InvestorAgency agency) throws Exception
     {
         this.index = index;
-        if (!(this.myAgent instanceof InvestorAgent))
-        {
-            throw new Exception("Invalid Agent, this behavior only supports " +
-                    "Investor agents");
-        }
-        this.agent = (InvestorAgent) this.myAgent;
+        this.agent = investor.getAgent();
+        this.agency = agency;
     }
 
     @Override
@@ -51,7 +51,9 @@ public class FindCompanyToInvestBehavior extends Behaviour
 
         if (investIn != null)
         {
-            //add behavior to try to invest in this company
+            this.agent.addBehaviour(new FindStockSourceBehavior(investIn,
+                    this.agency,
+                    this.agent.getInvestor()));
         }
 
         done = true;
