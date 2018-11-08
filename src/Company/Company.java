@@ -28,8 +28,11 @@ public class Company
     private CompanyAgent agent;
     private Stock stock;
 
+    private double capital;
+
     public Company(String name, String acronym, Index index,
-                   double qualityBias, Date foundationDate, CompanyAgent agent, int shareCount)
+                   double qualityBias, Date foundationDate,
+                   CompanyAgent agent, int shareCount,double capital)
     {
         this.qualityBias = qualityBias;
         this.name = name;
@@ -44,7 +47,7 @@ public class Company
                 this.history.getStockValues().get(this.history.getStockValues().size() - 1);
         this.agent = agent;
         this.stock = new Stock(this, this.index, shareCount, null);
-
+        this.capital = capital;
         try
         {
             this.index.registerCompany(this);
@@ -55,7 +58,8 @@ public class Company
     }
 
     public Company(String name, String acronym, Index index, double qualityBias,
-                   Yield yield, Date foundationDate, CompanyAgent agent, int shareCount)
+                   Date foundationDate, CompanyAgent agent, int shareCount,
+                   double capital,Yield yield)
     {
         this.qualityBias = qualityBias;
         this.name = name;
@@ -70,7 +74,7 @@ public class Company
                 this.history.getStockValues().get(this.history.getStockValues().size() - 1);
         this.agent = agent;
         this.stock = new Stock(this, this.index, shareCount, null);
-
+        this.capital = capital;
         try
         {
             this.index.registerCompany(this);
