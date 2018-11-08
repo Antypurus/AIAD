@@ -4,6 +4,7 @@ import Common.Date;
 import Company.Company;
 import Investor.Investor;
 import jade.core.behaviours.Behaviour;
+import jade.lang.acl.ACLMessage;
 
 public class BuyStockFromCompanyBehavior extends Behaviour
 {
@@ -20,9 +21,19 @@ public class BuyStockFromCompanyBehavior extends Behaviour
     @Override
     public void action()
     {
-        int quantityToBuy = this.calculateAmmountToBuy();
+        int quantityToBuy = this.calculateAmountToBuy();
         System.out.println(Date.CURRENT_DATE+" :: "+this.investor.getName()+
                 " has decided to buy "+ quantityToBuy+" stocks from "+this.company.getName());
+
+        ACLMessage buyMessage = new ACLMessage(ACLMessage.REQUEST);
+        buyMessage.setContent(this.investor.getName()+"::BUY::"+quantityToBuy);
+        buyMessage.setEncoding("UTF-8");
+        buyMessage.addReceiver(this.company.getAgent().getAID());
+
+        BuyFromCompanyRequestBehavior requestBehavior =
+                new BuyFromCompanyRequestBehavior(this.investor.getAgent(),buyMessage);
+        requestBehavior.target(this.investor,this.company,quantityToBuy);
+        this.investor.getAgent().addBehaviour(requestBehavior);
 
         this.done = true;
     }
@@ -33,7 +44,7 @@ public class BuyStockFromCompanyBehavior extends Behaviour
         return this.done;
     }
 
-    private int calculateAmmountToBuy()
+    private int calculateAmountToBuy()
     {
         double val =
                 ((1-this.investor.getRiskBiasFactor())*((this.investor.getCurrentMoney()/this.company.getStock().getStockValue())*(Math.pow(Math.E,this.company.getYield().getYield())*Math.sqrt(company.getQualityBias()))));

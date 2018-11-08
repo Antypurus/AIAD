@@ -203,4 +203,27 @@ public class Company
     {
         return this.stock;
     }
+
+    public double getCapital()
+    {
+        return this.capital;
+    }
+
+    public void addCapital(double delta)
+    {
+        if(delta<0)
+        {
+            return;
+        }
+        this.capital+=delta;
+    }
+
+    public void reduceCapital(double delta)
+    {
+        if(delta<0)
+        {
+            return;
+        }
+        this.capital-=delta;
+    }
 }
