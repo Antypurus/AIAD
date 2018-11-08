@@ -1,5 +1,6 @@
 package Investor.Behavior;
 
+import Common.Date;
 import Company.Company;
 import Components.Stock;
 import Investor.Agents.InvestorAgent;
@@ -49,6 +50,8 @@ public class BuyFromCompanyRequestBehavior extends AchieveREInitiator
     protected void	handleAgree(ACLMessage agree)
     {
         Stock newStock = this.company.getStock().split(this.ammount);
+        System.out.println(Date.CURRENT_DATE+" :: "+this.investor.getName()+
+                " has bough "+ammount+" stocks directly from "+company.getName());
         this.investor.registerStock(newStock);
         double saleValue = newStock.getTotalValue();
         try
