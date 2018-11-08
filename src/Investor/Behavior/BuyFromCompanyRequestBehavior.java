@@ -59,5 +59,6 @@ public class BuyFromCompanyRequestBehavior extends AchieveREInitiator
             e.printStackTrace();
         }
         this.company.addCapital(saleValue);
+        this.investor.getAgent().isNotInvesting();
     }
 }

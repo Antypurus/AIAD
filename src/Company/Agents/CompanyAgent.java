@@ -2,9 +2,12 @@ package Company.Agents;
 
 import Aggregators.Index;
 import Common.Date;
+import Company.Behaviors.HandleBuyRequestBehavior;
 import Company.Company;
 import Components.Yield;
 import jade.core.Agent;
+import jade.lang.acl.ACLMessage;
+import jade.lang.acl.MessageTemplate;
 
 public class CompanyAgent extends Agent
 {
@@ -37,6 +40,16 @@ public class CompanyAgent extends Agent
             this.company = new Company(name, acronym, index, qualityBias,
                      foundationDate, this,shareCount,capital,yield);
         }
+
+        this.addBehaviour(new HandleBuyRequestBehavior(this,
+                new MessageTemplate(new MessageTemplate.MatchExpression()
+                {
+                    @Override
+                    public boolean match(ACLMessage aclMessage)
+                    {
+                        return aclMessage.getPerformative()==ACLMessage.REQUEST;
+                    }
+                })));
     }
 
     public Company getCompany()
