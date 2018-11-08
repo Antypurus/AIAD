@@ -23,8 +23,8 @@ public class CheckForBankrupcyBehavior extends Behaviour
     @Override
     public void action()
     {
-        System.out.println(Date.CURRENT_DATE+" Started Bankruptcy check for" +
-          " "+this.investor.getName());
+        //System.out.println(Date.CURRENT_DATE+" Started Bankruptcy check for" +
+         // " "+this.investor.getName());
 
         if (this.investor.getPortfolio().size() != 0)
         {

@@ -23,7 +23,7 @@ public class Transaction
       this.transactionDate = transactionDate;
     }
 
-    public void execute()
+    public void executeTransaction()
     {
       double newValue = this.shareValue * this.ammount;
 

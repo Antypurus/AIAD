@@ -3,6 +3,7 @@ package Company;
 import Aggregators.Index;
 import Common.Date;
 import Company.Agents.CompanyAgent;
+import Components.Stock;
 import Components.StockValue;
 import Components.Yield;
 
@@ -42,6 +43,8 @@ public class Company
         this.stockValue =
                 this.history.getStockValues().get(this.history.getStockValues().size() - 1);
         this.agent = agent;
+        this.stock = new Stock(this, this.index, shareCount, null);
+
         try
         {
             this.index.registerCompany(this);
@@ -49,8 +52,6 @@ public class Company
         {
             e.printStackTrace();
         }
-
-        this.stock = new Stock(this, this.index, shareCount, null);
     }
 
     public Company(String name, String acronym, Index index, double qualityBias,
@@ -68,6 +69,8 @@ public class Company
         this.stockValue =
                 this.history.getStockValues().get(this.history.getStockValues().size() - 1);
         this.agent = agent;
+        this.stock = new Stock(this, this.index, shareCount, null);
+
         try
         {
             this.index.registerCompany(this);
@@ -75,8 +78,6 @@ public class Company
         {
             e.printStackTrace();
         }
-
-        this.stock = new Stock(this, this.index, shareCount, null);
     }
 
     public StockValue getStockValue()
@@ -192,5 +193,10 @@ public class Company
     public Index getIndex()
     {
         return this.index;
+    }
+
+    public Stock getStock()
+    {
+        return this.stock;
     }
 }
