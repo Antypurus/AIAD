@@ -32,38 +32,40 @@ public class FindCompanyToInvestBehavior extends Behaviour
     @Override
     public void action()
     {
-        CopyOnWriteArrayList<Company> companies = this.index.getAllCompanies();
-        int numberOfCompanies = companies.size();
-        Random rand = new Random();
-
-        int roundCounter = 0;
-        Company investIn = null;
-
-        if (numberOfCompanies != 0)
+        if (!(this.agent.isInvesting()))
         {
-            while (investIn == null && roundCounter <= MAX_ROUNDS)
+            CopyOnWriteArrayList<Company> companies = this.index.getAllCompanies();
+            int numberOfCompanies = companies.size();
+            Random rand = new Random();
+
+            int roundCounter = 0;
+            Company investIn = null;
+
+            if (numberOfCompanies != 0)
             {
-                int index = rand.nextInt() % numberOfCompanies;
-                if (companies.get(index).getStockValue().getStockValue() <= this.agent.getInvestor().getCurrentMoney())
+                while (investIn == null && roundCounter <= MAX_ROUNDS)
                 {
-                    investIn = companies.get(index);
-                } else
-                {
-                    roundCounter++;
+                    int index = rand.nextInt() % numberOfCompanies;
+                    if (companies.get(index).getStockValue().getStockValue() <= this.agent.getInvestor().getCurrentMoney())
+                    {
+                        investIn = companies.get(index);
+                    } else
+                    {
+                        roundCounter++;
+                    }
                 }
             }
+
+            if (investIn != null)
+            {
+                System.out.println(Date.CURRENT_DATE + " :: " + this.agent.getInvestor().getName() + " has " +
+                        "decided to buy stock from " + investIn.getName());
+
+                this.agent.addBehaviour(new FindStockSourceBehavior(investIn,
+                        this.agency,
+                        this.agent.getInvestor()));
+            }
         }
-
-        if (investIn != null)
-        {
-            System.out.println(Date.CURRENT_DATE + " :: " + this.agent.getInvestor().getName() + " has " +
-                    "decided to buy stock from " + investIn.getName());
-
-            this.agent.addBehaviour(new FindStockSourceBehavior(investIn,
-                    this.agency,
-                    this.agent.getInvestor()));
-        }
-
         done = true;
     }
 

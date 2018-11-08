@@ -15,6 +15,8 @@ public class InvestorAgent extends Agent
     private Index index;
     private InvestorAgency agency;
 
+    private boolean isInvesting = false;
+
     public void setup()
     {
         Object[] args = getArguments();
@@ -63,6 +65,21 @@ public class InvestorAgent extends Agent
         this.addBehaviour(new CheckForBankrupcyBehavior(this.investor, this.index));
         this.addBehaviour(new FindCompanyToInvestBehavior(this.investor,
                 this.index, this.agency));
+    }
+
+    public void isCurrentlyInvesting()
+    {
+        this.isInvesting = true;
+    }
+
+    public void isNotInvesting()
+    {
+        this.isInvesting = false;
+    }
+
+    public boolean isInvesting()
+    {
+        return this.isInvesting;
     }
 
 }

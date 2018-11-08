@@ -33,6 +33,8 @@ public class BuyStockFromCompanyBehavior extends Behaviour
         BuyFromCompanyRequestBehavior requestBehavior =
                 new BuyFromCompanyRequestBehavior(this.investor.getAgent(),buyMessage);
         requestBehavior.target(this.investor,this.company,quantityToBuy);
+
+        this.investor.getAgent().isCurrentlyInvesting();
         this.investor.getAgent().addBehaviour(requestBehavior);
 
         this.done = true;
