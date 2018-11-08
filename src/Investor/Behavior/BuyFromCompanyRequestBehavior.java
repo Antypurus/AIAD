@@ -62,7 +62,7 @@ public class BuyFromCompanyRequestBehavior extends AchieveREInitiator
         this.investor.registerStock(newStock);
         try
         {
-            this.investor.removeMoney(newStock.getShareCount()*newStock.getStockValue());
+            this.investor.removeMoney(saleValue);
         } catch (Exception e)
         {
             e.printStackTrace();
