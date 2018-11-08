@@ -101,7 +101,7 @@ public class Investor
         return this.money;
     }
 
-    public void setCurrentMoney(double money)
+    public synchronized void  setCurrentMoney(double money)
     {
         if (money < 0)
         {
@@ -110,7 +110,7 @@ public class Investor
         this.money = money;
     }
 
-    public void addMoney(double moneyDelta)
+    public synchronized void addMoney(double moneyDelta)
     {
         if (moneyDelta < 0)
         {
@@ -119,7 +119,7 @@ public class Investor
         this.money += moneyDelta;
     }
 
-    public void removeMoney(double moneyDelta) throws Exception
+    public synchronized void removeMoney(double moneyDelta) throws Exception
     {
         if (moneyDelta < 0)
         {

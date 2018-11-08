@@ -4,12 +4,14 @@ import Aggregators.Index;
 import Company.Company;
 import Investor.Investor;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Stock
 {
 
     private Company company;
     private Index index;
-    private int shareCount;
+    private AtomicInteger shareCount;
     private StockValue stockValue;
     private double totalValue;
     private Yield yield;
@@ -19,10 +21,11 @@ public class Stock
     {
         this.company = company;
         this.index = index;
-        this.shareCount = shareCount;
+        this.shareCount = new AtomicInteger(shareCount);
         this.owner = owner;
         this.stockValue = this.company.getStockValue();
         this.yield = this.company.getYield();
+        this.getTotalValue();
     }
 
     public double getStockValue()
@@ -32,7 +35,7 @@ public class Stock
 
     public double getTotalValue()
     {
-        this.totalValue = this.shareCount * this.getStockValue();
+        this.totalValue = this.shareCount.get() * this.getStockValue();
         return this.totalValue;
     }
 
@@ -48,7 +51,7 @@ public class Stock
 
     public int getShareCount()
     {
-        return this.shareCount;
+        return this.shareCount.get();
     }
 
     public void setShareCount(int shareCount)
@@ -57,7 +60,7 @@ public class Stock
         {
             return;
         }
-        this.shareCount = shareCount;
+        this.shareCount.set(shareCount);
     }
 
     public void increaseShareCount(int shareCountDelta)
@@ -66,7 +69,8 @@ public class Stock
         {
             return;
         }
-        this.shareCount += shareCountDelta;
+        this.shareCount.weakCompareAndSetAcquire(this.shareCount.get(),
+                this.shareCount.get()+shareCountDelta);
     }
 
     public void decreaseShareCount(int shareCountDelta)
@@ -75,7 +79,8 @@ public class Stock
         {
             return;
         }
-        this.shareCount -= shareCountDelta;
+        this.shareCount.weakCompareAndSetAcquire(this.shareCount.get(),
+                this.shareCount.get()-shareCountDelta);
     }
 
     public Index getIndex()
@@ -98,9 +103,10 @@ public class Stock
         return this.company;
     }
 
-    public Stock split(int shareAmmount)
+    public synchronized Stock split(int shareAmmount)
     {
-        this.shareCount-=shareAmmount;
+        while(!this.shareCount.weakCompareAndSetAcquire(this.shareCount.get(),
+                this.shareCount.get()-shareAmmount));
         return new Stock(this.company,this.index,shareAmmount,this.owner);
     }
 

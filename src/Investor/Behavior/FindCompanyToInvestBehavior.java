@@ -59,20 +59,19 @@ public class FindCompanyToInvestBehavior extends Behaviour
             if (investIn != null)
             {
                 System.out.println(Date.CURRENT_DATE + " :: " + this.agent.getInvestor().getName() + " has " +
-                        "decided to buy stock from " + investIn.getName());
+                        "decided to buy stock from " + investIn.getName() +
+                        " Currently have $" + this.agent.getInvestor().getCurrentMoney() + " to invest");
 
                 this.agent.addBehaviour(new FindStockSourceBehavior(investIn,
                         this.agency,
                         this.agent.getInvestor()));
-            }
-            else
+            } else
             {
-                System.out.println(Date.CURRENT_DATE+" :: "+this.agent.getInvestor().getName()+" is currently unable to invest in any company");
+                System.out.println(Date.CURRENT_DATE + " :: " + this.agent.getInvestor().getName() + " is currently unable to invest in any company");
             }
-        }
-        else
+        } else
         {
-            System.out.println(Date.CURRENT_DATE+" :: "+this.agent.getInvestor().getName()+" is currently investing and cannot start investing in another company");
+            System.out.println(Date.CURRENT_DATE + " :: " + this.agent.getInvestor().getName() + " is currently investing and cannot start investing in another company");
         }
         done = true;
     }

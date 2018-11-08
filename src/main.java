@@ -43,7 +43,7 @@ public class main
         AgentController ac4 = cc.createNewAgent("TESLA", "Company.Agents" +
                         ".CompanyAgent",
                 new Object[]{"Tesla", "TSLA", index, 0.56, new Date(1, 1,
-                        2010),50000,100101010.0});
+                        2010), 50000, 100101010.0});
         ac4.start();
 
 
