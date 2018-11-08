@@ -2,6 +2,7 @@ package Investor.Behavior;
 
 import Aggregators.Index;
 import Aggregators.InvestorAgency;
+import Common.Date;
 import Company.Company;
 import Investor.Agents.InvestorAgent;
 import Investor.Investor;
@@ -20,8 +21,8 @@ public class FindCompanyToInvestBehavior extends Behaviour
 
     private static final int MAX_ROUNDS = 5;
 
-    FindCompanyToInvestBehavior(Investor investor, Index index,
-                                InvestorAgency agency) throws Exception
+    public FindCompanyToInvestBehavior(Investor investor, Index index,
+                                       InvestorAgency agency)
     {
         this.index = index;
         this.agent = investor.getAgent();
@@ -37,20 +38,27 @@ public class FindCompanyToInvestBehavior extends Behaviour
 
         int roundCounter = 0;
         Company investIn = null;
-        while (investIn == null && roundCounter <= MAX_ROUNDS)
+
+        if (numberOfCompanies != 0)
         {
-            int index = rand.nextInt() % numberOfCompanies;
-            if (companies.get(index).getStockValue().getStockValue() <= this.agent.getInvestor().getCurrentMoney())
+            while (investIn == null && roundCounter <= MAX_ROUNDS)
             {
-                investIn = companies.get(index);
-            } else
-            {
-                roundCounter++;
+                int index = rand.nextInt() % numberOfCompanies;
+                if (companies.get(index).getStockValue().getStockValue() <= this.agent.getInvestor().getCurrentMoney())
+                {
+                    investIn = companies.get(index);
+                } else
+                {
+                    roundCounter++;
+                }
             }
         }
 
         if (investIn != null)
         {
+            System.out.println(Date.CURRENT_DATE + " :: " + this.agent.getInvestor().getName() + " has " +
+                    "decided to buy stock from " + investIn.getName());
+
             this.agent.addBehaviour(new FindStockSourceBehavior(investIn,
                     this.agency,
                     this.agent.getInvestor()));
