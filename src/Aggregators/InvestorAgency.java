@@ -13,13 +13,13 @@ public class InvestorAgency
 
     private String name;
     private CopyOnWriteArrayList<Investor> investors;
-    private ConcurrentHashMap<Company, ArrayList<Investor>> investorWithStock;
+    private ConcurrentHashMap<Company, CopyOnWriteArrayList<Investor>> investorWithStock;
 
     public InvestorAgency(String name)
     {
         this.name = name;
         this.investors = new CopyOnWriteArrayList<Investor>();
-        this.investorWithStock = new ConcurrentHashMap<Company, ArrayList<Investor>>();
+        this.investorWithStock = new ConcurrentHashMap<Company, CopyOnWriteArrayList<Investor>>();
     }
 
     public void registerInvestor(Investor investor) throws Exception
@@ -38,8 +38,8 @@ public class InvestorAgency
                     this.investorWithStock.get(stock.getCompany()).add(investor);
                 } else
                 {
-                    ArrayList<Investor> companyInvestors =
-                            new ArrayList<Investor>();
+                    CopyOnWriteArrayList<Investor> companyInvestors =
+                            new CopyOnWriteArrayList<Investor>();
                     companyInvestors.add(investor);
                     this.investorWithStock.put(stock.getCompany(), companyInvestors);
                 }
@@ -60,7 +60,7 @@ public class InvestorAgency
             }
         } else
         {
-            ArrayList<Investor> companyInvestors = new ArrayList<>();
+            CopyOnWriteArrayList<Investor> companyInvestors = new CopyOnWriteArrayList<>();
             companyInvestors.add(stock.getOwner());
             this.investorWithStock.put(stock.getCompany(), companyInvestors);
         }
@@ -69,6 +69,11 @@ public class InvestorAgency
     public CopyOnWriteArrayList<Investor> getInvestors()
     {
         return this.investors;
+    }
+
+    public CopyOnWriteArrayList<Investor> getInvestorWithStockOfCompany(Company company)
+    {
+        return this.investorWithStock.get(company);
     }
 
 }
