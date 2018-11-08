@@ -35,6 +35,12 @@ public class BuyStockFromCompanyBehavior extends Behaviour
 
     private int calculateAmmountToBuy()
     {
-        return (int)((1-this.investor.getRiskBiasFactor())*((this.company.getStock().getStockValue()/this.investor.getCurrentMoney())+(this.company.getYield().getYield()/this.company.getStock().getStockValue()*Math.E*Math.sqrt(this.company.getQualityBias()))));
+        double val =
+                ((1-this.investor.getRiskBiasFactor())*((this.investor.getCurrentMoney()/this.company.getStock().getStockValue())*(Math.pow(Math.E,this.company.getYield().getYield())*Math.sqrt(company.getQualityBias()))));
+        if((int)val>this.company.getStock().getShareCount())
+        {
+            val = this.company.getStock().getShareCount();
+        }
+        return (int)val;
     }
 }

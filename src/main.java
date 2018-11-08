@@ -30,7 +30,8 @@ public class main
 
         String n1 = "Cuck McCuck";
         AgentController ac = cc.createNewAgent(n1, "Investor.Agents" +
-                ".InvestorAgent", new Object[]{n1, 0.5, agency, 5000.0, index});
+                ".InvestorAgent", new Object[]{n1, 0.5, agency, 50000.0,
+                index});
         ac.start();
 
         String n2 = "Doris Beata";
