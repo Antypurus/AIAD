@@ -1,6 +1,7 @@
 package Investor.Behavior;
 
 import Aggregators.InvestorAgency;
+import Common.Date;
 import Company.Company;
 import Investor.Investor;
 import jade.core.behaviours.Behaviour;
@@ -35,11 +36,26 @@ public class FindStockSourceBehavior extends Behaviour
             if (this.target.getStock().getShareCount() != 0)
             {
                 //need to buy from the company
+                System.out.println(Date.CURRENT_DATE+" :: "+this.investor.getName()+" " +
+                        "Will try to buy " +
+                        "stock directly from "+this.target.getName());
                 this.investor.getAgent().addBehaviour(new BuyStockFromCompanyBehavior(this.investor, this.target));
             }
         } else
         {
             //need to start negotiating with these motherfuckers
+
+            // for when the only investor with stock is ourselves
+            if(investors.size()==1)
+            {
+                if(investors.get(0) == this.investor)
+                {
+                    System.out.println(Date.CURRENT_DATE+" :: "+this.investor.getName()+" " +
+                            "Will try to buy " +
+                            "stock directly from "+this.target.getName());
+                    this.investor.getAgent().addBehaviour(new BuyStockFromCompanyBehavior(this.investor, this.target));
+                }
+            }
         }
 
         this.done = true;

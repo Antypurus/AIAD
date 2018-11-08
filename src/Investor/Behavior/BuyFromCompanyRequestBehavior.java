@@ -51,7 +51,7 @@ public class BuyFromCompanyRequestBehavior extends AchieveREInitiator
     {
         Stock newStock = this.company.getStock().split(this.ammount);
         System.out.println(Date.CURRENT_DATE+" :: "+this.investor.getName()+
-                " has bough "+ammount+" stocks directly from "+company.getName());
+                " has bough "+ammount+" stocks directly from "+company.getName()+" for $"+newStock.getTotalValue());
         this.investor.registerStock(newStock);
         double saleValue = newStock.getTotalValue();
         try
