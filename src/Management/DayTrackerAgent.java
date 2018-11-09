@@ -14,7 +14,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class DayTrackerAgent extends Agent
 {
 
-    public static final int TICK_RATE = 1;
+    public static final int TICK_RATE = 60;
 
     private Index index;
     private InvestorAgency agency;

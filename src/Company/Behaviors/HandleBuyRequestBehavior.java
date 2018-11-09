@@ -32,17 +32,24 @@ public class HandleBuyRequestBehavior extends AchieveREResponder
 
         if (ammount <= this.agent.getCompany().getStock().getShareCount())
         {
-            System.out.println(this.agent.getCompany().getName()+" :: Selling "+ammount+" stocks " +
-                    "to "+args[0]);
+            System.out.println(this.agent.getCompany().getName() + " :: Selling " + ammount + " stocks " +
+                    "to " + args[0]);
             ACLMessage response = new ACLMessage(ACLMessage.AGREE);
             return response;
         } else
         {
-            System.out.println(this.agent.getCompany().getName()+" :: " +
-                    "Not Selling "+ammount+" stocks " +
-                    "to "+args[0]);
+            System.out.println(this.agent.getCompany().getName() + " :: " +
+                    "Not Selling " + ammount + " stocks " +
+                    "to " + args[0]);
             ACLMessage response = new ACLMessage(ACLMessage.REFUSE);
             return response;
         }
+    }
+
+    @Override
+    protected ACLMessage prepareResultNotification(ACLMessage request,
+                                                   ACLMessage response)
+    {
+        return new ACLMessage(ACLMessage.INFORM);
     }
 }
