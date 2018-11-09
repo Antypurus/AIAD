@@ -42,14 +42,7 @@ public class CompanyAgent extends Agent
         }
 
         this.addBehaviour(new HandleBuyRequestBehavior(this,
-                new MessageTemplate(new MessageTemplate.MatchExpression()
-                {
-                    @Override
-                    public boolean match(ACLMessage aclMessage)
-                    {
-                        return aclMessage.getPerformative()==ACLMessage.REQUEST;
-                    }
-                })));
+                new MessageTemplate((MessageTemplate.MatchExpression) aclMessage -> aclMessage.getPerformative()==ACLMessage.REQUEST)));
     }
 
     public Company getCompany()
