@@ -36,26 +36,28 @@ public class FindStockSourceBehavior extends Behaviour
             if (this.target.getStock().getShareCount() != 0)
             {
                 //need to buy from the company
-                System.out.println(Date.CURRENT_DATE+" :: "+this.investor.getName()+" " +
+                System.out.println(Date.CURRENT_DATE + " :: " + this.investor.getName() + " " +
                         "Will try to buy " +
-                        "stock directly from "+this.target.getName());
+                        "stock directly from " + this.target.getName());
                 this.investor.getAgent().addBehaviour(new BuyStockFromCompanyBehavior(this.investor, this.target));
             }
         } else
         {
-            //need to start negotiating with these motherfuckers
-
             // for when the only investor with stock is ourselves
-            if(investors.size()==1)
+            if (investors.size() == 1)
             {
-                if(investors.get(0) == this.investor)
+                if (investors.get(0) == this.investor)
                 {
-                    System.out.println(Date.CURRENT_DATE+" :: "+this.investor.getName()+" " +
+                    System.out.println(Date.CURRENT_DATE + " :: " + this.investor.getName() + " " +
                             "Will try to buy " +
-                            "stock directly from "+this.target.getName());
+                            "stock directly from " + this.target.getName());
                     this.investor.getAgent().addBehaviour(new BuyStockFromCompanyBehavior(this.investor, this.target));
                 }
             }
+            //need to start negotiating with these motherfuckers
+            CopyOnWriteArrayList<Investor> stockSources =
+                    new CopyOnWriteArrayList<>(investors);
+            this.investor.getAgent().addBehaviour(new BuyStockFromAgentBehavior(this.investor, stockSources,this.target));
         }
 
         this.done = true;
