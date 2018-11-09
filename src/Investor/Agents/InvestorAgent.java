@@ -4,6 +4,7 @@ import Aggregators.Index;
 import Aggregators.InvestorAgency;
 import Investor.Behavior.CheckForBankrupcyBehavior;
 import Investor.Behavior.FindCompanyToInvestBehavior;
+import Investor.Behavior.HandleBuyRequestBehavior;
 import Investor.Investor;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
@@ -32,6 +33,7 @@ public class InvestorAgent extends Agent
         this.index = (Index) args[4];
 
         this.addBehaviour(new IntroductionBehavior());
+        this.addBehaviour(new HandleBuyRequestBehavior(this,this.index));
     }
 
     public Investor getInvestor()

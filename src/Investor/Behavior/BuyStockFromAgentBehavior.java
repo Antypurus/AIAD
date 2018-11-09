@@ -59,7 +59,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
             cfp.addReceiver(investor.getAgent().getAID());
         }
         cfp.setContent("BUY::" + this.company.getAcronym() + "::" + this.ammount);
-        cfp.setOntology("BUY STOCK");
+        cfp.setLanguage("BUY STOCK");
 
         return messages;
     }

@@ -21,7 +21,7 @@ public class main
 
         Runtime rt = Runtime.instance();
         Profile p = new ProfileImpl();
-        p.setParameter(Profile.GUI,"true");
+        //p.setParameter(Profile.GUI,"true");
 
         Index index = new Index("NASDAQ");
 
