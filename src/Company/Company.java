@@ -8,6 +8,7 @@ import Components.StockValue;
 import Components.Yield;
 
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Company
 {
@@ -22,7 +23,7 @@ public class Company
     private StockValue stockValue;
     private Yield yield;
     private double qualityBias;
-    private ArrayList<Manager> managers;
+    private CopyOnWriteArrayList<Manager> managers;
     private Date foundationDate;
     private MarketHistory history;
     private CompanyAgent agent;
@@ -40,7 +41,7 @@ public class Company
         this.index = index;
         this.subsidiaries = new ArrayList<>();
         this.yield = new Yield();
-        this.managers = new ArrayList<>();
+        this.managers = new CopyOnWriteArrayList<>();
         this.foundationDate = foundationDate;
         this.history = MarketHistory.generateMarketHistory(this);
         this.stockValue =
@@ -67,7 +68,7 @@ public class Company
         this.index = index;
         this.subsidiaries = new ArrayList<>();
         this.yield = yield;
-        this.managers = new ArrayList<>();
+        this.managers = new CopyOnWriteArrayList<>();
         this.foundationDate = foundationDate;
         this.history = MarketHistory.generateMarketHistory(this);
         this.stockValue =
@@ -160,7 +161,7 @@ public class Company
         this.managers.remove(manager);
     }
 
-    public ArrayList<Manager> getManagers()
+    public CopyOnWriteArrayList<Manager> getManagers()
     {
         return this.managers;
     }

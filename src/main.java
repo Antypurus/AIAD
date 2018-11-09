@@ -8,10 +8,7 @@ import jade.core.Runtime;
 import jade.wrapper.AgentController;
 import jade.wrapper.ContainerController;
 import jade.wrapper.StaleProxyException;
-
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Random;
+import Company.Manager;
 
 public class main
 {
@@ -57,5 +54,15 @@ public class main
                         ".DayTrackerAgent",
                 new Object[]{index, agency});
         ac3.start();
+
+
+        Company company = null;
+
+        while(company==null)
+        {
+            company = index.getCompanyByAcronym("TSLA");
+        }
+
+        Manager manager = new Manager("Elon Musk",company,0.1,0.65,1000.0,100.0);
     }
 }

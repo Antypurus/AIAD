@@ -1,5 +1,7 @@
 package Company;
 
+import Common.Date;
+
 import java.util.Random;
 
 public class Manager
@@ -17,11 +19,11 @@ public class Manager
     {
         this.name = name;
         this.company = company;
-        this.company.addManager(this);
         this.stupidity_factor = stupidity_factor;
         this.inteligence_factor = inteligence_factor;
         this.salary = salary;
         this.money = money;
+        this.company.addManager(this);
     }
 
     public String getName()
@@ -84,23 +86,27 @@ public class Manager
 
     public void randomAction()
     {
-      Random generator = new Random();
+        Random generator = new Random();
 
-      // Generate random number between 0 and 1
-      double random = generator.nextDouble();
-      // Generate random percentage between 10% and 50%
-      double factor = (double) (generator.nestInt(50) + 10)/100;
-      // Get current company's quality Bias
-      double qualityBias = this.company.getQualityBias();
+        // Generate random number between 0 and 1
+        double random = generator.nextDouble();
+        // Generate random percentage between 10% and 50%
+        double factor = (double) (generator.nextInt(50) + 10) / 100;
+        // Get current company's quality Bias
+        double qualityBias = this.company.getQualityBias();
 
-      if (Math.abs(this.stupidity_factor - random) >= Math.abs(this.inteligence_factor - random)) {
-        // Do inteligent action
-        this.company.setQualityBias(qualityBias * (1 + factor));
-      }
-      else
-      {
-        // Do stupidy action
-        this.company.setQualityBias(qualityBias * (1 - factor))
-      }
+        if (Math.abs(this.stupidity_factor - random) >= Math.abs(this.inteligence_factor - random))
+        {
+            // Do inteligent action
+            this.company.setQualityBias(qualityBias * (1 + factor));
+            System.out.println(Date.CURRENT_DATE+" :: "+this.name+" is a GOOD" +
+                    " BOI");
+        } else
+        {
+            // Do stupidy action
+            this.company.setQualityBias(qualityBias * (1 - factor));
+            System.out.println(Date.CURRENT_DATE+" :: "+this.name+" has done " +
+                    "a stupid");
+        }
     }
 }

@@ -8,6 +8,7 @@ import Company.Company;
 import Investor.Investor;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
+import Company.Manager;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -64,8 +65,9 @@ public class DayTrackerAgent extends Agent
                 company.getAgent().addBehaviour(new CompanyListStockValueBehavior(company.getAgent()));
 
                 CopyOnWriteArrayList<Manager> managers = company.getManagers();
-                for (Manager manager :  managers) {
-                  manager.randomAction();
+                for (Manager manager : managers)
+                {
+                    manager.randomAction();
                 }
             }
 
