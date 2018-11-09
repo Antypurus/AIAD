@@ -1,5 +1,7 @@
 package Company;
 
+import java.util.Random;
+
 public class Manager
 {
 
@@ -80,4 +82,25 @@ public class Manager
         return this.money;
     }
 
+    public void randomAction()
+    {
+      Random generator = new Random();
+
+      // Generate random number between 0 and 1
+      double random = generator.nextDouble();
+      // Generate random percentage between 10% and 50%
+      double factor = (double) (generator.nestInt(50) + 10)/100;
+      // Get current company's quality Bias
+      double qualityBias = this.company.getQualityBias();
+
+      if (Math.abs(this.stupidity_factor - random) >= Math.abs(this.inteligence_factor - random)) {
+        // Do inteligent action
+        this.company.setQualityBias(qualityBias * (1 + factor));
+      }
+      else
+      {
+        // Do stupidy action
+        this.company.setQualityBias(qualityBias * (1 - factor))
+      }
+    }
 }

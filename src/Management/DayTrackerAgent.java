@@ -62,6 +62,11 @@ public class DayTrackerAgent extends Agent
             for (Company company : companies)
             {
                 company.getAgent().addBehaviour(new CompanyListStockValueBehavior(company.getAgent()));
+
+                CopyOnWriteArrayList<Manager> managers = company.getManagers();
+                for (Manager manager :  managers) {
+                  manager.randomAction();
+                }
             }
 
             CopyOnWriteArrayList<Investor> investors = this.agency.getInvestors();
