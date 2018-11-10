@@ -206,4 +206,9 @@ public class Investor
         return company.getStockValue().getStockValue()*(1+company.getQualityBias()/4);
     }
 
+    public  InvestorAgency getAgency()
+    {
+        return this.agency;
+    }
+
 }

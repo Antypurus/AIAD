@@ -1,7 +1,9 @@
 package Investor.Behavior;
 
+import Aggregators.Index;
 import Common.Date;
 import Company.Company;
+import Components.Transaction;
 import Investor.Investor;
 import jade.lang.acl.ACLMessage;
 import jade.proto.ContractNetInitiator;
@@ -17,6 +19,8 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
     private Company company;
     private int ammount;
     private double innitialOffer;
+
+    private Index index;
 
     public BuyStockFromAgentBehavior(Investor investor,
                                      CopyOnWriteArrayList<Investor> sources,
@@ -39,6 +43,8 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
 
         this.listStockSources();
         this.investor.getAgent().isCurrentlyInvesting();
+
+        this.index = this.investor.getAgent().getIndex();
     }
 
     private void listStockSources()
@@ -165,15 +171,13 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
 
                 String[] args = msg.getContent().split("::");
                 double value = Double.valueOf(args[1]);
+                String seller = args[2];
+                Investor sellerInv =
+                        this.investor.getAgency().getInvestorByName(seller);
 
-                this.investor.getStockByCompanyName(this.company.getName()).increaseShareCount(this.ammount);
-                try
-                {
-                    this.investor.removeMoney(this.ammount * value);
-                } catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
+                Transaction transaction =
+                        new Transaction(sellerInv.getStockByCompanyName(company.getName()),sellerInv,this.investor,this.ammount,value,Date.CURRENT_DATE);
+                this.index.registerTranscation(transaction);
 
                 /*Execute Transaction*/
                 this.investor.getAgent().isNotInvesting();

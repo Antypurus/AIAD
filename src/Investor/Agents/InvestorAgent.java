@@ -33,7 +33,7 @@ public class InvestorAgent extends Agent
         this.index = (Index) args[4];
 
         this.addBehaviour(new IntroductionBehavior());
-        this.addBehaviour(new HandleBuyRequestBehavior(this,this.index));
+        this.addBehaviour(new HandleBuyRequestBehavior(this, this.index));
     }
 
     public Investor getInvestor()
@@ -84,4 +84,8 @@ public class InvestorAgent extends Agent
         return this.isInvesting;
     }
 
+    public Index getIndex()
+    {
+        return this.index;
+    }
 }

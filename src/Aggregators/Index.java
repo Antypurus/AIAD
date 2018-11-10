@@ -98,8 +98,7 @@ public class Index
 
     public void registerTranscation(Transaction transaction)
     {
-        //TODO: validate transaction
-        //TODO: execute transaction
+        transaction.executeTransaction();
         this.transactionRecords.add(transaction);
         if (!this.endOfDay.get())
         {
