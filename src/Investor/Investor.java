@@ -170,7 +170,7 @@ public class Investor
         double normalize =
                 Math.abs(pricePerShare - company.getStockValue().getStockValue()) / company.getStockValue().getStockValue();
 
-        if (normalize <= 0)
+        if (normalize <= 0 || (pricePerShare - company.getStockValue().getStockValue()) < 0)
         {
             normalize = 1;
         }
@@ -178,6 +178,22 @@ public class Investor
         prob *= normalize;
 
         return gamma <= prob;
+    }
+
+    public boolean shouldSell(Company company, double pricePerShare)
+    {
+        Random rand = new Random();
+        double gamma = rand.nextDouble();
+
+        double prob =
+                (1 - this.riskBiasFactor) * (pricePerShare / company.getStockValue().getStockValue()) * (company.getMonthDelta() / company.getStockValue().getStockValue()) * Math.sqrt(company.getQualityBias());
+
+        if(this.getCurrentMoney()<pricePerShare)
+        {
+            prob=1;
+        }
+
+        return gamma<=prob;
     }
 
 }
