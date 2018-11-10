@@ -110,7 +110,8 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
 
                         if (this.investor.getCurrentMoney() < counter * ammount)
                         {
-                            accept = false;
+                            ammount =
+                                    (int)(this.investor.getCurrentMoney()/ammount);
                         }
 
                         if (accept)
@@ -128,7 +129,8 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
 
                             if (this.investor.getCurrentMoney() < ammount * middle)
                             {
-                                accept = false;
+                                ammount =
+                                        (int)(this.investor.getCurrentMoney()/middle);
                             }
 
                             if (accept)
