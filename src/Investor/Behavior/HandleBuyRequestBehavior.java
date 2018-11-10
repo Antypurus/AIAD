@@ -27,6 +27,10 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
             {
                 return false;
             }
+            if(aclMessage.getLanguage()==null)
+            {
+                return false;
+            }
             return aclMessage.getLanguage().equals("BUY STOCK");
         }));
 

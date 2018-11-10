@@ -83,40 +83,25 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
             ACLMessage msg = (ACLMessage) responses.get(i);
             if (!accepted)
             {
-                if (msg.getLanguage().equals("ACCEPT PROPOSAL"))
+                if (msg.getPerformative() == ACLMessage.PROPOSE)
                 {
-                    ACLMessage resp = msg.createReply();
-                    resp.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
-                    resp.setLanguage("ACCEPT");
-                    resp.setContent(msg.getContent());
-                    acceptances.add(resp);
-                }
-                if (msg.getLanguage().equals("COUNTER PROPOSAL"))
-                {
-                    String[] args = msg.getContent().split("::");
-                    double counter = Double.valueOf(args[1]);
-
-                    boolean accept = this.investor.shouldBuy(this.company,
-                            counter);
-
-                    if (this.investor.getCurrentMoney() < counter * ammount)
-                    {
-                        accept = false;
-                    }
-
-                    if (accept)
+                    if (msg.getLanguage().equals("ACCEPT PROPOSAL"))
                     {
                         ACLMessage resp = msg.createReply();
                         resp.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
                         resp.setLanguage("ACCEPT");
-                        resp.setContent("ACCEPT::" + counter);
+                        resp.setContent(msg.getContent());
                         acceptances.add(resp);
-                    } else
+                    }
+                    if (msg.getLanguage().equals("COUNTER PROPOSAL"))
                     {
-                        double middle = ((counter + this.innitialOffer) / 2);
-                        accept = this.investor.shouldBuy(this.company, middle);
+                        String[] args = msg.getContent().split("::");
+                        double counter = Double.valueOf(args[1]);
 
-                        if (this.investor.getCurrentMoney() < ammount * middle)
+                        boolean accept = this.investor.shouldBuy(this.company,
+                                counter);
+
+                        if (this.investor.getCurrentMoney() < counter * ammount)
                         {
                             accept = false;
                         }
@@ -125,9 +110,27 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
                         {
                             ACLMessage resp = msg.createReply();
                             resp.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
-                            resp.setLanguage("COUNTER");
-                            resp.setContent("COUNTER::" + counter);
+                            resp.setLanguage("ACCEPT");
+                            resp.setContent("ACCEPT::" + counter);
                             acceptances.add(resp);
+                        } else
+                        {
+                            double middle = ((counter + this.innitialOffer) / 2);
+                            accept = this.investor.shouldBuy(this.company, middle);
+
+                            if (this.investor.getCurrentMoney() < ammount * middle)
+                            {
+                                accept = false;
+                            }
+
+                            if (accept)
+                            {
+                                ACLMessage resp = msg.createReply();
+                                resp.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
+                                resp.setLanguage("COUNTER");
+                                resp.setContent("COUNTER::" + counter);
+                                acceptances.add(resp);
+                            }
                         }
                     }
                 }
@@ -166,7 +169,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
                 this.investor.getStockByCompanyName(this.company.getName()).increaseShareCount(this.ammount);
                 try
                 {
-                    this.investor.removeMoney(this.ammount*value);
+                    this.investor.removeMoney(this.ammount * value);
                 } catch (Exception e)
                 {
                     e.printStackTrace();
