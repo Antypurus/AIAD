@@ -168,8 +168,6 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
             }
             if (msg.getPerformative() == ACLMessage.INFORM)
             {
-                System.out.println(this.investor.getName() + "::Deal " +
-                        "Completed\n");
                 /*Execute Transaction*/
 
                 String[] args = msg.getContent().split("::");
@@ -184,6 +182,8 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
 
                 /*Execute Transaction*/
                 this.investor.getAgent().isNotInvesting();
+                System.out.println(this.investor.getName() + "::Deal " +
+                        "Completed with "+seller);
             }
         }
     }
