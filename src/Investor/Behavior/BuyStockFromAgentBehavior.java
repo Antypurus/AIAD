@@ -54,12 +54,14 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
     {
         Vector<ACLMessage> messages = new Vector<>();
 
+        cfp = new ACLMessage(ACLMessage.CFP);
+
         for (Investor investor : this.sources)
         {
             cfp.addReceiver(investor.getAgent().getAID());
         }
         double offfer = this.investor.generateInitialOffer(this.company);
-        cfp.setContent("BUY::" + this.company.getAcronym() + "::" + this.ammount+"::"+offfer);
+        cfp.setContent("BUY::" + this.company.getAcronym() + "::" + this.ammount + "::" + offfer);
         cfp.setLanguage("BUY STOCK");
 
         messages.add(cfp);
@@ -67,14 +69,20 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
         return messages;
     }
 
+
     @Override
     protected void handleAllResponses(java.util.Vector responses,
                                       java.util.Vector acceptances)
     {
-        for(int i=0;i<responses.size();++i)
+        for (int i = 0; i < responses.size(); ++i)
         {
             ACLMessage msg = (ACLMessage) responses.get(i);
             System.out.println(msg.getContent());
+
+            ACLMessage resp = msg.createReply();
+            resp.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
+            resp.setContent("TEST");
+            acceptances.add(resp);
         }
     }
 

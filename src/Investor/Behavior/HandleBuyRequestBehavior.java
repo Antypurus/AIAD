@@ -14,6 +14,8 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
     private Investor investor;
     private Index index;
 
+    private String cache;
+
     public HandleBuyRequestBehavior(InvestorAgent a, Index index)
     {
         super(a, new MessageTemplate((MessageTemplate.MatchExpression) aclMessage ->
@@ -65,8 +67,11 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
             //respond with counter
             ACLMessage counterMsg = new ACLMessage(ACLMessage.PROPOSE);
             counterMsg.setLanguage("COUNTER PROPOSAL");
-            counterMsg.setContent("COUNTER::"+counter);
-            return  counterMsg;
+            counterMsg.setContent("COUNTER::" + counter);
+
+            cache = "COUNTER::" + counter;
+
+            return counterMsg;
         } else
         {
             System.out.println(this.investor.getName() + " :: ACCEPT " +
@@ -75,8 +80,24 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
             //respond with accept and sell
             ACLMessage acceptMessage = new ACLMessage(ACLMessage.PROPOSE);
             acceptMessage.setLanguage("ACCEPT PROPOSAL");
-            acceptMessage.setContent("ACCEPT::"+offer);
+            acceptMessage.setContent("ACCEPT::" + offer);
+
+            cache = "ACCEPT::" + offer;
+
             return acceptMessage;
         }
+    }
+
+    @Override
+    protected ACLMessage handleAcceptProposal(ACLMessage cfp, ACLMessage propose, ACLMessage accept)
+    {
+        System.out.println("ACCEPTED " + cache);
+        return null;
+    }
+
+    @Override
+    protected void handleRejectProposal(ACLMessage cfp, ACLMessage propose, ACLMessage accept)
+    {
+        System.out.println("REJECTED " + cache);
     }
 }
