@@ -16,6 +16,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
     private CopyOnWriteArrayList<Investor> sources;
     private Company company;
     private int ammount;
+    private double innitialOffer;
 
     public BuyStockFromAgentBehavior(Investor investor,
                                      CopyOnWriteArrayList<Investor> sources,
@@ -61,6 +62,8 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
             cfp.addReceiver(investor.getAgent().getAID());
         }
         double offfer = this.investor.generateInitialOffer(this.company);
+        this.innitialOffer = offfer;
+
         cfp.setContent("BUY::" + this.company.getAcronym() + "::" + this.ammount + "::" + offfer);
         cfp.setLanguage("BUY STOCK");
 
@@ -78,12 +81,13 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
         for (int i = 0; i < responses.size(); ++i)
         {
             ACLMessage msg = (ACLMessage) responses.get(i);
-            if(!accepted)
+            if (!accepted)
             {
                 if (msg.getLanguage().equals("ACCEPT PROPOSAl"))
                 {
                     ACLMessage resp = msg.createReply();
                     resp.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
+                    resp.setLanguage("ACCEPT");
                     resp.setContent(msg.getContent());
                     acceptances.add(resp);
                 }
@@ -95,13 +99,25 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
                     boolean accept = this.investor.shouldBuy(this.company,
                             counter);
 
-                    if(accept)
+                    if (accept)
                     {
-
-                    }
-                    else
+                        ACLMessage resp = msg.createReply();
+                        resp.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
+                        resp.setLanguage("ACCEPT");
+                        resp.setContent("ACCEPT::" + counter);
+                        acceptances.add(resp);
+                    } else
                     {
-
+                        double middle = ((counter + this.innitialOffer) / 2);
+                        accept = this.investor.shouldBuy(this.company, middle);
+                        if (accept)
+                        {
+                            ACLMessage resp = msg.createReply();
+                            resp.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
+                            resp.setLanguage("COUNTER");
+                            resp.setContent("COUNTER::" + counter);
+                            acceptances.add(resp);
+                        }
                     }
                 }
             }
