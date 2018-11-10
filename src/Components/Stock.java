@@ -54,7 +54,7 @@ public class Stock
         return this.shareCount.get();
     }
 
-    public void setShareCount(int shareCount)
+    public synchronized void setShareCount(int shareCount)
     {
         if (shareCount < 0)
         {
@@ -63,7 +63,7 @@ public class Stock
         this.shareCount.set(shareCount);
     }
 
-    public void increaseShareCount(int shareCountDelta)
+    public synchronized void increaseShareCount(int shareCountDelta)
     {
         if (shareCountDelta < 0)
         {
@@ -73,7 +73,7 @@ public class Stock
                 this.shareCount.get()+shareCountDelta);
     }
 
-    public void decreaseShareCount(int shareCountDelta)
+    public synchronized void decreaseShareCount(int shareCountDelta)
     {
         if (shareCountDelta > 0)
         {

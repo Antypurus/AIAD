@@ -165,7 +165,7 @@ public class Investor
         double gamma = ThreadLocalRandom.current().nextDouble(0, 1);
 
         double prob =
-                (company.getMonthDelta() / company.getStockValue().getStockValue() + company.getYield().getYield()) * (1 - this.riskBiasFactor) * 2 * Math.sqrt(company.getQualityBias());
+                (company.getMonthDelta() / company.getStockValue().getStockValue() + company.getYield().getYield()) * (1 - this.riskBiasFactor/2) * 2 * Math.sqrt(company.getQualityBias());
 
         double normalize =
                 Math.abs(pricePerShare - company.getStockValue().getStockValue()) / company.getStockValue().getStockValue();

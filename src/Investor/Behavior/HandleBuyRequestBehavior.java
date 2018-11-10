@@ -41,7 +41,7 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
     @Override
     protected ACLMessage handleCfp(ACLMessage cfp)
     {
-        this.investor.getAgent().isCurrentlyInvesting();
+       // this.investor.getAgent().isCurrentlyInvesting();
 
         String[] args = cfp.getContent().split("::");
         Company company = this.index.getCompanyByAcronym(args[1]);
@@ -67,7 +67,7 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
             return null;
         }
 
-        System.out.println("RECEIVED MESSAGE:" + cfp.getContent());
+        System.out.println(this.investor.getName()+":: RECEIVED MESSAGE:" + cfp.getContent());
 
         double counter = 0;
         if (!sell)
