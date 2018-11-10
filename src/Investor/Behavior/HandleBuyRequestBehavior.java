@@ -61,14 +61,22 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
             counter = this.investor.generateCounter(company);
             System.out.println(this.investor.getName() + " :: REFUSE " +
                     "Coutner=" + counter);
-            //reponde with counter
+
+            //respond with counter
+            ACLMessage counterMsg = new ACLMessage(ACLMessage.PROPOSE);
+            counterMsg.setLanguage("COUNTER PROPOSAL");
+            counterMsg.setContent("COUNTER::"+counter);
+            return  counterMsg;
         } else
         {
             System.out.println(this.investor.getName() + " :: ACCEPT " +
                     "Will sell at=" + offer);
-            //respond with accept and sell
-        }
 
-        return null;
+            //respond with accept and sell
+            ACLMessage acceptMessage = new ACLMessage(ACLMessage.CFP);
+            acceptMessage.setLanguage("ACCEPT PROPOSAL");
+            acceptMessage.setContent("ACCEPT::"+offer);
+            return acceptMessage;
+        }
     }
 }
