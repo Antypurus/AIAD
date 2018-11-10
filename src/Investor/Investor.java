@@ -196,4 +196,9 @@ public class Investor
         return gamma<=prob;
     }
 
+    public double generateInitialOffer(Company company)
+    {
+        return company.getStockValue().getStockValue()*(1-this.riskBiasFactor);
+    }
+
 }
