@@ -177,7 +177,7 @@ public class Company
         {
             return;
         }
-        this.qualityBias = qualityBias;
+        this.qualityBias = bias;
     }
 
     public Date getFoundationDate()

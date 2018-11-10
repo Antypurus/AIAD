@@ -91,7 +91,7 @@ public class Manager
         // Generate random number between 0 and 1
         double random = generator.nextDouble();
         // Generate random percentage between 10% and 50%
-        double factor = (double) (generator.nextInt(50) + 10) / 100;
+        double factor = (double) (generator.nextInt(5) + 1) / 100;
         // Get current company's quality Bias
         double qualityBias = this.company.getQualityBias();
 
