@@ -98,6 +98,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
                         resp.setLanguage("ACCEPT");
                         resp.setContent(msg.getContent());
                         acceptances.add(resp);
+                        continue;
                     }
                     if (msg.getLanguage().equals("COUNTER PROPOSAL"))
                     {
@@ -119,6 +120,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
                             resp.setLanguage("ACCEPT");
                             resp.setContent("ACCEPT::" + counter);
                             acceptances.add(resp);
+                            continue;
                         } else
                         {
                             double middle = ((counter + this.innitialOffer) / 2);
@@ -136,6 +138,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
                                 resp.setLanguage("COUNTER");
                                 resp.setContent("COUNTER::" + counter);
                                 acceptances.add(resp);
+                                continue;
                             }
                         }
                     }
@@ -176,7 +179,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
                         this.investor.getAgency().getInvestorByName(seller);
 
                 Transaction transaction =
-                        new Transaction(sellerInv.getStockByCompanyName(company.getName()),sellerInv,this.investor,this.ammount,value,Date.CURRENT_DATE);
+                        new Transaction(sellerInv.getStockByCompanyName(company.getName()), sellerInv, this.investor, this.ammount, value, Date.CURRENT_DATE);
                 this.index.registerTranscation(transaction);
 
                 /*Execute Transaction*/

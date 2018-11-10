@@ -162,7 +162,8 @@ public class Investor
 
     public boolean shouldBuy(Company company, double pricePerShare)
     {
-        double gamma = ThreadLocalRandom.current().nextDouble(0, 1);
+        Random rand = new Random();
+        double gamma = rand.nextDouble();
 
         double prob =
                 (company.getMonthDelta() / company.getStockValue().getStockValue() + company.getYield().getYield()) * (1 - this.riskBiasFactor/2) * 2 * Math.sqrt(company.getQualityBias());
@@ -182,7 +183,8 @@ public class Investor
 
     public boolean shouldSell(Company company, double pricePerShare)
     {
-        double gamma = ThreadLocalRandom.current().nextDouble(0, 1);
+        Random rand = new Random();
+        double gamma = rand.nextDouble();
 
         double prob =
                 (pricePerShare/company.getStockValue().getStockValue())*(1-this.riskBiasFactor)+Math.sqrt(company.getQualityBias()*company.getMonthDelta()-company.getYield().getYield());
