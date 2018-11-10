@@ -73,7 +73,7 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
                     "Will sell at=" + offer);
 
             //respond with accept and sell
-            ACLMessage acceptMessage = new ACLMessage(ACLMessage.CFP);
+            ACLMessage acceptMessage = new ACLMessage(ACLMessage.PROPOSE);
             acceptMessage.setLanguage("ACCEPT PROPOSAL");
             acceptMessage.setContent("ACCEPT::"+offer);
             return acceptMessage;
