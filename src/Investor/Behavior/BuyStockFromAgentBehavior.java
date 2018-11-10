@@ -138,6 +138,11 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
             {
                 System.out.println(this.investor.getName()+"::Deal canceled\n");
             }
+            if(msg.getPerformative()==ACLMessage.INFORM)
+            {
+                System.out.println(this.investor.getName()+"::Deal " +
+                        "Completed\n");
+            }
         }
     }
 

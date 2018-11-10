@@ -104,6 +104,7 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
             ACLMessage msg = new  ACLMessage(ACLMessage.INFORM);
             msg.setLanguage("ACCEPT");
             msg.setContent(accept.getContent());
+            return msg;
         }
         if (accept.getLanguage().equals("COUNTER"))
         {
@@ -119,8 +120,10 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
                 ACLMessage msg = new  ACLMessage(ACLMessage.INFORM);
                 msg.setLanguage("ACCEPT");
                 msg.setContent("ACCEPT::"+counter);
+                return msg;
             } else
             {
+                System.out.println("Refuse to sell at counter of "+counter);
                 return new ACLMessage(ACLMessage.FAILURE);
             }
         }
