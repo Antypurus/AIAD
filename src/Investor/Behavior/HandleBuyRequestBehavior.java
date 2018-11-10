@@ -37,6 +37,12 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
     @Override
     protected ACLMessage handleCfp(ACLMessage cfp)
     {
+        if(this.investor.getAgent().isInvesting())
+        {
+            return new ACLMessage(ACLMessage.REFUSE);
+        }
+        this.investor.getAgent().isCurrentlyInvesting();
+
         String[] args = cfp.getContent().split("::");
         Company company = this.index.getCompanyByAcronym(args[1]);
         int ammount = Integer.valueOf(args[2]);
@@ -101,11 +107,21 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
         {
             String[] args = accept.getContent().split("::");
             double value = Double.valueOf(args[1]);
+
+            /*execute transaction*/
+            this.investor.getStockByCompanyName(this.company.getName()).split(this.ammount);
+            this.investor.addMoney(this.ammount*value);
+            /*execute transaction*/
+
             ACLMessage msg = new  ACLMessage(ACLMessage.INFORM);
             msg.setLanguage("ACCEPT");
             msg.setContent(accept.getContent());
+
+            this.investor.getAgent().isNotInvesting();
+
             return msg;
         }
+
         if (accept.getLanguage().equals("COUNTER"))
         {
             String[] args = accept.getContent().split("::");
@@ -116,17 +132,24 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
 
             if (shouldAccept)
             {
+                /*execute transaction*/
+                this.investor.getStockByCompanyName(this.company.getName()).split(this.ammount);
+                this.investor.addMoney(this.ammount*counter);
+                /*execute transaction*/
                 System.out.println("Accepting counter offer at "+counter);
                 ACLMessage msg = new  ACLMessage(ACLMessage.INFORM);
                 msg.setLanguage("ACCEPT");
                 msg.setContent("ACCEPT::"+counter);
+                this.investor.getAgent().isNotInvesting();
                 return msg;
             } else
             {
                 System.out.println("Refuse to sell at counter of "+counter);
+                this.investor.getAgent().isNotInvesting();
                 return new ACLMessage(ACLMessage.FAILURE);
             }
         }
+        this.investor.getAgent().isNotInvesting();
         return new ACLMessage(ACLMessage.FAILURE);
     }
 

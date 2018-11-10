@@ -38,7 +38,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
                 " has decided to buy " + this.ammount + " stocks from " + this.company.getName());
 
         this.listStockSources();
-        ;
+        this.investor.getAgent().isCurrentlyInvesting();
     }
 
     private void listStockSources()
@@ -99,6 +99,11 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
                     boolean accept = this.investor.shouldBuy(this.company,
                             counter);
 
+                    if (this.investor.getCurrentMoney() < counter * ammount)
+                    {
+                        accept = false;
+                    }
+
                     if (accept)
                     {
                         ACLMessage resp = msg.createReply();
@@ -110,6 +115,12 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
                     {
                         double middle = ((counter + this.innitialOffer) / 2);
                         accept = this.investor.shouldBuy(this.company, middle);
+
+                        if (this.investor.getCurrentMoney() < ammount * middle)
+                        {
+                            accept = false;
+                        }
+
                         if (accept)
                         {
                             ACLMessage resp = msg.createReply();
@@ -126,22 +137,43 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
             resp.setContent("REJECT");
             acceptances.add(resp);
         }
+        if (!accepted)
+        {
+            this.investor.getAgent().isNotInvesting();
+        }
     }
 
     @Override
     protected void handleAllResultNotifications(java.util.Vector resultNotifications)
     {
-        for(int i=0;i<resultNotifications.size();++i)
+        for (int i = 0; i < resultNotifications.size(); ++i)
         {
             ACLMessage msg = (ACLMessage) resultNotifications.get(i);
-            if(msg.getPerformative()==ACLMessage.FAILURE)
+            if (msg.getPerformative() == ACLMessage.FAILURE)
             {
-                System.out.println(this.investor.getName()+"::Deal canceled\n");
+                System.out.println(this.investor.getName() + "::Deal canceled\n");
+                this.investor.getAgent().isNotInvesting();
             }
-            if(msg.getPerformative()==ACLMessage.INFORM)
+            if (msg.getPerformative() == ACLMessage.INFORM)
             {
-                System.out.println(this.investor.getName()+"::Deal " +
+                System.out.println(this.investor.getName() + "::Deal " +
                         "Completed\n");
+                /*Execute Transaction*/
+
+                String[] args = msg.getContent().split("::");
+                double value = Double.valueOf(args[1]);
+
+                this.investor.getStockByCompanyName(this.company.getName()).increaseShareCount(this.ammount);
+                try
+                {
+                    this.investor.removeMoney(this.ammount*value);
+                } catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+
+                /*Execute Transaction*/
+                this.investor.getAgent().isNotInvesting();
             }
         }
     }
