@@ -83,7 +83,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
             ACLMessage msg = (ACLMessage) responses.get(i);
             if (!accepted)
             {
-                if (msg.getLanguage().equals("ACCEPT PROPOSAl"))
+                if (msg.getLanguage().equals("ACCEPT PROPOSAL"))
                 {
                     ACLMessage resp = msg.createReply();
                     resp.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
@@ -91,7 +91,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
                     resp.setContent(msg.getContent());
                     acceptances.add(resp);
                 }
-                if (msg.getLanguage().equals("COUNTER PROPOSAl"))
+                if (msg.getLanguage().equals("COUNTER PROPOSAL"))
                 {
                     String[] args = msg.getContent().split("::");
                     double counter = Double.valueOf(args[1]);
