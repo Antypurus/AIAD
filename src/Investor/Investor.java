@@ -198,12 +198,12 @@ public class Investor
 
     public double generateInitialOffer(Company company)
     {
-        return company.getStockValue().getStockValue()*(1-this.riskBiasFactor/3);
+        return company.getStockValue().getStockValue()*(1-this.riskBiasFactor/5);
     }
 
     public double generateCounter(Company company)
     {
-        return company.getStockValue().getStockValue()*(1+company.getQualityBias()/4);
+        return company.getStockValue().getStockValue()*(1+company.getQualityBias()/5);
     }
 
     public  InvestorAgency getAgency()
