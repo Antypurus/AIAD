@@ -1,11 +1,13 @@
 package Investor;
 
 import Aggregators.InvestorAgency;
+import Company.Company;
 import Components.Stock;
 import Investor.Agents.InvestorAgent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class Investor
 {
@@ -101,7 +103,7 @@ public class Investor
         return this.money;
     }
 
-    public synchronized void  setCurrentMoney(double money)
+    public synchronized void setCurrentMoney(double money)
     {
         if (money < 0)
         {
@@ -155,6 +157,27 @@ public class Investor
     public double getRiskBiasFactor()
     {
         return this.riskBiasFactor;
+    }
+
+    public boolean shouldBuy(Company company, double pricePerShare)
+    {
+        Random rand = new Random();
+        double gamma = rand.nextDouble();
+
+        double prob =
+                (company.getMonthDelta() / company.getStockValue().getStockValue() + company.getYield().getYield()) * (1 - this.riskBiasFactor) * 2 * Math.sqrt(company.getQualityBias());
+
+        double normalize =
+                Math.abs(pricePerShare - company.getStockValue().getStockValue()) / company.getStockValue().getStockValue();
+
+        if (normalize <= 0)
+        {
+            normalize = 1;
+        }
+
+        prob *= normalize;
+
+        return gamma <= prob;
     }
 
 }

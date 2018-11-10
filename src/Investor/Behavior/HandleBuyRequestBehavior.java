@@ -37,6 +37,9 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
     {
         String[] args = cfp.getContent().split("::");
         Company company = this.index.getCompanyByAcronym(args[1]);
+        int ammount = Integer.valueOf(args[2]);
+        double offer = Double.valueOf(args[3]);
+
         System.out.println("RECEIVED MESSAGE:"+cfp.getContent());
         return null;
     }

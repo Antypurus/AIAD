@@ -227,4 +227,16 @@ public class Company
         }
         this.capital-=delta;
     }
+
+    public double getMonthDelta()
+    {
+        ArrayList<StockValue> history = this.getMarketHistory().getStockValues();
+        if(history.size()<30)
+        {
+            return 0.0;
+        }
+        double now = history.get(history.size()-1).getStockValue();
+        double old = history.get(history.size()-31).getStockValue();
+        return now-old;
+    }
 }
