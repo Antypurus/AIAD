@@ -98,13 +98,13 @@ public class Manager
         if (Math.abs(this.stupidity_factor - random) >= Math.abs(this.inteligence_factor - random))
         {
             // Do inteligent action
-            this.company.setQualityBias(qualityBias * (1 + factor));
+            this.company.setQualityBias(qualityBias + qualityBias * (factor));
             System.out.println(Date.CURRENT_DATE+" :: "+this.name+" is a GOOD" +
                     " BOI");
         } else
         {
             // Do stupidy action
-            this.company.setQualityBias(qualityBias * (1 - factor));
+            this.company.setQualityBias(qualityBias - qualityBias * (factor));
             System.out.println(Date.CURRENT_DATE+" :: "+this.name+" has done " +
                     "a stupid");
         }

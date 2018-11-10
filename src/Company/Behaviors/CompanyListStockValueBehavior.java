@@ -19,7 +19,7 @@ public class CompanyListStockValueBehavior extends Behaviour
     public void action()
     {
         System.out.println(this.agent.getCompany().getIndex().getName() + " :: " + Date.CURRENT_DATE +
-                " :: " + this.agent.getCompany().getAcronym() + " -> " + this.agent.getCompany().getStockValue().getStockValue()+" :: Remaining Available Stock is "+this.agent.getCompany().getStock().getShareCount()+" :: Current Capital = $"+this.agent.getCompany().getCapital());
+                " :: " + this.agent.getCompany().getAcronym() + " -> " + this.agent.getCompany().getStockValue().getStockValue()+" :: Remaining Available Stock is "+this.agent.getCompany().getStock().getShareCount()+" :: Current Capital = $"+this.agent.getCompany().getCapital()+":: Current Quality Bias"+this.agent.getCompany().getQualityBias());
         this.done = true;
     }
 
