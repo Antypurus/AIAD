@@ -8,6 +8,7 @@ import Investor.Agents.InvestorAgent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Investor
 {
@@ -182,23 +183,23 @@ public class Investor
 
     public boolean shouldSell(Company company, double pricePerShare)
     {
-        Random rand = new Random();
-        double gamma = rand.nextDouble();
+        double gamma = ThreadLocalRandom.current().nextDouble(0, 1);
 
         double prob =
-                (1 - this.riskBiasFactor) * (pricePerShare / company.getStockValue().getStockValue()) * (company.getMonthDelta() / company.getStockValue().getStockValue()) * Math.sqrt(company.getQualityBias());
+                (pricePerShare/company.getStockValue().getStockValue())*(1-this.riskBiasFactor)+Math.sqrt(company.getQualityBias()*company.getMonthDelta()-company.getYield().getYield());
 
         if(this.getCurrentMoney()<pricePerShare)
         {
             prob=1;
         }
 
-        return gamma<=prob;
+        boolean result = gamma<=prob;
+        return result;
     }
 
     public double generateInitialOffer(Company company)
     {
-        return company.getStockValue().getStockValue()*(1-this.riskBiasFactor);
+        return company.getStockValue().getStockValue()*(1-this.riskBiasFactor/3);
     }
 
 }
