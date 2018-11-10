@@ -202,4 +202,9 @@ public class Investor
         return company.getStockValue().getStockValue()*(1-this.riskBiasFactor/3);
     }
 
+    public double generateCounter(Company company)
+    {
+        return company.getStockValue().getStockValue()*(1+company.getQualityBias()/4);
+    }
+
 }
