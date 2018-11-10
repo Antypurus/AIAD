@@ -107,12 +107,6 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
         {
             String[] args = accept.getContent().split("::");
             double value = Double.valueOf(args[1]);
-
-            /*execute transaction
-            this.investor.getStockByCompanyName(this.company.getName()).split(this.ammount);
-            this.investor.addMoney(this.ammount * value);
-            /*execute transaction*/
-
             ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
             msg.setLanguage("ACCEPT");
             msg.setContent(accept.getContent()+"::"+this.investor.getName());
@@ -132,11 +126,6 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
 
             if (shouldAccept)
             {
-                /*execute transaction
-                this.investor.getStockByCompanyName(this.company.getName()).split(this.ammount);
-                this.investor.addMoney(this.ammount * counter);
-                /*execute transaction*/
-
                 System.out.println("Accepting counter offer at " + counter);
                 ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
                 msg.setLanguage("ACCEPT");
