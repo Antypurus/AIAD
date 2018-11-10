@@ -2,6 +2,7 @@ package Investor.Behavior;
 
 import Aggregators.Index;
 import Company.Company;
+import Components.Stock;
 import Investor.Agents.InvestorAgent;
 import Investor.Investor;
 import jade.lang.acl.ACLMessage;
@@ -20,7 +21,7 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
             @Override
             public boolean match(ACLMessage aclMessage)
             {
-                if(aclMessage.getContent()==null)
+                if (aclMessage.getContent() == null)
                 {
                     return false;
                 }
@@ -40,10 +41,38 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
         int ammount = Integer.valueOf(args[2]);
         double offer = Double.valueOf(args[3]);
 
-        boolean sell = this.investor.shouldSell(company,offer);
+        boolean sell = this.investor.shouldSell(company, offer);
 
-        System.out.println("RECEIVED MESSAGE:"+cfp.getContent());
-        System.out.println(this.investor.getName()+" :: Will sell?"+sell);
+        Stock stock = this.investor.getStockByCompanyAcronym(args[1]);
+        if (stock == null)
+        {
+            System.out.println(this.investor.getName() + " :: I dont have " +
+                    "stock of " + company.getName());
+            return null;
+        }
+        if (stock.getShareCount() < ammount)
+        {
+            System.out.println(this.investor.getName() + " :: I only have " + stock.getShareCount() +
+                    " shares of" + company.getName());
+            return null;
+        }
+
+        System.out.println("RECEIVED MESSAGE:" + cfp.getContent());
+
+        double counter = 0;
+        if (!sell)
+        {
+            counter = this.investor.generateCounter(company);
+            System.out.println(this.investor.getName() + " :: REFUSE " +
+                    "Coutner=" + counter);
+            //reponde with counter
+        } else
+        {
+            System.out.println(this.investor.getName() + " :: ACCEPT " +
+                    "Will sell at=" + offer);
+            //respond with accept and sell
+        }
+
         return null;
     }
 }
