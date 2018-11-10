@@ -99,7 +99,7 @@ public class Investor
         return null;
     }
 
-    public double getCurrentMoney()
+    public synchronized double getCurrentMoney()
     {
         return this.money;
     }
