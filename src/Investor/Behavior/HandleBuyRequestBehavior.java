@@ -16,6 +16,9 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
 
     private String cache;
 
+    private int ammount;
+    private Company company;
+
     public HandleBuyRequestBehavior(InvestorAgent a, Index index)
     {
         super(a, new MessageTemplate((MessageTemplate.MatchExpression) aclMessage ->
@@ -40,6 +43,9 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
         double offer = Double.valueOf(args[3]);
 
         boolean sell = this.investor.shouldSell(company, offer);
+
+        this.company = company;
+        this.ammount = ammount;
 
         Stock stock = this.investor.getStockByCompanyAcronym(args[1]);
         if (stock == null)
@@ -91,8 +97,33 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
     @Override
     protected ACLMessage handleAcceptProposal(ACLMessage cfp, ACLMessage propose, ACLMessage accept)
     {
-        System.out.println("RECEIVED ACCEPT::"+accept.getContent());
-        return null;
+        if (accept.getLanguage().equals("ACCEPT"))
+        {
+            String[] args = accept.getContent().split("::");
+            double value = Double.valueOf(args[1]);
+            ACLMessage msg = new  ACLMessage(ACLMessage.INFORM);
+            msg.setLanguage("ACCEPT");
+            msg.setContent(accept.getContent());
+        }
+        if (accept.getLanguage().equals("COUNTER"))
+        {
+            String[] args = accept.getContent().split("::");
+            double counter = Double.valueOf(args[1]);
+
+            boolean shouldAccept = this.investor.shouldSell(this.company,
+                    counter);
+
+            if (shouldAccept)
+            {
+                ACLMessage msg = new  ACLMessage(ACLMessage.INFORM);
+                msg.setLanguage("ACCEPT");
+                msg.setContent("ACCEPT::"+counter);
+            } else
+            {
+                return new ACLMessage(ACLMessage.FAILURE);
+            }
+        }
+        return new ACLMessage(ACLMessage.FAILURE);
     }
 
     @Override
