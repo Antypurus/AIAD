@@ -67,6 +67,17 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
         return messages;
     }
 
+    @Override
+    protected void handleAllResponses(java.util.Vector responses,
+                                      java.util.Vector acceptances)
+    {
+        for(int i=0;i<responses.size();++i)
+        {
+            ACLMessage msg = (ACLMessage) responses.get(i);
+            System.out.println(msg.getContent());
+        }
+    }
+
     private int calculateAmountToBuy()
     {
         double val =
