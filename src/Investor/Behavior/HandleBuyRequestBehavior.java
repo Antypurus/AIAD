@@ -40,7 +40,10 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
         int ammount = Integer.valueOf(args[2]);
         double offer = Double.valueOf(args[3]);
 
+        boolean sell = this.investor.shouldSell(company,offer);
+
         System.out.println("RECEIVED MESSAGE:"+cfp.getContent());
+        System.out.println(this.investor.getName()+" :: Will sell?"+sell);
         return null;
     }
 }
