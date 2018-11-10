@@ -128,6 +128,19 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
         }
     }
 
+    @Override
+    protected void handleAllResultNotifications(java.util.Vector resultNotifications)
+    {
+        for(int i=0;i<resultNotifications.size();++i)
+        {
+            ACLMessage msg = (ACLMessage) resultNotifications.get(i);
+            if(msg.getPerformative()==ACLMessage.FAILURE)
+            {
+                System.out.println(this.investor.getName()+"::Deal canceled\n");
+            }
+        }
+    }
+
     private int calculateAmountToBuy()
     {
         double val =

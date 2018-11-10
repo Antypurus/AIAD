@@ -115,6 +115,7 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
 
             if (shouldAccept)
             {
+                System.out.println("Accepting counter offer at "+counter);
                 ACLMessage msg = new  ACLMessage(ACLMessage.INFORM);
                 msg.setLanguage("ACCEPT");
                 msg.setContent("ACCEPT::"+counter);
