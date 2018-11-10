@@ -74,14 +74,40 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
     protected void handleAllResponses(java.util.Vector responses,
                                       java.util.Vector acceptances)
     {
+        boolean accepted = false;
         for (int i = 0; i < responses.size(); ++i)
         {
             ACLMessage msg = (ACLMessage) responses.get(i);
-            System.out.println(msg.getContent());
+            if(!accepted)
+            {
+                if (msg.getLanguage().equals("ACCEPT PROPOSAl"))
+                {
+                    ACLMessage resp = msg.createReply();
+                    resp.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
+                    resp.setContent(msg.getContent());
+                    acceptances.add(resp);
+                }
+                if (msg.getLanguage().equals("COUNTER PROPOSAl"))
+                {
+                    String[] args = msg.getContent().split("::");
+                    double counter = Double.valueOf(args[1]);
 
+                    boolean accept = this.investor.shouldBuy(this.company,
+                            counter);
+
+                    if(accept)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
             ACLMessage resp = msg.createReply();
-            resp.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
-            resp.setContent("TEST");
+            resp.setPerformative(ACLMessage.REJECT_PROPOSAL);
+            resp.setContent("REJECT");
             acceptances.add(resp);
         }
     }
