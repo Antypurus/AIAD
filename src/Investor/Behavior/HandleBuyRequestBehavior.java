@@ -16,17 +16,13 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
 
     public HandleBuyRequestBehavior(InvestorAgent a, Index index)
     {
-        super(a, new MessageTemplate(new MessageTemplate.MatchExpression()
+        super(a, new MessageTemplate((MessageTemplate.MatchExpression) aclMessage ->
         {
-            @Override
-            public boolean match(ACLMessage aclMessage)
+            if (aclMessage.getContent() == null)
             {
-                if (aclMessage.getContent() == null)
-                {
-                    return false;
-                }
-                return aclMessage.getLanguage().equals("BUY STOCK");
+                return false;
             }
+            return aclMessage.getLanguage().equals("BUY STOCK");
         }));
 
         this.investor = a.getInvestor();
