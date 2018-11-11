@@ -99,7 +99,7 @@ public class Investor
         return null;
     }
 
-    public double getCurrentMoney()
+    public synchronized double getCurrentMoney()
     {
         return this.money;
     }
@@ -166,7 +166,7 @@ public class Investor
         double gamma = rand.nextDouble();
 
         double prob =
-                (company.getMonthDelta() / company.getStockValue().getStockValue() + company.getYield().getYield()) * (1 - this.riskBiasFactor) * 2 * Math.sqrt(company.getQualityBias());
+                (company.getMonthDelta() / company.getStockValue().getStockValue() + company.getYield().getYield()) * (1 - this.riskBiasFactor/2) * 2 * Math.sqrt(company.getQualityBias());
 
         double normalize =
                 Math.abs(pricePerShare - company.getStockValue().getStockValue()) / company.getStockValue().getStockValue();
@@ -183,7 +183,8 @@ public class Investor
 
     public boolean shouldSell(Company company, double pricePerShare)
     {
-        double gamma = ThreadLocalRandom.current().nextDouble(0, 1);
+        Random rand = new Random();
+        double gamma = rand.nextDouble();
 
         double prob =
                 (pricePerShare/company.getStockValue().getStockValue())*(1-this.riskBiasFactor)+Math.sqrt(company.getQualityBias()*company.getMonthDelta()-company.getYield().getYield());
@@ -199,12 +200,17 @@ public class Investor
 
     public double generateInitialOffer(Company company)
     {
-        return company.getStockValue().getStockValue()*(1-this.riskBiasFactor/3);
+        return company.getStockValue().getStockValue()*(1-this.riskBiasFactor/5);
     }
 
     public double generateCounter(Company company)
     {
-        return company.getStockValue().getStockValue()*(1+company.getQualityBias()/4);
+        return company.getStockValue().getStockValue()*(1+company.getQualityBias()/5);
+    }
+
+    public  InvestorAgency getAgency()
+    {
+        return this.agency;
     }
 
 }

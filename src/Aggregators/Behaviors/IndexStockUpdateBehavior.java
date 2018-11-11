@@ -40,12 +40,12 @@ public class IndexStockUpdateBehavior extends Behaviour
             Company company = transaction.getStock().getCompany();
             if (transactionValues.containsKey(company))
             {
-                transactionValues.get(company).add(new Pair<>(transaction.getShareValue(), transaction.getAmmount()));
+                transactionValues.get(company).add(new Pair<>(transaction.getShareValue(), transaction.getAmount()));
             } else
             {
                 ArrayList<Pair<Double, Integer>> values = new ArrayList<>();
                 values.add(new Pair<>(transaction.getShareValue(),
-                        transaction.getAmmount()));
+                        transaction.getAmount()));
                 transactionValues.put(company, values);
             }
         }
@@ -55,16 +55,16 @@ public class IndexStockUpdateBehavior extends Behaviour
         {
             ArrayList<Pair<Double, Integer>> values =
                     transactionValues.get(company);
-            double comulativeShareValue = 0.0;
+            double cumulativeShareValue = 0.0;
             int shareCount = 0;
 
             for (Pair<Double, Integer> shareValue : values)
             {
-                comulativeShareValue += (shareValue.left * shareValue.right);
+                cumulativeShareValue += (shareValue.left * shareValue.right);
                 shareCount += shareValue.right;
             }
 
-            double newStockValue = comulativeShareValue / shareCount;
+            double newStockValue = cumulativeShareValue / shareCount;
             company.getStockValue().setStockValue(newStockValue);
         }
 

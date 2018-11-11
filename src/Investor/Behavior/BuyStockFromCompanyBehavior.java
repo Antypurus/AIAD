@@ -43,7 +43,8 @@ public class BuyStockFromCompanyBehavior extends Behaviour
                 this.investor.getAgent().addBehaviour(requestBehavior);
             } else
             {
-                System.out.println(Date.CURRENT_DATE + " :: Investor " + this.investor.getName() + " wil no be buying any stocks from " + this.company.getName() + " today");
+                System.out.println(Date.CURRENT_DATE + " :: Investor " + this.investor.getName()
+                        + " wil not be buying any stocks from " + this.company.getName() + " today");
             }
         }
         this.done = true;

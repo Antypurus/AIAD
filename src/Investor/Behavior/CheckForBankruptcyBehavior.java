@@ -8,13 +8,13 @@ import jade.core.behaviours.Behaviour;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class CheckForBankrupcyBehavior extends Behaviour
+public class CheckForBankruptcyBehavior extends Behaviour
 {
     private boolean done = false;
     private Investor investor;
     private Index index;
 
-    public CheckForBankrupcyBehavior(Investor investor, Index index)
+    public CheckForBankruptcyBehavior(Investor investor, Index index)
     {
         this.investor = investor;
         this.index = index;

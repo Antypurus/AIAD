@@ -28,14 +28,14 @@ public class main
 
         String n1 = "Cuck McCuck";
         AgentController ac = cc.createNewAgent(n1, "Investor.Agents" +
-                ".InvestorAgent", new Object[]{n1, 0.5, agency, 5000.0,
+                ".InvestorAgent", new Object[]{n1, 0.25, agency, 5000.0,
                 index});
         ac.start();
 
         String n2 = "Doris Beata";
         AgentController ac2 = cc.createNewAgent(n2, "Investor.Agents" +
                         ".InvestorAgent",
-                new Object[]{n2, 0.5, agency, 6580.0, index});
+                new Object[]{n2, 0.1, agency, 6580.0, index});
         ac2.start();
 
         AgentController ac4 = cc.createNewAgent("TESLA", "Company.Agents" +

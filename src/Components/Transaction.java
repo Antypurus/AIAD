@@ -9,29 +9,29 @@ public class Transaction
     private Stock stock;
     private Investor seller;
     private Investor buyer;
-    private int ammount;
+    private int amount;
     private double shareValue;
     private Date transactionDate;
 
-    public Transaction(Stock stock, Investor seller, Investor buyer, int ammount, double shareValue, Date transactionDate)
+    public Transaction(Stock stock, Investor seller, Investor buyer, int amount, double shareValue, Date transactionDate)
     {
       this.stock = stock;
       this.seller = seller;
       this.buyer = buyer;
-      this.ammount = ammount;
+      this.amount = amount;
       this.shareValue = shareValue;
       this.transactionDate = transactionDate;
     }
 
     public void executeTransaction()
     {
-      double newValue = this.shareValue * this.ammount;
+      double newValue = this.shareValue * this.amount;
 
       try {
         this.buyer.removeMoney(newValue);
         this.seller.addMoney(newValue);
 
-        this.buyer.registerStock(this.stock.split(this.ammount));
+        this.buyer.registerStock(this.stock.split(this.amount));
       }
       catch (Exception e) {
           e.printStackTrace();
@@ -53,9 +53,9 @@ public class Transaction
       return this.buyer;
     }
 
-    public int getAmmount()
+    public int getAmount()
     {
-      return this.ammount;
+      return this.amount;
     }
 
     public double getShareValue()

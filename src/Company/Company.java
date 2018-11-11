@@ -28,12 +28,13 @@ public class Company
     private MarketHistory history;
     private CompanyAgent agent;
     private Stock stock;
+    private int innitialShareCount;
 
     private double capital;
 
     public Company(String name, String acronym, Index index,
                    double qualityBias, Date foundationDate,
-                   CompanyAgent agent, int shareCount,double capital)
+                   CompanyAgent agent, int shareCount, double capital)
     {
         this.qualityBias = qualityBias;
         this.name = name;
@@ -44,6 +45,7 @@ public class Company
         this.managers = new CopyOnWriteArrayList<>();
         this.foundationDate = foundationDate;
         this.history = MarketHistory.generateMarketHistory(this);
+        this.innitialShareCount = shareCount;
         this.stockValue =
                 this.history.getStockValues().get(this.history.getStockValues().size() - 1);
         this.agent = agent;
@@ -60,7 +62,7 @@ public class Company
 
     public Company(String name, String acronym, Index index, double qualityBias,
                    Date foundationDate, CompanyAgent agent, int shareCount,
-                   double capital,Yield yield)
+                   double capital, Yield yield)
     {
         this.qualityBias = qualityBias;
         this.name = name;
@@ -71,6 +73,7 @@ public class Company
         this.managers = new CopyOnWriteArrayList<>();
         this.foundationDate = foundationDate;
         this.history = MarketHistory.generateMarketHistory(this);
+        this.innitialShareCount = shareCount;
         this.stockValue =
                 this.history.getStockValues().get(this.history.getStockValues().size() - 1);
         this.agent = agent;
@@ -177,7 +180,7 @@ public class Company
         {
             return;
         }
-        this.qualityBias = qualityBias;
+        this.qualityBias = bias;
     }
 
     public Date getFoundationDate()
@@ -212,31 +215,45 @@ public class Company
 
     public void addCapital(double delta)
     {
-        if(delta<0)
+        if (delta < 0)
         {
             return;
         }
-        this.capital+=delta;
+        this.capital += delta;
     }
 
     public void reduceCapital(double delta)
     {
-        if(delta<0)
+        if (delta < 0)
         {
             return;
         }
-        this.capital-=delta;
+        this.capital -= delta;
     }
 
     public double getMonthDelta()
     {
-        ArrayList<StockValue> history = this.getMarketHistory().getStockValues();
-        if(history.size()<30)
+        CopyOnWriteArrayList<StockValue> history = this.getMarketHistory().getStockValues();
+        if (history.size() < 30)
         {
             return 0.0;
         }
-        double now = history.get(history.size()-1).getStockValue();
-        double old = history.get(history.size()-31).getStockValue();
-        return now-old;
+        double now = history.get(history.size() - 1).getStockValue();
+        double old = history.get(history.size() - 31).getStockValue();
+        return now - old;
+    }
+
+    public synchronized void stockSync() throws Exception
+    {
+        if (this.getMarketHistory().getStockValueByDate(Date.CURRENT_DATE) == null)
+        {
+            this.getMarketHistory().addHistoricValue(Date.CURRENT_DATE,
+                    this.getStockValue());
+        }
+    }
+
+    public int getInnitialShareCount()
+    {
+        return this.innitialShareCount;
     }
 }

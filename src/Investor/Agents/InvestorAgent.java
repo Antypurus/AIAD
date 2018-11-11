@@ -2,7 +2,7 @@ package Investor.Agents;
 
 import Aggregators.Index;
 import Aggregators.InvestorAgency;
-import Investor.Behavior.CheckForBankrupcyBehavior;
+import Investor.Behavior.CheckForBankruptcyBehavior;
 import Investor.Behavior.FindCompanyToInvestBehavior;
 import Investor.Behavior.HandleBuyRequestBehavior;
 import Investor.Investor;
@@ -33,7 +33,7 @@ public class InvestorAgent extends Agent
         this.index = (Index) args[4];
 
         this.addBehaviour(new IntroductionBehavior());
-        this.addBehaviour(new HandleBuyRequestBehavior(this,this.index));
+        this.addBehaviour(new HandleBuyRequestBehavior(this, this.index));
     }
 
     public Investor getInvestor()
@@ -64,7 +64,7 @@ public class InvestorAgent extends Agent
 
     public void newDayProtocol()
     {
-        this.addBehaviour(new CheckForBankrupcyBehavior(this.investor, this.index));
+        this.addBehaviour(new CheckForBankruptcyBehavior(this.investor, this.index));
         this.addBehaviour(new FindCompanyToInvestBehavior(this.investor,
                 this.index, this.agency));
     }
@@ -84,4 +84,8 @@ public class InvestorAgent extends Agent
         return this.isInvesting;
     }
 
+    public Index getIndex()
+    {
+        return this.index;
+    }
 }

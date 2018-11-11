@@ -10,17 +10,17 @@ public class Manager
     private String name;
     private Company company;
     private double stupidity_factor;
-    private double inteligence_factor;
+    private double intelligence_factor;
     private double salary;
     private double money;
 
     public Manager(String name, Company company, double stupidity_factor,
-                   double inteligence_factor, double salary, double money)
+                   double intelligence_factor, double salary, double money)
     {
         this.name = name;
         this.company = company;
         this.stupidity_factor = stupidity_factor;
-        this.inteligence_factor = inteligence_factor;
+        this.intelligence_factor = intelligence_factor;
         this.salary = salary;
         this.money = money;
         this.company.addManager(this);
@@ -48,12 +48,12 @@ public class Manager
 
     public double getInteligenceFactor()
     {
-        return this.inteligence_factor;
+        return this.intelligence_factor;
     }
 
     public void setInteligenceFactor(double inteligence_factor)
     {
-        this.inteligence_factor = inteligence_factor;
+        this.intelligence_factor = inteligence_factor;
     }
 
     public void setStupidityFactor(double stupidity_factor)
@@ -91,22 +91,22 @@ public class Manager
         // Generate random number between 0 and 1
         double random = generator.nextDouble();
         // Generate random percentage between 10% and 50%
-        double factor = (double) (generator.nextInt(50) + 10) / 100;
+        double factor = (double) (generator.nextInt(5) + 1) / 100;
         // Get current company's quality Bias
         double qualityBias = this.company.getQualityBias();
 
-        if (Math.abs(this.stupidity_factor - random) >= Math.abs(this.inteligence_factor - random))
+        if (Math.abs(this.stupidity_factor - random) >= Math.abs(this.intelligence_factor - random))
         {
-            // Do inteligent action
-            this.company.setQualityBias(qualityBias * (1 + factor));
-            System.out.println(Date.CURRENT_DATE+" :: "+this.name+" is a GOOD" +
-                    " BOI");
+            // Do intelligent action
+            this.company.setQualityBias(qualityBias + qualityBias * (factor));
+            System.out.println(Date.CURRENT_DATE+" :: "+this.name+" has done" +
+                    " something intelligent");
         } else
         {
-            // Do stupidy action
-            this.company.setQualityBias(qualityBias * (1 - factor));
+            // Do stupidity action
+            this.company.setQualityBias(qualityBias - qualityBias * (factor));
             System.out.println(Date.CURRENT_DATE+" :: "+this.name+" has done " +
-                    "a stupid");
+                    "a stupid mistake");
         }
     }
 }

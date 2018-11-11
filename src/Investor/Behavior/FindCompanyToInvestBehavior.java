@@ -32,7 +32,7 @@ public class FindCompanyToInvestBehavior extends Behaviour
     @Override
     public void action()
     {
-        if (!(this.agent.isInvesting()))
+        //if (!(this.agent.isInvesting()))
         {
             CopyOnWriteArrayList<Company> companies = this.index.getAllCompanies();
             int numberOfCompanies = companies.size();
@@ -67,11 +67,13 @@ public class FindCompanyToInvestBehavior extends Behaviour
                         this.agent.getInvestor()));
             } else
             {
-                System.out.println(Date.CURRENT_DATE + " :: " + this.agent.getInvestor().getName() + " is currently unable to invest in any company");
+                System.out.println(Date.CURRENT_DATE + " :: " + this.agent.getInvestor().getName()
+                        + " is currently unable to invest in any company");
             }
-        } else
+        } //else
         {
-            System.out.println(Date.CURRENT_DATE + " :: " + this.agent.getInvestor().getName() + " is currently investing and cannot start investing in another company");
+           // System.out.println(Date.CURRENT_DATE + " :: " + this.agent
+            // .getInvestor().getName() + " is currently investing and cannot start investing in another company");
         }
         done = true;
     }
