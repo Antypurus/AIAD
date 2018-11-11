@@ -6,24 +6,26 @@ import Components.StockValue;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class MarketHistory
 {
 
     private static final double MAX_CHANGE = 0.01;
 
-    private HashMap<Date, StockValue> history;
-    private ArrayList<Date> dates;
-    private ArrayList<StockValue> values;
+    private ConcurrentHashMap<Date, StockValue> history;
+    private CopyOnWriteArrayList<Date> dates;
+    private CopyOnWriteArrayList<StockValue> values;
 
     public MarketHistory()
     {
-        this.history = new HashMap<>();
-        this.dates = new ArrayList<>();
-        this.values = new ArrayList<>();
+        this.history = new ConcurrentHashMap<>();
+        this.dates = new CopyOnWriteArrayList<>();
+        this.values = new CopyOnWriteArrayList<>();
     }
 
-    public void addHistoricValue(Date date, StockValue value) throws Exception
+    public synchronized void addHistoricValue(Date date, StockValue value) throws Exception
     {
         if (this.dates.size() != 0)
         {
@@ -103,22 +105,22 @@ public class MarketHistory
         return ret;
     }
 
-    public ArrayList<StockValue> getStockValues()
+    public synchronized CopyOnWriteArrayList<StockValue> getStockValues()
     {
         return this.values;
     }
 
-    public ArrayList<Date> getDates()
+    public synchronized CopyOnWriteArrayList<Date> getDates()
     {
         return this.dates;
     }
 
-    public HashMap<Date, StockValue> getHistory()
+    public synchronized ConcurrentHashMap<Date, StockValue> getHistory()
     {
         return this.history;
     }
 
-    public StockValue getStockValueByDate(Date date)
+    public synchronized  StockValue getStockValueByDate(Date date)
     {
         if (this.history.containsKey(date))
         {

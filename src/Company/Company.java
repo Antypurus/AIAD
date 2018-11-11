@@ -230,7 +230,7 @@ public class Company
 
     public double getMonthDelta()
     {
-        ArrayList<StockValue> history = this.getMarketHistory().getStockValues();
+        CopyOnWriteArrayList<StockValue> history = this.getMarketHistory().getStockValues();
         if (history.size() < 30)
         {
             return 0.0;
@@ -240,7 +240,7 @@ public class Company
         return now - old;
     }
 
-    public void stockSync() throws Exception
+    public synchronized void stockSync() throws Exception
     {
         if (this.getMarketHistory().getStockValueByDate(Date.CURRENT_DATE) == null)
         {

@@ -10,12 +10,12 @@ public class StockValue
         this.stockValue = stockValue;
     }
 
-    public double getStockValue()
+    public synchronized double getStockValue()
     {
         return this.stockValue;
     }
 
-    public void setStockValue(double stockValue)
+    public synchronized void setStockValue(double stockValue)
     {
         this.stockValue = stockValue;
     }
