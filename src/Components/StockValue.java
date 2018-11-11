@@ -3,7 +3,7 @@ package Components;
 public class StockValue
 {
 
-    private double stockValue;
+    private volatile double stockValue;
 
     public StockValue(double stockValue)
     {

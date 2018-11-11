@@ -245,7 +245,7 @@ public class Company
         if (this.getMarketHistory().getStockValueByDate(Date.CURRENT_DATE) == null)
         {
             this.getMarketHistory().addHistoricValue(Date.CURRENT_DATE,
-                    this.getMarketHistory().getHistory().get(this.getMarketHistory().getHistory().size() - 1));
+                    this.getStockValue());
         }
     }
 }
