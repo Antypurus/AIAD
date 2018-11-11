@@ -28,6 +28,7 @@ public class Company
     private MarketHistory history;
     private CompanyAgent agent;
     private Stock stock;
+    private int innitialShareCount;
 
     private double capital;
 
@@ -44,6 +45,7 @@ public class Company
         this.managers = new CopyOnWriteArrayList<>();
         this.foundationDate = foundationDate;
         this.history = MarketHistory.generateMarketHistory(this);
+        this.innitialShareCount = shareCount;
         this.stockValue =
                 this.history.getStockValues().get(this.history.getStockValues().size() - 1);
         this.agent = agent;
@@ -71,6 +73,7 @@ public class Company
         this.managers = new CopyOnWriteArrayList<>();
         this.foundationDate = foundationDate;
         this.history = MarketHistory.generateMarketHistory(this);
+        this.innitialShareCount = shareCount;
         this.stockValue =
                 this.history.getStockValues().get(this.history.getStockValues().size() - 1);
         this.agent = agent;
@@ -247,5 +250,10 @@ public class Company
             this.getMarketHistory().addHistoricValue(Date.CURRENT_DATE,
                     this.getStockValue());
         }
+    }
+
+    public int getInnitialShareCount()
+    {
+        return this.innitialShareCount;
     }
 }
