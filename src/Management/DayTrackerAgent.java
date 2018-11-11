@@ -69,6 +69,14 @@ public class DayTrackerAgent extends Agent
                 {
                     manager.randomAction();
                 }
+
+                try
+                {
+                    company.stockSync();
+                } catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
             }
 
             CopyOnWriteArrayList<Investor> investors = this.agency.getInvestors();
@@ -76,6 +84,7 @@ public class DayTrackerAgent extends Agent
             {
                 investor.getAgent().newDayProtocol();
             }
+
         }
     }
 
