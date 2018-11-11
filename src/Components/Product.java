@@ -5,11 +5,13 @@ public class Product
 
     private double price;
     private double profit;
+    private double quality;
 
-    public Product(double price,double profit)
+    public Product(double price, double profit, double quality)
     {
         this.price = price;
         this.profit = profit;
+        this.quality = quality;
     }
 
     public double getPrice()
@@ -20,6 +22,11 @@ public class Product
     public double getProfit()
     {
         return this.profit;
+    }
+
+    public double getQuality()
+    {
+        return this.quality;
     }
 
 }
