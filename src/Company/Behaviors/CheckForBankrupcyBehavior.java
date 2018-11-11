@@ -18,6 +18,13 @@ public class CheckForBankrupcyBehavior extends Behaviour
     @Override
     public void action()
     {
+        if(this.company.getCapital()<=0)
+        {
+            this.company.setCompanyStatus(CompanyStatus.BANKRUPT);
+            this.company.getStockValue().setStockValue(0.0);
+            this.company.getAgent().doDelete();
+        }
+
         double cumulativeSalary = 0.0;
 
         for (Manager manager : this.company.getManagers())
