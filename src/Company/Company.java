@@ -3,6 +3,7 @@ package Company;
 import Aggregators.Index;
 import Common.Date;
 import Company.Agents.CompanyAgent;
+import Components.Product;
 import Components.Stock;
 import Components.StockValue;
 import Components.Yield;
@@ -32,6 +33,8 @@ public class Company
 
     private double capital;
 
+    private CopyOnWriteArrayList<Product> products;
+
     public Company(String name, String acronym, Index index,
                    double qualityBias, Date foundationDate,
                    CompanyAgent agent, int shareCount, double capital)
@@ -51,6 +54,7 @@ public class Company
         this.agent = agent;
         this.stock = new Stock(this, this.index, shareCount, null);
         this.capital = capital;
+        this.products = new CopyOnWriteArrayList<>();
         try
         {
             this.index.registerCompany(this);
@@ -79,6 +83,7 @@ public class Company
         this.agent = agent;
         this.stock = new Stock(this, this.index, shareCount, null);
         this.capital = capital;
+        this.products = new CopyOnWriteArrayList<>();
         try
         {
             this.index.registerCompany(this);
@@ -255,5 +260,15 @@ public class Company
     public int getInnitialShareCount()
     {
         return this.innitialShareCount;
+    }
+
+    public void addProduct(Product product)
+    {
+        this.products.add(product);
+    }
+
+    public CopyOnWriteArrayList<Product> getProducts()
+    {
+        return this.products;
     }
 }
