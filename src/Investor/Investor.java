@@ -17,7 +17,7 @@ public class Investor
     private double riskBiasFactor;
     private InvestorAgency agency;
 
-    private double money;
+    private volatile double money;
     private double reservedMoney = 0;
 
     private ArrayList<Stock> portfolio;
@@ -130,7 +130,9 @@ public class Investor
         }
         if ((this.money - moneyDelta) < 0)
         {
-            throw new Exception("Investor does not have enough money for that");
+            //throw new Exception("Investor does not have enough money for " +
+                //"that");
+            return;
         }
         this.money -= moneyDelta;
     }

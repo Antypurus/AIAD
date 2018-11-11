@@ -28,18 +28,18 @@ public class Stock
         this.getTotalValue();
     }
 
-    public double getStockValue()
+    public synchronized double getStockValue()
     {
         return this.stockValue.getStockValue();
     }
 
-    public double getTotalValue()
+    public synchronized double getTotalValue()
     {
         this.totalValue = this.shareCount.get() * this.getStockValue();
         return this.totalValue;
     }
 
-    public void setOwner(Investor owner)
+    public synchronized void setOwner(Investor owner)
     {
         this.owner = owner;
     }

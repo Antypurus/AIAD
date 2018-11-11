@@ -41,9 +41,8 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
         System.out.println(Date.CURRENT_DATE + " :: " + this.investor.getName() +
                 " has decided to buy " + this.amount + " stocks from " + this.company.getName());
 
-        this.listStockSources();
+       // this.listStockSources();
         this.investor.getAgent().isCurrentlyInvesting();
-
         this.index = this.investor.getAgent().getIndex();
     }
 
