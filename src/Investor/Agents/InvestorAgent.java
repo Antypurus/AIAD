@@ -3,6 +3,7 @@ package Investor.Agents;
 import Aggregators.Index;
 import Aggregators.InvestorAgency;
 import Investor.Behavior.CheckForBankruptcyBehavior;
+import Investor.Behavior.ExecuteYieldPayoutBehavior;
 import Investor.Behavior.FindCompanyToInvestBehavior;
 import Investor.Behavior.HandleBuyRequestBehavior;
 import Investor.Investor;
@@ -67,6 +68,7 @@ public class InvestorAgent extends Agent
         this.addBehaviour(new CheckForBankruptcyBehavior(this.investor, this.index));
         this.addBehaviour(new FindCompanyToInvestBehavior(this.investor,
                 this.index, this.agency));
+        this.addBehaviour(new ExecuteYieldPayoutBehavior(this.investor));
     }
 
     public void isCurrentlyInvesting()
