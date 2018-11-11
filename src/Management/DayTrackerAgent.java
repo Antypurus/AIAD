@@ -3,6 +3,7 @@ package Management;
 import Aggregators.Index;
 import Aggregators.InvestorAgency;
 import Common.Date;
+import Company.Behaviors.CheckForBankrupcyBehavior;
 import Company.Behaviors.CompanyListStockValueBehavior;
 import Company.Company;
 import Investor.Investor;
@@ -77,6 +78,8 @@ public class DayTrackerAgent extends Agent
                 {
                     e.printStackTrace();
                 }
+
+                company.getAgent().addBehaviour(new CheckForBankrupcyBehavior(company));
             }
 
             CopyOnWriteArrayList<Investor> investors = this.agency.getInvestors();

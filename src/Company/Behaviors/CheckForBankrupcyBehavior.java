@@ -32,6 +32,16 @@ public class CheckForBankrupcyBehavior extends Behaviour
             this.company.getAgent().doDelete();
         }
 
+        double cummulativeYieldPayout =
+                company.getInnitialShareCount()*company.getStockValue().getStockValue()*company.getYield().getYield();
+        if(cummulativeYieldPayout>=this.company.getCapital())
+        {
+            this.company.setCompanyStatus(CompanyStatus.BANKRUPT);
+            this.company.getStockValue().setStockValue(0.0);
+            this.company.getAgent().doDelete();
+        }
+
+
         this.done = true;
     }
 
