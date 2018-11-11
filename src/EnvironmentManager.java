@@ -44,6 +44,7 @@ public class EnvironmentManager
         this.runtime = Runtime.instance();
         this.profile = new ProfileImpl();
         this.mainContainer = this.runtime.createMainContainer(this.profile);
+        this.managers = new ArrayList<>();
         this.agentControllers = new ArrayList<>();
 
         this.loadEnvironment(filename);
@@ -179,21 +180,26 @@ public class EnvironmentManager
                     name = args[1];
                     double riskBias = Double.valueOf(args[2]);
                     double startingMoney = Double.valueOf(args[3]);
-                    this.addInvestor(name,riskBias,startingMoney);
+                    this.addInvestor(name, riskBias, startingMoney);
                     break;
 
                 case "MANAGER":
                     name = args[1];
                     Company company = this.index.getCompanyByName(args[2]);
+                    while(company==null)
+                    {
+                        company = this.index.getCompanyByName(args[2]);
+                    }
                     double stupidity = Double.valueOf(args[3]);
                     double intelligence = Double.valueOf(args[4]);
                     double salary = Double.valueOf(args[5]);
-                    this.addManager(name,company,stupidity,intelligence,salary);
+                    this.addManager(name, company, stupidity, intelligence, salary);
                     break;
 
                 default:
                     System.exit(1);
-                    break;            }
+                    break;
+            }
         }
     }
 

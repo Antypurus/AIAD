@@ -41,11 +41,15 @@ public class FindCompanyToInvestBehavior extends Behaviour
             int roundCounter = 0;
             Company investIn = null;
 
-            if (numberOfCompanies != 0)
+            if (numberOfCompanies > 0)
             {
                 while (investIn == null && roundCounter <= MAX_ROUNDS)
                 {
                     int index = rand.nextInt() % numberOfCompanies;
+                    if (index < 0)
+                    {
+                        continue;
+                    }
                     if (companies.get(index).getStockValue().getStockValue() <= this.agent.getInvestor().getCurrentMoney())
                     {
                         investIn = companies.get(index);
@@ -72,7 +76,7 @@ public class FindCompanyToInvestBehavior extends Behaviour
             }
         } //else
         {
-           // System.out.println(Date.CURRENT_DATE + " :: " + this.agent
+            // System.out.println(Date.CURRENT_DATE + " :: " + this.agent
             // .getInvestor().getName() + " is currently investing and cannot start investing in another company");
         }
         done = true;
