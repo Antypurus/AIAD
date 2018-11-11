@@ -146,6 +146,5 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
     @Override
     protected void handleRejectProposal(ACLMessage cfp, ACLMessage propose, ACLMessage accept)
     {
-        System.out.println("RECEIVED REJECT::" + accept.getContent());
     }
 }
