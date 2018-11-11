@@ -12,6 +12,7 @@ import jade.wrapper.ContainerController;
 import jade.wrapper.StaleProxyException;
 
 import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class EnvironmentManager
@@ -43,7 +44,6 @@ public class EnvironmentManager
         this.runtime = Runtime.instance();
         this.profile = new ProfileImpl();
         this.mainContainer = this.runtime.createMainContainer(this.profile);
-
         this.agentControllers = new ArrayList<>();
 
         this.loadEnvironment(filename);
@@ -64,8 +64,9 @@ public class EnvironmentManager
 
     private void addIndex(String name) throws StaleProxyException
     {
+
         this.index = new Index(name);
-        Object[] params = {name};
+        Object[] params = new Object[]{this.index};
         AgentController agent = this.mainContainer.createNewAgent(name,
                 indexPath, params);
         agent.start();
@@ -121,18 +122,22 @@ public class EnvironmentManager
 
     private void loadEnvironment(String filename) throws IOException, StaleProxyException
     {
-        BufferedReader reader = new BufferedReader(new FileReader(filename));
+        URL path = EnvironmentManager.class.getResource(filename);
+        File f = new File(path.getFile());
+        BufferedReader reader = new BufferedReader(new FileReader(f));
 
         String line;
         while ((line = reader.readLine()) != null)
         {
             String[] args = line.split("<>");
+            System.out.println(args[0]);
+
+            String name;
 
             switch (args[0])
             {
                 case "COMPANY":
-                {
-                    String name = args[1];
+                    name = args[1];
                     String acro = args[2];
                     double qualityBias = Double.valueOf(args[3]);
 
@@ -158,38 +163,37 @@ public class EnvironmentManager
                         this.addCompany(name, acro, qualityBias, foundationDate,
                                 startingShares, startingCapital, yield);
                     }
-                }
+                    break;
 
                 case "INDEX":
-                {
-                    String name = args[1];
+                    name = args[1];
                     this.addIndex(name);
-                }
+                    break;
 
                 case "AGENCY":
-                {
-                    String name = args[1];
+                    name = args[1];
                     this.addAgency(name);
-                }
+                    break;
 
                 case "INVESTOR":
-                {
-                    String name = args[1];
+                    name = args[1];
                     double riskBias = Double.valueOf(args[2]);
                     double startingMoney = Double.valueOf(args[3]);
                     this.addInvestor(name,riskBias,startingMoney);
-                }
+                    break;
 
                 case "MANAGER":
-                {
-                    String name = args[1];
+                    name = args[1];
                     Company company = this.index.getCompanyByName(args[2]);
                     double stupidity = Double.valueOf(args[3]);
                     double intelligence = Double.valueOf(args[4]);
                     double salary = Double.valueOf(args[5]);
                     this.addManager(name,company,stupidity,intelligence,salary);
-                }
-            }
+                    break;
+
+                default:
+                    System.exit(1);
+                    break;            }
         }
     }
 

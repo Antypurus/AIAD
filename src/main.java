@@ -10,6 +10,8 @@ import jade.wrapper.ContainerController;
 import jade.wrapper.StaleProxyException;
 import Company.Manager;
 
+import java.io.IOException;
+
 public class main
 {
 
@@ -20,49 +22,14 @@ public class main
         Profile p = new ProfileImpl();
         //p.setParameter(Profile.GUI,"true");
 
-        Index index = new Index("NASDAQ");
 
         ContainerController cc = rt.createMainContainer(p);
 
-        InvestorAgency agency = new InvestorAgency("NASDAQ");
-
-        String n1 = "Cuck McCuck";
-        AgentController ac = cc.createNewAgent(n1, "Investor.Agents" +
-                ".InvestorAgent", new Object[]{n1, 0.25, agency, 5000.0,
-                index});
-        ac.start();
-
-        String n2 = "Doris Beata";
-        AgentController ac2 = cc.createNewAgent(n2, "Investor.Agents" +
-                        ".InvestorAgent",
-                new Object[]{n2, 0.1, agency, 6580.0, index});
-        ac2.start();
-
-        AgentController ac4 = cc.createNewAgent("TESLA", "Company.Agents" +
-                        ".CompanyAgent",
-                new Object[]{"Tesla", "TSLA", index, 0.56, new Date(1, 1,
-                        2010), 50000, 100101010.0});
-        ac4.start();
-
-
-        AgentController ac5 = cc.createNewAgent("NASDAQ", "Aggregators.Agents" +
-                        ".IndexAgent",
-                new Object[]{index});
-        ac5.start();
-
-        AgentController ac3 = cc.createNewAgent("Day Tracker", "Management" +
-                        ".DayTrackerAgent",
-                new Object[]{index, agency});
-        ac3.start();
-
-
-        Company company = null;
-
-        while(company==null)
-        {
-            company = index.getCompanyByAcronym("TSLA");
+        try {
+            EnvironmentManager environmentManager = new EnvironmentManager("agents.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        Manager manager = new Manager("Elon Musk",company,0.1,0.65,1000.0,100.0);
     }
 }
