@@ -20,6 +20,7 @@ public class CheckForBankrupcyBehavior extends Behaviour
     {
         if(this.company.getCapital()<=0)
         {
+            System.out.println(this.company.getName()+"HAS GONE BANKRUPT");
             this.company.setCompanyStatus(CompanyStatus.BANKRUPT);
             this.company.getStockValue().setStockValue(0.0);
             this.company.getAgent().doDelete();
@@ -34,6 +35,7 @@ public class CheckForBankrupcyBehavior extends Behaviour
 
         if(cumulativeSalary>=this.company.getCapital())
         {
+            System.out.println(this.company.getName()+"HAS GONE BANKRUPT");
             this.company.setCompanyStatus(CompanyStatus.BANKRUPT);
             this.company.getStockValue().setStockValue(0.0);
             this.company.getAgent().doDelete();
@@ -43,6 +45,7 @@ public class CheckForBankrupcyBehavior extends Behaviour
                 company.getInnitialShareCount()*company.getStockValue().getStockValue()*company.getYield().getYield();
         if(cummulativeYieldPayout>=this.company.getCapital())
         {
+            System.out.println(this.company.getName()+"HAS GONE BANKRUPT");
             this.company.setCompanyStatus(CompanyStatus.BANKRUPT);
             this.company.getStockValue().setStockValue(0.0);
             this.company.getAgent().doDelete();
