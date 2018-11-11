@@ -16,7 +16,7 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
 
     private String cache;
 
-    private int ammount;
+    private int amount;
     private Company company;
 
     public HandleBuyRequestBehavior(InvestorAgent a, Index index)
@@ -45,22 +45,22 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
 
         String[] args = cfp.getContent().split("::");
         Company company = this.index.getCompanyByAcronym(args[1]);
-        int ammount = Integer.valueOf(args[2]);
+        int amount = Integer.valueOf(args[2]);
         double offer = Double.valueOf(args[3]);
 
         boolean sell = this.investor.shouldSell(company, offer);
 
         this.company = company;
-        this.ammount = ammount;
+        this.amount = amount;
 
         Stock stock = this.investor.getStockByCompanyAcronym(args[1]);
         if (stock == null)
         {
-            System.out.println(this.investor.getName() + " :: I dont have " +
+            System.out.println(this.investor.getName() + " :: I don't have " +
                     "stock of " + company.getName());
             return null;
         }
-        if (stock.getShareCount() < ammount)
+        if (stock.getShareCount() < amount)
         {
             System.out.println(this.investor.getName() + " :: I only have " + stock.getShareCount() +
                     " shares of" + company.getName());
@@ -74,7 +74,7 @@ public class HandleBuyRequestBehavior extends ContractNetResponder
         {
             counter = this.investor.generateCounter(company);
             System.out.println(this.investor.getName() + " :: REFUSE " +
-                    "Coutner=" + counter);
+                    "Counter=" + counter);
 
             //respond with counter
             ACLMessage counterMsg = new ACLMessage(ACLMessage.PROPOSE);

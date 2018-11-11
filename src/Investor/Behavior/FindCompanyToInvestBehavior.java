@@ -67,7 +67,8 @@ public class FindCompanyToInvestBehavior extends Behaviour
                         this.agent.getInvestor()));
             } else
             {
-                System.out.println(Date.CURRENT_DATE + " :: " + this.agent.getInvestor().getName() + " is currently unable to invest in any company");
+                System.out.println(Date.CURRENT_DATE + " :: " + this.agent.getInvestor().getName()
+                        + " is currently unable to invest in any company");
             }
         } //else
         {

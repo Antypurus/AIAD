@@ -111,11 +111,11 @@ public class EnvironmentManager
     }
 
     private void addManager(String name, Company company,
-                            double stupidityFactor, double inteligenceFactor,
+                            double stupidityFactor, double intelligenceFactor,
                             double salary)
     {
         Manager manager = new Manager(name, company, stupidityFactor,
-                inteligenceFactor, salary, 0.0);
+                intelligenceFactor, salary, 0.0);
         this.managers.add(manager);
     }
 
@@ -185,9 +185,9 @@ public class EnvironmentManager
                     String name = args[1];
                     Company company = this.index.getCompanyByName(args[2]);
                     double stupidity = Double.valueOf(args[3]);
-                    double inteligence = Double.valueOf(args[4]);
+                    double intelligence = Double.valueOf(args[4]);
                     double salary = Double.valueOf(args[5]);
-                    this.addManager(name,company,stupidity,inteligence,salary);
+                    this.addManager(name,company,stupidity,intelligence,salary);
                 }
             }
         }

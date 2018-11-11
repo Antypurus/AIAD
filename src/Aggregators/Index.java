@@ -66,6 +66,7 @@ public class Index
         this.companyNames.put(company.getName(), company);
         this.companyAcronyms.put(company.getAcronym(), company);
         this.companies.add(company);
+        //TODO
         //might also want to register stocks for this company here
         //but for that need to get a way to have the company handle is
         //stock
@@ -77,7 +78,6 @@ public class Index
         {
             return this.companyNames.get(name);
         }
-        //log that there is no company
         return null;
     }
 
@@ -87,7 +87,6 @@ public class Index
         {
             return this.companyAcronyms.get(acronym);
         }
-        //log that there is no company
         return null;
     }
 
@@ -96,7 +95,7 @@ public class Index
         return this.companies;
     }
 
-    public void registerTranscation(Transaction transaction)
+    public void registerTransaction(Transaction transaction)
     {
         transaction.executeTransaction();
         this.transactionRecords.add(transaction);

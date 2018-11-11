@@ -32,7 +32,7 @@ public class FindStockSourceBehavior extends Behaviour
 
         if (investors == null)
         {
-            //nobody has bough need to buy from company if available
+            //nobody has bought need to buy from company if available
             if (this.target.getStock().getShareCount() != 0)
             {
                 //need to buy from the company

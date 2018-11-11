@@ -17,7 +17,7 @@ public class BuyFromCompanyRequestBehavior extends AchieveREInitiator
 
     private Investor investor;
     private Company company;
-    private int ammount;
+    private int amount;
 
     public BuyFromCompanyRequestBehavior(Agent a, ACLMessage msg)
     {
@@ -27,15 +27,15 @@ public class BuyFromCompanyRequestBehavior extends AchieveREInitiator
 
         if(!(a instanceof InvestorAgent))
         {
-            System.out.println("GTFO");
+            System.out.println("Error: Not an Investor Agent");
         }
     }
 
-    public void target(Investor investor, Company company,int ammount)
+    public void target(Investor investor, Company company,int amount)
     {
         this.investor = investor;
         this.company = company;
-        this.ammount = ammount;
+        this.amount = amount;
     }
 
     @Override
@@ -49,9 +49,9 @@ public class BuyFromCompanyRequestBehavior extends AchieveREInitiator
     @Override
     protected void	handleAgree(ACLMessage agree)
     {
-        Stock newStock = this.company.getStock().split(this.ammount);
+        Stock newStock = this.company.getStock().split(this.amount);
         System.out.println(Date.CURRENT_DATE+" :: "+this.investor.getName()+
-                " has bough "+ammount+" stocks directly from "+company.getName()+" for $"+newStock.getTotalValue());
+                " has bought "+ amount +" stocks directly from "+company.getName()+" for $"+newStock.getTotalValue());
         //this here is important for consistency when registering
         // a stock that already exists the stock being added is zeroed
         // and the already existing stock get its stock count

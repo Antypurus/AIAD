@@ -17,7 +17,7 @@ public class HandleBuyRequestBehavior extends AchieveREResponder
 
         if (!(a instanceof CompanyAgent))
         {
-            System.out.println("FUCK OFF");
+            System.out.println("Error: Not a Company Agent");
         }
 
         this.agent = (CompanyAgent) a;
@@ -28,18 +28,18 @@ public class HandleBuyRequestBehavior extends AchieveREResponder
     {
         String content = request.getContent();
         String[] args = content.split("::");
-        int ammount = Integer.valueOf(args[2]);
+        int amount = Integer.valueOf(args[2]);
 
-        if (ammount <= this.agent.getCompany().getStock().getShareCount())
+        if (amount <= this.agent.getCompany().getStock().getShareCount())
         {
-            System.out.println(this.agent.getCompany().getName() + " :: Selling " + ammount + " stocks " +
+            System.out.println(this.agent.getCompany().getName() + " :: Selling " + amount + " stocks " +
                     "to " + args[0]);
             ACLMessage response = new ACLMessage(ACLMessage.AGREE);
             return response;
         } else
         {
             System.out.println(this.agent.getCompany().getName() + " :: " +
-                    "Not Selling " + ammount + " stocks " +
+                    "Not Selling " + amount + " stocks " +
                     "to " + args[0]);
             ACLMessage response = new ACLMessage(ACLMessage.REFUSE);
             return response;

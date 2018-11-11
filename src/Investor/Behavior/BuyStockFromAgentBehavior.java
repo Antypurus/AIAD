@@ -17,8 +17,8 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
     private Investor investor;
     private CopyOnWriteArrayList<Investor> sources;
     private Company company;
-    private int ammount;
-    private double innitialOffer;
+    private int amount;
+    private double initialOffer;
 
     private Index index;
 
@@ -31,7 +31,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
         this.investor = investor;
         this.sources = sources;
         this.company = company;
-        this.ammount = this.calculateAmountToBuy();
+        this.amount = this.calculateAmountToBuy();
 
         if (this.sources.contains(this.investor))
         {
@@ -39,7 +39,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
         }
 
         System.out.println(Date.CURRENT_DATE + " :: " + this.investor.getName() +
-                " has decided to buy " + this.ammount + " stocks from " + this.company.getName());
+                " has decided to buy " + this.amount + " stocks from " + this.company.getName());
 
         this.listStockSources();
         this.investor.getAgent().isCurrentlyInvesting();
@@ -67,10 +67,10 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
         {
             cfp.addReceiver(investor.getAgent().getAID());
         }
-        double offfer = this.investor.generateInitialOffer(this.company);
-        this.innitialOffer = offfer;
+        double offer = this.investor.generateInitialOffer(this.company);
+        this.initialOffer = offer;
 
-        cfp.setContent("BUY::" + this.company.getAcronym() + "::" + this.ammount + "::" + offfer);
+        cfp.setContent("BUY::" + this.company.getAcronym() + "::" + this.amount + "::" + offer);
         cfp.setLanguage("BUY STOCK");
 
         messages.add(cfp);
@@ -108,10 +108,10 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
                         boolean accept = this.investor.shouldBuy(this.company,
                                 counter);
 
-                        if (this.investor.getCurrentMoney() < counter * ammount)
+                        if (this.investor.getCurrentMoney() < counter * amount)
                         {
-                            ammount =
-                                    (int)(this.investor.getCurrentMoney()/ammount);
+                            amount =
+                                    (int)(this.investor.getCurrentMoney()/ amount);
                         }
 
                         if (accept)
@@ -124,12 +124,12 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
                             continue;
                         } else
                         {
-                            double middle = ((counter + this.innitialOffer) / 2);
+                            double middle = ((counter + this.initialOffer) / 2);
                             accept = this.investor.shouldBuy(this.company, middle);
 
-                            if (this.investor.getCurrentMoney() < ammount * middle)
+                            if (this.investor.getCurrentMoney() < amount * middle)
                             {
-                                ammount =
+                                amount =
                                         (int)(this.investor.getCurrentMoney()/middle);
                             }
 
@@ -179,13 +179,13 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
                         this.investor.getAgency().getInvestorByName(seller);
 
                 Transaction transaction =
-                        new Transaction(sellerInv.getStockByCompanyName(company.getName()), sellerInv, this.investor, this.ammount, value, Date.CURRENT_DATE);
-                this.index.registerTranscation(transaction);
+                        new Transaction(sellerInv.getStockByCompanyName(company.getName()), sellerInv, this.investor, this.amount, value, Date.CURRENT_DATE);
+                this.index.registerTransaction(transaction);
 
                 /*Execute Transaction*/
                 this.investor.getAgent().isNotInvesting();
                 System.out.println(this.investor.getName() + "::Deal " +
-                        "Completed with "+seller+" bough "+ammount+" shares " +
+                        "Completed with "+seller+" bought "+ amount +" shares " +
                         "from "+company.getName()+" at $"+value+" each");
             }
         }

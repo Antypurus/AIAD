@@ -103,11 +103,11 @@ public class Stock
         return this.company;
     }
 
-    public synchronized Stock split(int shareAmmount)
+    public synchronized Stock split(int shareAmount)
     {
         while(!this.shareCount.weakCompareAndSetAcquire(this.shareCount.get(),
-                this.shareCount.get()-shareAmmount));
-        return new Stock(this.company,this.index,shareAmmount,this.owner);
+                this.shareCount.get()-shareAmount));
+        return new Stock(this.company,this.index,shareAmount,this.owner);
     }
 
 }
