@@ -8,6 +8,8 @@ import Company.Behaviors.CheckSalesBehavior;
 import Company.Behaviors.CompanyListStockValueBehavior;
 import Company.Behaviors.ProductLaunchBehavior;
 import Company.Company;
+import DataExporter.EventLogger.EventLogger;
+import DataExporter.EventLogger.Events.CompanyCapitalEvent;
 import Investor.Investor;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
@@ -65,6 +67,8 @@ public class DayTrackerAgent extends Agent
             CopyOnWriteArrayList<Company> companies = index.getAllCompanies();
             for (Company company : companies)
             {
+                EventLogger.register_event(new CompanyCapitalEvent(company.getName(),company.getStockValue().getStockValue(),company.getQualityBias(),company.getMonthDelta()),Date.CURRENT_DATE, company.getAgent().slot);
+
                 company.getAgent().addBehaviour(new CompanyListStockValueBehavior(company.getAgent()));
 
                 CopyOnWriteArrayList<Manager> managers = company.getManagers();

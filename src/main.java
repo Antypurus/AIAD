@@ -2,6 +2,7 @@ import Aggregators.Index;
 import Aggregators.InvestorAgency;
 import Common.Date;
 import Company.Company;
+import DataExporter.Exporter.DataExporter;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.core.Runtime;
@@ -31,5 +32,15 @@ public class main
             e.printStackTrace();
         }
 
+        Thread thread = new Thread(new DataExporter());
+        thread.start();
+
+        try
+        {
+            thread.join();
+        } catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
     }
 }

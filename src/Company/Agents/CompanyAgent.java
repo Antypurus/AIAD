@@ -5,6 +5,7 @@ import Common.Date;
 import Company.Behaviors.HandleBuyRequestBehavior;
 import Company.Company;
 import Components.Yield;
+import DataExporter.EventLogger.EventLogger;
 import jade.core.Agent;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
@@ -13,6 +14,8 @@ public class CompanyAgent extends Agent
 {
 
     private Company company;
+
+    public int slot;
 
     public void setup()
     {
@@ -40,6 +43,8 @@ public class CompanyAgent extends Agent
             this.company = new Company(name, acronym, index, qualityBias,
                      foundationDate, this,shareCount,capital,yield);
         }
+
+        this.slot = EventLogger.get_slot();
 
         this.addBehaviour(new HandleBuyRequestBehavior(this,
                 new MessageTemplate(new MessageTemplate.MatchExpression()

@@ -215,4 +215,14 @@ public class Investor
         return this.agency;
     }
 
+    public double getCapitalValue()
+    {
+        double val = this.money;
+        for(Stock stock:this.portfolio)
+        {
+            val+=stock.getTotalValue();
+        }
+        return val;
+    }
+
 }
