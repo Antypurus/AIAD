@@ -15,7 +15,7 @@ public class EventLogger
 
     private static AtomicInteger slot_counter = new AtomicInteger(0);
     private static ConcurrentHashMap<Date, CopyOnWriteArrayList<Event>> Event_Data = new ConcurrentHashMap<>();
-    private static Queue<Pair<Date, CopyOnWriteArrayList<Event>>> event_queue =
+    public static Queue<Pair<Date, CopyOnWriteArrayList<Event>>> event_queue =
             new ConcurrentLinkedQueue<>();
 
     public EventLogger()
@@ -26,6 +26,19 @@ public class EventLogger
     {
         int slot = slot_counter.getAndIncrement();
         return slot;
+    }
+
+    private static  boolean row_check(Date date)
+    {
+        CopyOnWriteArrayList<Event> events = Event_Data.get(date);
+        for(Event event:events)
+        {
+            if(event==null)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static void register_event(Event event, Date date, int slot)
@@ -50,10 +63,18 @@ public class EventLogger
 
                     events.set(slot, event);
                     Event_Data.put(date, events);
-                    event_queue.add(new Pair<>(date,events));
                 }
             }
         }
+        if(row_check(date))
+        {
+            event_queue.add(new Pair<>(date,Event_Data.get(date)));
+        }
+    }
+
+    public static Queue<Pair<Date,CopyOnWriteArrayList<Event>>>getEvent_queue()
+    {
+        return event_queue;
     }
 
 }
