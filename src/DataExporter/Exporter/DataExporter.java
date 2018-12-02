@@ -22,11 +22,18 @@ public class DataExporter implements Runnable
 
     public DataExporter()
     {
-        DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        DateFormat format = new SimpleDateFormat("yyyy_MM_dd-HH_mm_ss");
         Date date = new Date();
-        String filename = format.format(date)+".csv";
+        String filename = "./"+format.format(date)+".csv";
 
         File file = new File(filename);
+        try
+        {
+            file.createNewFile();
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
         try
         {
             this.outputStream = new FileOutputStream(file);
