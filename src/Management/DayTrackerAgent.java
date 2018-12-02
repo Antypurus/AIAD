@@ -67,7 +67,7 @@ public class DayTrackerAgent extends Agent
             CopyOnWriteArrayList<Company> companies = index.getAllCompanies();
             for (Company company : companies)
             {
-                EventLogger.register_event(new CompanyCapitalEvent(company.getName(),company.getStockValue().getStockValue(),company.getQualityBias(),company.getMonthDelta()),Date.CURRENT_DATE, company.getAgent().slot);
+                EventLogger.register_event(new CompanyCapitalEvent(company.getName(),company.getStockValue().getStockValue(),company.getQualityBias(),company.getMonthDelta()),Date.CURRENT_DATE.getPreviousDay(), company.getAgent().slot);
 
                 company.getAgent().addBehaviour(new CompanyListStockValueBehavior(company.getAgent()));
 

@@ -119,4 +119,29 @@ public class Date
         return "" + this.getDay() + "/" + this.getMonth() + "/" + this.getYear();
     }
 
+    @Override
+    public int hashCode()
+    {
+        return this.day+this.month*daysInMonth+this.year*daysInMonth*monthsInYear;
+    }
+
+    @Override
+    public boolean equals(Object d2)
+    {
+        Date date2 = (Date) d2;
+        if(this.day!=date2.day)
+        {
+            return false;
+        }
+        if(this.month!=date2.month)
+        {
+            return false;
+        }
+        if(this.year!=date2.year)
+        {
+            return false;
+        }
+        return true;
+    }
+
 }

@@ -78,7 +78,7 @@ public class InvestorAgent extends Agent
         this.addBehaviour(new ExecuteYieldPayoutBehavior(this.investor));
 
         EventLogger.register_event(new InvestorCapitalEvent(this.investor.getName(),this.investor.getRiskBiasFactor(),this.investor.getCapitalValue()),
-                Date.CURRENT_DATE,this.slot);
+                Date.CURRENT_DATE.getPreviousDay(),this.slot);
     }
 
     public void isCurrentlyInvesting()

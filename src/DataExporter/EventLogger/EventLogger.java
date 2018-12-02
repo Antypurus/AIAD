@@ -18,6 +18,9 @@ public class EventLogger
     public static Queue<Pair<Date, CopyOnWriteArrayList<Event>>> event_queue =
             new ConcurrentLinkedQueue<>();
 
+    private static CopyOnWriteArrayList<Date> added_dates =
+            new CopyOnWriteArrayList<>();
+
     public EventLogger()
     {
     }
@@ -28,12 +31,16 @@ public class EventLogger
         return slot;
     }
 
-    private static  boolean row_check(Date date)
+    private static boolean row_check(Date date)
     {
-        CopyOnWriteArrayList<Event> events = Event_Data.get(date);
-        for(Event event:events)
+        if(added_dates.contains(date))
         {
-            if(event==null)
+            return false;
+        }
+        CopyOnWriteArrayList<Event> events = Event_Data.get(date);
+        for (Event event : events)
+        {
+            if (event == null)
             {
                 return false;
             }
@@ -64,15 +71,24 @@ public class EventLogger
                     events.set(slot, event);
                     Event_Data.put(date, events);
                 }
+                else
+                {
+                    CopyOnWriteArrayList<Event> events = Event_Data.get(date);
+                    events.set(slot, event);
+                }
             }
         }
-        if(row_check(date))
+        if (row_check(date))
         {
-            event_queue.add(new Pair<>(date,Event_Data.get(date)));
+            synchronized (EventLogger.class)
+            {
+                event_queue.add(new Pair<>(date, Event_Data.get(date)));
+                added_dates.add(date);
+            }
         }
     }
 
-    public static Queue<Pair<Date,CopyOnWriteArrayList<Event>>>getEvent_queue()
+    public static Queue<Pair<Date, CopyOnWriteArrayList<Event>>> getEvent_queue()
     {
         return event_queue;
     }

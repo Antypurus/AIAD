@@ -24,7 +24,7 @@ public class DataExporter implements Runnable
     {
         DateFormat format = new SimpleDateFormat("yyyy_MM_dd-HH_mm_ss");
         Date date = new Date();
-        String filename = "./"+format.format(date)+".csv";
+        String filename = "./Data/"+format.format(date)+".csv";
 
         File file = new File(filename);
         try
