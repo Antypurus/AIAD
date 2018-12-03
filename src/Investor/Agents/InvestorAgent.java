@@ -5,6 +5,7 @@ import Aggregators.InvestorAgency;
 import Common.Date;
 import DataExporter.EventLogger.EventLogger;
 import DataExporter.EventLogger.Events.InvestorCapitalEvent;
+import DataExporter.EventLogger.SlotType;
 import Investor.Behavior.CheckForBankruptcyBehavior;
 import Investor.Behavior.ExecuteYieldPayoutBehavior;
 import Investor.Behavior.FindCompanyToInvestBehavior;
@@ -38,7 +39,7 @@ public class InvestorAgent extends Agent
 
         this.index = (Index) args[4];
 
-        this.slot = EventLogger.get_slot();
+        this.slot = EventLogger.get_slot(SlotType.InvestorSlot);
 
         this.addBehaviour(new IntroductionBehavior());
         this.addBehaviour(new HandleBuyRequestBehavior(this, this.index));
@@ -78,7 +79,7 @@ public class InvestorAgent extends Agent
         this.addBehaviour(new ExecuteYieldPayoutBehavior(this.investor));
 
         EventLogger.register_event(new InvestorCapitalEvent(this.investor.getName(),this.investor.getRiskBiasFactor(),this.investor.getCapitalValue()),
-                Date.CURRENT_DATE.getPreviousDay(),this.slot);
+                Date.CURRENT_DATE.getPreviousDay(),this.slot,SlotType.InvestorSlot);
     }
 
     public void isCurrentlyInvesting()

@@ -13,7 +13,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class EventLogger
 {
 
-    private static AtomicInteger slot_counter = new AtomicInteger(0);
+    private static AtomicInteger company_slot_counter = new AtomicInteger(0);
+    private static AtomicInteger investor_slot_counter = new AtomicInteger(0);
+    private static AtomicInteger manager_slot_counter = new AtomicInteger(0);
+
     private static ConcurrentHashMap<Date, CopyOnWriteArrayList<Event>> Event_Data = new ConcurrentHashMap<>();
     public static Queue<Pair<Date, CopyOnWriteArrayList<Event>>> event_queue =
             new ConcurrentLinkedQueue<>();
@@ -25,9 +28,29 @@ public class EventLogger
     {
     }
 
-    public static synchronized int get_slot()
+    public static synchronized int get_slot(SlotType slotType)
     {
-        int slot = slot_counter.getAndIncrement();
+        int slot = Integer.MAX_VALUE;
+        switch (slotType)
+        {
+            case CompanySlot:
+            {
+                slot = company_slot_counter.getAndIncrement();
+                break;
+            }
+
+            case ManagerSlot:
+            {
+                slot = manager_slot_counter.getAndIncrement();
+                break;
+            }
+
+            case InvestorSlot:
+            {
+                slot = investor_slot_counter.getAndIncrement();
+                break;
+            }
+        }
         return slot;
     }
 
@@ -48,12 +71,39 @@ public class EventLogger
         return true;
     }
 
-    public static void register_event(Event event, Date date, int slot)
+    private static void set_event(CopyOnWriteArrayList events, Event event,
+                             int slot, SlotType slotType)
+    {
+        switch (slotType)
+        {
+            case CompanySlot:
+            {
+                events.set(slot, event);
+                break;
+            }
+
+            case ManagerSlot:
+            {
+                events.set(slot + company_slot_counter.get() + manager_slot_counter.get(), event);
+                break;
+            }
+
+            case InvestorSlot:
+            {
+                events.set(slot + company_slot_counter.get(), event);
+                break;
+            }
+        }
+    }
+
+    public static void register_event(Event event, Date date, int slot,
+                                      SlotType slotType)
     {
         if (Event_Data.containsKey(date))
         {
             CopyOnWriteArrayList<Event> events = Event_Data.get(date);
-            events.set(slot, event);
+            set_event(events,event,slot,slotType);
+
         } else
         {
             synchronized (EventLogger.class)
@@ -63,18 +113,20 @@ public class EventLogger
                     CopyOnWriteArrayList<Event> events =
                             new CopyOnWriteArrayList<>();
 
-                    for (int i = 0; i < slot_counter.get(); ++i)
+                    int slot_counter =
+                            company_slot_counter.get() + investor_slot_counter.get() + manager_slot_counter.get();
+                    for (int i = 0; i < slot_counter; ++i)
                     {
                         events.add(null);
                     }
 
-                    events.set(slot, event);
+                    set_event(events,event,slot,slotType);
                     Event_Data.put(date, events);
                 }
                 else
                 {
                     CopyOnWriteArrayList<Event> events = Event_Data.get(date);
-                    events.set(slot, event);
+                    set_event(events,event,slot,slotType);
                 }
             }
         }

@@ -6,6 +6,7 @@ import Company.Behaviors.HandleBuyRequestBehavior;
 import Company.Company;
 import Components.Yield;
 import DataExporter.EventLogger.EventLogger;
+import DataExporter.EventLogger.SlotType;
 import jade.core.Agent;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
@@ -44,7 +45,7 @@ public class CompanyAgent extends Agent
                      foundationDate, this,shareCount,capital,yield);
         }
 
-        this.slot = EventLogger.get_slot();
+        this.slot = EventLogger.get_slot(SlotType.CompanySlot);
 
         this.addBehaviour(new HandleBuyRequestBehavior(this,
                 new MessageTemplate(new MessageTemplate.MatchExpression()
