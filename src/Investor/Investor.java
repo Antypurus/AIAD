@@ -1,6 +1,7 @@
 package Investor;
 
 import Aggregators.InvestorAgency;
+import Common.Date;
 import Company.Company;
 import Components.Stock;
 import Investor.Agents.InvestorAgent;
@@ -24,6 +25,8 @@ public class Investor
     private HashMap<String, Stock> nameToStock;
     private HashMap<String, Stock> acronymToStock;
 
+    private HashMap<Date, Double> capital_record;
+
     private InvestorAgent agent;
 
     public Investor(String name, double riskBiasFactor, InvestorAgency agency,
@@ -37,6 +40,7 @@ public class Investor
         this.nameToStock = new HashMap<>();
         this.acronymToStock = new HashMap<>();
         this.agent = investorAgent;
+        this.capital_record = new HashMap<>();
         try
         {
             this.agency.registerInvestor(this);
@@ -44,6 +48,11 @@ public class Investor
         {
             e.printStackTrace();
         }
+    }
+
+    public void register_capital(Date date,double capital)
+    {
+        this.capital_record.put(date,capital);
     }
 
     private void stockSync()
@@ -131,7 +140,7 @@ public class Investor
         if ((this.money - moneyDelta) < 0)
         {
             //throw new Exception("Investor does not have enough money for " +
-                //"that");
+            //"that");
             return;
         }
         this.money -= moneyDelta;
@@ -168,7 +177,7 @@ public class Investor
         double gamma = rand.nextDouble();
 
         double prob =
-                (company.getMonthDelta() / company.getStockValue().getStockValue() + company.getYield().getYield()) * (1 - this.riskBiasFactor/2) * 2 * Math.sqrt(company.getQualityBias());
+                (company.getMonthDelta() / company.getStockValue().getStockValue() + company.getYield().getYield()) * (1 - this.riskBiasFactor / 2) * 2 * Math.sqrt(company.getQualityBias());
 
         double normalize =
                 Math.abs(pricePerShare - company.getStockValue().getStockValue()) / company.getStockValue().getStockValue();
@@ -189,28 +198,28 @@ public class Investor
         double gamma = rand.nextDouble();
 
         double prob =
-                (pricePerShare/company.getStockValue().getStockValue())*(1-this.riskBiasFactor)+Math.sqrt(company.getQualityBias()*company.getMonthDelta()-company.getYield().getYield());
+                (pricePerShare / company.getStockValue().getStockValue()) * (1 - this.riskBiasFactor) + Math.sqrt(company.getQualityBias() * company.getMonthDelta() - company.getYield().getYield());
 
-        if(this.getCurrentMoney()<pricePerShare)
+        if (this.getCurrentMoney() < pricePerShare)
         {
-            prob=1;
+            prob = 1;
         }
 
-        boolean result = gamma<=prob;
+        boolean result = gamma <= prob;
         return result;
     }
 
     public double generateInitialOffer(Company company)
     {
-        return company.getStockValue().getStockValue()*(1-this.riskBiasFactor/5);
+        return company.getStockValue().getStockValue() * (1 - this.riskBiasFactor / 5);
     }
 
     public double generateCounter(Company company)
     {
-        return company.getStockValue().getStockValue()*(1+company.getQualityBias()/5);
+        return company.getStockValue().getStockValue() * (1 + company.getQualityBias() / 5);
     }
 
-    public  InvestorAgency getAgency()
+    public InvestorAgency getAgency()
     {
         return this.agency;
     }
@@ -218,9 +227,9 @@ public class Investor
     public double getCapitalValue()
     {
         double val = this.money;
-        for(Stock stock:this.portfolio)
+        for (Stock stock : this.portfolio)
         {
-            val+=stock.getTotalValue();
+            val += stock.getTotalValue();
         }
         return val;
     }

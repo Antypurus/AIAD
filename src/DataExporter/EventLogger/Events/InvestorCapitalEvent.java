@@ -19,12 +19,12 @@ public class InvestorCapitalEvent extends Event
     @Override
     public String get_csv_data()
     {
-        return this.investor_risk + "," + this.investor_capital;
+        return this.investor_name + "," + this.investor_risk + "," + this.investor_capital;
     }
 
     @Override
     public String get_csv_header()
     {
-        return this.investor_name + " Risk," + this.investor_name + " Capital";
+        return "Name,Risk,Capital";
     }
 }

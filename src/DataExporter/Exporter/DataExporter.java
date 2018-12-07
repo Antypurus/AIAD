@@ -60,9 +60,10 @@ public class DataExporter implements Runnable
                     String header = "Date,";
                     for(Event event:elements.right)
                     {
-                        header+=event.get_csv_header()+",";
+                        header+=event.get_csv_header()+"\n";
+                        break;
                     }
-                    header+="\n";
+
 
                     try
                     {
@@ -74,12 +75,12 @@ public class DataExporter implements Runnable
 
                     innited = true;
                 }
-                String data = ""+elements.left+",";
+                String data = "";
                 for(Event event:elements.right)
                 {
-                    data+=event.get_csv_data()+",";
+                    data+=elements.left+","+event.get_csv_data()+"\n";
                 }
-                data+="\n";
+
                 try
                 {
                     this.outputStream.write(data.getBytes());

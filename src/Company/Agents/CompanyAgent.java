@@ -45,7 +45,7 @@ public class CompanyAgent extends Agent
                      foundationDate, this,shareCount,capital,yield);
         }
 
-        this.slot = EventLogger.get_slot(SlotType.CompanySlot);
+        //this.slot = EventLogger.get_slot(SlotType.CompanySlot);
 
         this.addBehaviour(new HandleBuyRequestBehavior(this,
                 new MessageTemplate(new MessageTemplate.MatchExpression()
