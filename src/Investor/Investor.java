@@ -234,4 +234,17 @@ public class Investor
         return val;
     }
 
+    public double get_week_capital_delta()
+    {
+        if(this.capital_record.size()<7)
+        {
+            return 0.0f;
+        }
+        Date target_date = Date.CURRENT_DATE;
+        for(int i=0;i<7;i++)
+        {
+            target_date = target_date.getPreviousDay();
+        }
+        return (this.getCapitalValue() - this.capital_record.get(target_date));
+    }
 }
