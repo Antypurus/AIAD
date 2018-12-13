@@ -41,7 +41,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
         System.out.println(Date.CURRENT_DATE + " :: " + this.investor.getName() +
                 " has decided to buy " + this.amount + " stocks from " + this.company.getName());
 
-       // this.listStockSources();
+        // this.listStockSources();
         this.investor.getAgent().isCurrentlyInvesting();
         this.index = this.investor.getAgent().getIndex();
     }
@@ -64,9 +64,9 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
 
         for (Investor investor : this.sources)
         {
-            if(investor.getStockByCompanyName(this.company.getName()).getShareCount()<this.amount)
+            if (investor.getStockByCompanyName(this.company.getName()).getShareCount() < this.amount)
             {
-                if(investor.getStockByCompanyName(this.company.getName()).getShareCount()!=0)
+                if (investor.getStockByCompanyName(this.company.getName()).getShareCount() != 0)
                 {
                     this.amount =
                             investor.getStockByCompanyName(this.company.getName()).getShareCount();
@@ -118,7 +118,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
                         if (this.investor.getCurrentMoney() < counter * amount)
                         {
                             amount =
-                                    (int)(this.investor.getCurrentMoney()/ amount);
+                                    (int) (this.investor.getCurrentMoney() / amount);
                         }
 
                         if (accept)
@@ -137,7 +137,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
                             if (this.investor.getCurrentMoney() < amount * middle)
                             {
                                 amount =
-                                        (int)(this.investor.getCurrentMoney()/middle);
+                                        (int) (this.investor.getCurrentMoney() / middle);
                             }
 
                             if (accept)
@@ -192,8 +192,8 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
                 /*Execute Transaction*/
                 this.investor.getAgent().isNotInvesting();
                 System.out.println(this.investor.getName() + "::Deal " +
-                        "Completed with "+seller+" bought "+ amount +" shares " +
-                        "from "+company.getName()+" at $"+value+" each");
+                        "Completed with " + seller + " bought " + amount + " shares " +
+                        "from " + company.getName() + " at $" + value + " each");
             }
         }
     }
@@ -201,7 +201,8 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
     private int calculateAmountToBuy()
     {
         double val =
-                ((1 - this.investor.getRiskBiasFactor()) * ((this.investor.getCurrentMoney() / this.company.getStock().getStockValue()) * (Math.pow(Math.E, this.company.getYield().getYield()) * Math.sqrt(company.getQualityBias()))));
+                (Math.pow(Math.E,
+                        this.investor.getRiskBiasFactor() * (Math.abs(this.company.getMonthDelta() / this.company.getStockValue().getStockValue()) * this.investor.getCurrentMoney())));
         if ((int) val > this.company.getStock().getShareCount())
         {
             val = this.company.getStock().getShareCount();
@@ -216,7 +217,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
             {
                 val = 1;
             }
-            if(this.investor.getCurrentMoney() < this.company.getStockValue().getStockValue())
+            if (this.investor.getCurrentMoney() < this.company.getStockValue().getStockValue())
             {
                 val = 0;
             }

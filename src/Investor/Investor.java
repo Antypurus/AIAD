@@ -177,7 +177,7 @@ public class Investor
         double gamma = rand.nextDouble();
 
         double prob =
-                (Math.pow(Math.E,this.riskBiasFactor)-1)*company.getQualityBias()*Math.abs((company.getMonthDelta()*pricePerShare)/company.getStockValue().getStockValue());
+                (Math.pow(Math.E,this.riskBiasFactor)-1)*company.getQualityBias()*Math.sqrt(Math.abs(company.getStockValue().getStockValue()-pricePerShare+company.getMonthDelta()));
         if(pricePerShare>this.money)
         {
             prob = 0;

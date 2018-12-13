@@ -57,6 +57,10 @@ public class FindStockSourceBehavior extends Behaviour
             //need to start negotiating with these motherfuckers
             CopyOnWriteArrayList<Investor> stockSources =
                     new CopyOnWriteArrayList<>(investors);
+            System.out.println(Date.CURRENT_DATE + " :: " + this.investor.getName() + " " +
+                    "Will try to buy " +
+                    "stock from " + this.target.getName()+" from other " +
+                    "investors");
             this.investor.getAgent().addBehaviour(new BuyStockFromAgentBehavior(this.investor, stockSources,this.target));
         }
 
