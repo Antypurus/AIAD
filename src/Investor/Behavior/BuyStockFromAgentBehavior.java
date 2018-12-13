@@ -64,6 +64,14 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
 
         for (Investor investor : this.sources)
         {
+            if(investor.getStockByCompanyName(this.company.getName()).getShareCount()<this.amount)
+            {
+                if(investor.getStockByCompanyName(this.company.getName()).getShareCount()!=0)
+                {
+                    this.amount =
+                            investor.getStockByCompanyName(this.company.getName()).getShareCount();
+                }
+            }
             cfp.addReceiver(investor.getAgent().getAID());
         }
         double offer = this.investor.generateInitialOffer(this.company);
@@ -204,9 +212,13 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
         }
         if ((int) val == 0)
         {
-            if (this.investor.getCurrentMoney() >= this.company.getStockValue().getStockValue())
+            if (this.investor.getCurrentMoney() == this.company.getStockValue().getStockValue())
             {
                 val = 1;
+            }
+            if(this.investor.getCurrentMoney() < this.company.getStockValue().getStockValue())
+            {
+                val = 0;
             }
         }
         return (int) val;
