@@ -62,14 +62,18 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
     {
         Vector<ACLMessage> messages = new Vector<>();
         double offer = this.investor.generateInitialOffer(this.company);
-
+        cfp = new ACLMessage(ACLMessage.CFP);
         int receiver_count = 0;
+
         for (Investor investor : this.sources)
         {
-            cfp = new ACLMessage(ACLMessage.CFP);
             String c_name = this.company.getName();
             Stock i_stock = investor.getStockByCompanyName(c_name);
             if (i_stock == null)
+            {
+                continue;
+            }
+            if(i_stock.getShareCount()<0)
             {
                 continue;
             }
@@ -83,7 +87,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
             }
             receiver_count++;
             cfp.addReceiver(investor.getAgent().getAID());
-
+        }
 
             this.initialOffer = offer;
 
@@ -91,7 +95,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
             cfp.setLanguage("BUY STOCK");
 
             messages.add(cfp);
-        }
+
 
         System.out.println(this.investor.getName() + "::BUY::" + this.company.getAcronym() +
                 "::" + this.amount + "::" + offer + " sent to " + receiver_count +
@@ -226,11 +230,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
         double val =
                 (Math.pow(Math.E,
                         this.investor.getRiskBiasFactor() * (Math.abs(this.company.getMonthDelta() / this.company.getStockValue().getStockValue()) / this.investor.getCurrentMoney())));
-        if ((int) val > this.company.getStock().getShareCount())
-        {
-            val = this.company.getStock().getShareCount();
-        }
-        while (((int) val * this.company.getStockValue().getStockValue()) > this.investor.getCurrentMoney())
+        while (((new Double(val)).intValue() * this.company.getStockValue().getStockValue()) > this.investor.getCurrentMoney())
         {
             val = val / 2;
         }
@@ -240,12 +240,8 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
             {
                 val = 1;
             }
-            if (this.investor.getCurrentMoney() < this.company.getStockValue().getStockValue())
-            {
-                val = 0;
-            }
         }
         val = Math.abs(val);
-        return (int) val;
+        return (new Double(val)).intValue();
     }
 }
