@@ -3,6 +3,7 @@ package Investor.Behavior;
 import Aggregators.Index;
 import Common.Date;
 import Company.Company;
+import Components.Stock;
 import Components.Transaction;
 import Investor.Investor;
 import jade.lang.acl.ACLMessage;
@@ -13,6 +14,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class BuyStockFromAgentBehavior extends ContractNetInitiator
 {
+
+    volatile boolean accepted = false;
 
     private Investor investor;
     private CopyOnWriteArrayList<Investor> sources;
@@ -42,7 +45,6 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
                 " has decided to buy " + this.amount + " stocks from " + this.company.getName());
 
         // this.listStockSources();
-        this.investor.getAgent().isCurrentlyInvesting();
         this.index = this.investor.getAgent().getIndex();
     }
 
@@ -59,12 +61,19 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
     protected java.util.Vector prepareCfps(ACLMessage cfp)
     {
         Vector<ACLMessage> messages = new Vector<>();
+        double offer = this.investor.generateInitialOffer(this.company);
 
-        cfp = new ACLMessage(ACLMessage.CFP);
-
+        int receiver_count = 0;
         for (Investor investor : this.sources)
         {
-            if (investor.getStockByCompanyName(this.company.getName()).getShareCount() < this.amount)
+            cfp = new ACLMessage(ACLMessage.CFP);
+            String c_name = this.company.getName();
+            Stock i_stock = investor.getStockByCompanyName(c_name);
+            if (i_stock == null)
+            {
+                continue;
+            }
+            if (i_stock.getShareCount() < this.amount)
             {
                 if (investor.getStockByCompanyName(this.company.getName()).getShareCount() != 0)
                 {
@@ -72,16 +81,21 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
                             investor.getStockByCompanyName(this.company.getName()).getShareCount();
                 }
             }
+            receiver_count++;
             cfp.addReceiver(investor.getAgent().getAID());
+
+
+            this.initialOffer = offer;
+
+            cfp.setContent("BUY::" + this.company.getAcronym() + "::" + this.amount + "::" + offer);
+            cfp.setLanguage("BUY STOCK");
+
+            messages.add(cfp);
         }
-        double offer = this.investor.generateInitialOffer(this.company);
-        this.initialOffer = offer;
 
-        cfp.setContent("BUY::" + this.company.getAcronym() + "::" + this.amount + "::" + offer);
-        cfp.setLanguage("BUY STOCK");
-
-        messages.add(cfp);
-
+        System.out.println(this.investor.getName() + "::BUY::" + this.company.getAcronym() +
+                "::" + this.amount + "::" + offer + " sent to " + receiver_count +
+                " potential receivers");
         return messages;
     }
 
@@ -94,18 +108,17 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
         for (int i = 0; i < responses.size(); ++i)
         {
             ACLMessage msg = (ACLMessage) responses.get(i);
-            if (!accepted)
-            {
                 if (msg.getPerformative() == ACLMessage.PROPOSE)
                 {
                     if (msg.getLanguage().equals("ACCEPT PROPOSAL"))
                     {
-                        ACLMessage resp = msg.createReply();
-                        resp.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
-                        resp.setLanguage("ACCEPT");
-                        resp.setContent(msg.getContent());
-                        acceptances.add(resp);
-                        continue;
+                            ACLMessage resp = msg.createReply();
+                            resp.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
+                            resp.setLanguage("ACCEPT");
+                            resp.setContent(msg.getContent());
+                            acceptances.add(resp);
+                            System.out.println(this.investor.getName() + "::Sale " +
+                                    "Confirmed at innitial offer");
                     }
                     if (msg.getLanguage().equals("COUNTER PROPOSAL"))
                     {
@@ -123,12 +136,16 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
 
                         if (accept)
                         {
-                            ACLMessage resp = msg.createReply();
-                            resp.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
-                            resp.setLanguage("ACCEPT");
-                            resp.setContent("ACCEPT::" + counter);
-                            acceptances.add(resp);
-                            continue;
+
+                                ACLMessage resp = msg.createReply();
+                                resp.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
+                                resp.setLanguage("ACCEPT");
+                                resp.setContent("ACCEPT::" + counter);
+                                acceptances.add(resp);
+                                System.out.println(this.investor.getName() + "::Sale " +
+                                        "Confirmed at counter offer");
+                                accepted = true;
+
                         } else
                         {
                             double middle = ((counter + this.initialOffer) / 2);
@@ -142,25 +159,31 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
 
                             if (accept)
                             {
-                                ACLMessage resp = msg.createReply();
-                                resp.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
-                                resp.setLanguage("COUNTER");
-                                resp.setContent("COUNTER::" + counter);
-                                acceptances.add(resp);
-                                continue;
+
+                                    ACLMessage resp = msg.createReply();
+                                    resp.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
+                                    resp.setLanguage("COUNTER");
+                                    resp.setContent("COUNTER::" + counter);
+                                    acceptances.add(resp);
+                                    System.out.println(this.investor.getName() + "::Sale " +
+                                            "Final counter offer sent");
+                                    accepted = true;
+
                             }
                         }
                     }
-                }
+                    continue;
+
             }
-            ACLMessage resp = msg.createReply();
-            resp.setPerformative(ACLMessage.REJECT_PROPOSAL);
-            resp.setContent("REJECT");
-            acceptances.add(resp);
-        }
-        if (!accepted)
-        {
-            this.investor.getAgent().isNotInvesting();
+            if(msg.getPerformative()==ACLMessage.ACCEPT_PROPOSAL)
+            {
+                ACLMessage resp = msg.createReply();
+                resp.setPerformative(ACLMessage.REJECT_PROPOSAL);
+                resp.setContent("REJECT");
+                System.out.println(this.investor.getName() + "::Sale " +
+                        "Sale Canceled");
+                acceptances.add(resp);
+            }
         }
     }
 
@@ -170,7 +193,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
         for (int i = 0; i < resultNotifications.size(); ++i)
         {
             ACLMessage msg = (ACLMessage) resultNotifications.get(i);
-            if (msg.getPerformative() == ACLMessage.FAILURE)
+            if (msg.getPerformative() == ACLMessage.CANCEL)
             {
                 System.out.println(this.investor.getName() + "::Deal canceled\n");
                 this.investor.getAgent().isNotInvesting();
@@ -202,7 +225,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
     {
         double val =
                 (Math.pow(Math.E,
-                        this.investor.getRiskBiasFactor() * (Math.abs(this.company.getMonthDelta() / this.company.getStockValue().getStockValue()) * this.investor.getCurrentMoney())));
+                        this.investor.getRiskBiasFactor() * (Math.abs(this.company.getMonthDelta() / this.company.getStockValue().getStockValue()) / this.investor.getCurrentMoney())));
         if ((int) val > this.company.getStock().getShareCount())
         {
             val = this.company.getStock().getShareCount();
@@ -222,6 +245,7 @@ public class BuyStockFromAgentBehavior extends ContractNetInitiator
                 val = 0;
             }
         }
+        val = Math.abs(val);
         return (int) val;
     }
 }

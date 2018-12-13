@@ -6,10 +6,7 @@ import Common.Date;
 import DataExporter.EventLogger.EventLogger;
 import DataExporter.EventLogger.Events.InvestorCapitalEvent;
 import DataExporter.EventLogger.SlotType;
-import Investor.Behavior.CheckForBankruptcyBehavior;
-import Investor.Behavior.ExecuteYieldPayoutBehavior;
-import Investor.Behavior.FindCompanyToInvestBehavior;
-import Investor.Behavior.HandleBuyRequestBehavior;
+import Investor.Behavior.*;
 import Investor.Investor;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
@@ -42,7 +39,7 @@ public class InvestorAgent extends Agent
         this.slot = EventLogger.get_slot(SlotType.InvestorSlot);
 
         this.addBehaviour(new IntroductionBehavior());
-        this.addBehaviour(new HandleBuyRequestBehavior(this, this.index));
+        this.addBehaviour(new AgentReceiverDispatcher(this, this.index));
     }
 
     public Investor getInvestor()
@@ -73,7 +70,9 @@ public class InvestorAgent extends Agent
 
     public void newDayProtocol()
     {
-        this.addBehaviour(new CheckForBankruptcyBehavior(this.investor, this.index));
+        this.investor.stockSync();
+        //this.addBehaviour(new CheckForBankruptcyBehavior(this.investor,
+            //this.index));
         this.addBehaviour(new FindCompanyToInvestBehavior(this.investor,
                 this.index, this.agency));
         this.addBehaviour(new ExecuteYieldPayoutBehavior(this.investor));

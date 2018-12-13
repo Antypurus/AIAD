@@ -9,6 +9,8 @@ import Investor.Agents.InvestorAgent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Investor
@@ -21,11 +23,11 @@ public class Investor
     private volatile double money;
     private double reservedMoney = 0;
 
-    private ArrayList<Stock> portfolio;
-    private HashMap<String, Stock> nameToStock;
-    private HashMap<String, Stock> acronymToStock;
+    private CopyOnWriteArrayList<Stock> portfolio;
+    private ConcurrentHashMap<String, Stock> nameToStock;
+    private ConcurrentHashMap<String, Stock> acronymToStock;
 
-    private HashMap<Date, Double> capital_record;
+    private ConcurrentHashMap<Date, Double> capital_record;
 
     private InvestorAgent agent;
 
@@ -36,11 +38,11 @@ public class Investor
         this.money = startingMoney;
         this.riskBiasFactor = riskBiasFactor;
         this.agency = agency;
-        this.portfolio = new ArrayList<>();
-        this.nameToStock = new HashMap<>();
-        this.acronymToStock = new HashMap<>();
+        this.portfolio = new CopyOnWriteArrayList<>();
+        this.nameToStock = new ConcurrentHashMap<>();
+        this.acronymToStock = new ConcurrentHashMap<>();
         this.agent = investorAgent;
-        this.capital_record = new HashMap<>();
+        this.capital_record = new ConcurrentHashMap<>();
         try
         {
             this.agency.registerInvestor(this);
@@ -55,7 +57,7 @@ public class Investor
         this.capital_record.put(date,capital);
     }
 
-    private void stockSync()
+    public void stockSync()
     {
         //check the portfolio
         for (Stock stock : portfolio)
@@ -85,7 +87,7 @@ public class Investor
         }
     }
 
-    public ArrayList<Stock> getPortfolio()
+    public CopyOnWriteArrayList<Stock> getPortfolio()
     {
         return this.portfolio;
     }
