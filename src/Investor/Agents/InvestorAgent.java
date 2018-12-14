@@ -79,7 +79,7 @@ public class InvestorAgent extends Agent
         this.investor.register_capital(Date.CURRENT_DATE.getPreviousDay(),
                 investor.getCapitalValue());
 
-        EventLogger.register_event(new InvestorCapitalEvent(this.investor.getName(),this.investor.getRiskBiasFactor(),this.investor.getCapitalValue(),this.investor.get_week_capital_delta()),
+        EventLogger.register_event(new InvestorCapitalEvent(this.investor.getName(),this.investor.getRiskBiasFactor(),this.investor.getCapitalValue(),this.investor.get_week_capital_delta(),this.agency,this.index),
                 Date.CURRENT_DATE.getPreviousDay(),this.slot,SlotType.InvestorSlot);
     }
 
