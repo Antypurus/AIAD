@@ -57,7 +57,8 @@ public class DataExporter implements Runnable
                         event_queue.poll();
                 if(!innited)
                 {
-                    String header = "Date,";
+
+                    String header = "";
                     for(Event event:elements.right)
                     {
                         header+=event.get_csv_header()+"\n";
@@ -78,7 +79,7 @@ public class DataExporter implements Runnable
                 String data = "";
                 for(Event event:elements.right)
                 {
-                    data+=elements.left+","+event.get_csv_data()+"\n";
+                    data+=/*elements.left+","*/event.get_csv_data()+"\n";
                 }
 
                 try

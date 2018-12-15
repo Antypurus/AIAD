@@ -4,6 +4,7 @@ import Aggregators.Index;
 import Aggregators.InvestorAgency;
 import Common.Pair;
 import Company.Company;
+import Investor.Investor;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -52,7 +53,7 @@ public class InvestorCapitalEvent extends Event
 
 
         Double average_avg_quality_bias = 0.0;
-        if(avg_quality_count>0)
+        if (avg_quality_count > 0)
         {
             average_avg_quality_bias = avg_quality_sum / avg_quality_count;
         }
@@ -79,7 +80,7 @@ public class InvestorCapitalEvent extends Event
         }
 
         Double average_low_quality_bias = 0.0;
-        if(low_quality_count>0)
+        if (low_quality_count > 0)
         {
             average_low_quality_bias = low_quality_sum / low_quality_count;
         }
@@ -98,7 +99,7 @@ public class InvestorCapitalEvent extends Event
 
         for (Company company : companies)
         {
-            if (company.getQualityBias() >= High_quality_bound)
+            if (company.getQualityBias() > High_quality_bound)
             {
                 high_quality_count++;
                 high_quality_sum += company.getQualityBias();
@@ -106,7 +107,7 @@ public class InvestorCapitalEvent extends Event
         }
 
         Double average_high_quality_bias = 0.0;
-        if(high_quality_count>0)
+        if (high_quality_count > 0)
         {
             average_high_quality_bias = high_quality_sum / high_quality_count;
         }
@@ -126,17 +127,118 @@ public class InvestorCapitalEvent extends Event
             company_quality += company.getQualityBias();
         }
 
-        return new Pair<Double,Integer>(company_quality/company_count,
+        return new Pair<Double, Integer>(company_quality / company_count,
                 company_count);
+    }
+
+    public Pair<Double, Integer> getLowRiskAgents()
+    {
+        final double low_risk_bound = 0.45;
+
+        CopyOnWriteArrayList<Investor> investors = this.agency.getInvestors();
+
+        Integer low_risk_count = 0;
+        Double low_risk_sum = 0.0;
+
+        for (Investor investor : investors)
+        {
+            if (investor.getRiskBiasFactor() < low_risk_bound)
+            {
+                low_risk_count++;
+                low_risk_sum += investor.getRiskBiasFactor();
+            }
+        }
+
+        Double risk_average = 0.0;
+        if (low_risk_count > 0)
+        {
+            risk_average = low_risk_sum / low_risk_count;
+        }
+
+        return new Pair<>(risk_average, low_risk_count);
+    }
+
+    public Pair<Double, Integer> getAverageRiskAgents()
+    {
+        final double average_risk_lower_bound = 0.45;
+        final double average_risk_upper_bound = 0.55;
+
+        Integer average_risk_count = 0;
+        Double average_risk_sum = 0.0;
+
+        CopyOnWriteArrayList<Investor> investors = this.agency.getInvestors();
+
+        for (Investor investor : investors)
+        {
+            if (investor.getRiskBiasFactor() >= average_risk_lower_bound && investor.getRiskBiasFactor() <= average_risk_upper_bound)
+            {
+                average_risk_count++;
+                average_risk_sum += investor.getRiskBiasFactor();
+            }
+        }
+
+        Double risk_average = 0.0;
+        if (average_risk_count > 0)
+        {
+            risk_average = average_risk_sum / average_risk_count;
+        }
+
+        return new Pair<>(risk_average, average_risk_count);
+    }
+
+    public Pair<Double, Integer> getHighRiskAgents()
+    {
+        final double high_risk_bound = 0.55;
+
+        Integer high_risk_count = 0;
+        Double high_risk_sum = 0.0;
+
+        CopyOnWriteArrayList<Investor> investors = this.agency.getInvestors();
+
+        for (Investor investor : investors)
+        {
+            if (investor.getRiskBiasFactor() > high_risk_bound)
+            {
+                high_risk_count++;
+                high_risk_sum += investor.getRiskBiasFactor();
+            }
+        }
+
+        Double risk_average = 0.0;
+        if (high_risk_count > 0)
+        {
+            risk_average = high_risk_sum / high_risk_count;
+        }
+
+        return new Pair<>(risk_average, high_risk_count);
+    }
+
+    public Pair<Double, Integer> getOverallRisk()
+    {
+        Double riskSum = 0.0;
+        CopyOnWriteArrayList<Investor> investors = this.agency.getInvestors();
+
+        for (Investor investor : investors)
+        {
+            riskSum += investor.getRiskBiasFactor();
+        }
+
+        double average_riks = 0.0;
+        if (investors.size() > 0)
+        {
+            average_riks = riskSum / investors.size();
+        }
+
+        return new Pair<>(average_riks, investors.size());
     }
 
     @Override
     public String get_csv_data()
     {
-        Pair<Double,Integer>overall_c = this.getOverallCompanyQuality();
-        Pair<Double,Integer>low_c = this.getLowQualityCompanies();
-        Pair<Double,Integer>average_c = this.getAvgQualityCompanies();
-        Pair<Double,Integer>high_c = this.getHighQualityCompanies();
+        Pair<Double, Integer> overall_c = this.getOverallCompanyQuality();
+        Pair<Double, Integer> low_c = this.getLowQualityCompanies();
+        Pair<Double, Integer> average_c = this.getAvgQualityCompanies();
+        Pair<Double, Integer> high_c = this.getHighQualityCompanies();
 
         return this.investor_risk + "," + this.investor_capital
                 + "," + this.week_delta
