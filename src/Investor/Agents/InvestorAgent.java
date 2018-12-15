@@ -71,13 +71,15 @@ public class InvestorAgent extends Agent
     public void newDayProtocol()
     {
         this.investor.stockSync();
-        this.addBehaviour(new CheckForBankruptcyBehavior(this.investor,
-            this.index));
+        //this.addBehaviour(new CheckForBankruptcyBehavior(this.investor,
+         //   this.index));
         this.addBehaviour(new FindCompanyToInvestBehavior(this.investor,
                 this.index, this.agency));
         this.addBehaviour(new ExecuteYieldPayoutBehavior(this.investor));
         this.investor.register_capital(Date.CURRENT_DATE.getPreviousDay(),
                 investor.getCapitalValue());
+
+        this.addBehaviour(new AgentReceiverDispatcher(this, this.index));
 
         EventLogger.register_event(new InvestorCapitalEvent(this.investor.getName(),this.investor.getRiskBiasFactor(),this.investor.getCapitalValue(),this.investor.get_week_capital_delta(),this.agency,this.index),
                 Date.CURRENT_DATE.getPreviousDay(),this.slot,SlotType.InvestorSlot);

@@ -9,8 +9,8 @@ public class Transaction
     private Stock stock;
     private Investor seller;
     private Investor buyer;
-    private int amount;
-    private double shareValue;
+    private volatile int amount;
+    private volatile double shareValue;
     private Date transactionDate;
 
     public Transaction(Stock stock, Investor seller, Investor buyer, int amount, double shareValue, Date transactionDate)
