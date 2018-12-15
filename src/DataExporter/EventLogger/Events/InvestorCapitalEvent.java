@@ -240,13 +240,21 @@ public class InvestorCapitalEvent extends Event
         Pair<Double, Integer> average_c = this.getAvgQualityCompanies();
         Pair<Double, Integer> high_c = this.getHighQualityCompanies();
 
+        Pair<Double, Integer> overall_i = this.getOverallRisk();
+        Pair<Double, Integer> low_i = this.getLowRiskAgents();
+        Pair<Double, Integer> average_i = this.getAverageRiskAgents();
+        Pair<Double, Integer> high_i = this.getHighRiskAgents();
+
         return this.investor_risk + "," + this.investor_capital
                 + "," + this.week_delta
                 + "," + overall_c.right + "," + overall_c.left
                 + "," + low_c.right + "," + low_c.left
                 + "," + average_c.right + "," + average_c.left
                 + "," + high_c.right + "," + high_c.left
-                ;
+                + "," + overall_i.right + "," + overall_i.left
+                + "," + low_i.right + "," + low_i.left
+                + "," + average_i.right + "," + average_i.left
+                + "," + high_i.right + "," + high_i.left;
     }
 
     @Override
@@ -257,6 +265,13 @@ public class InvestorCapitalEvent extends Event
                 "quality company " +
                 "average," +
                 "Average quality compnies,Average quality companies average," +
-                "High quality companies,High quality company average";
+                "High quality companies,High quality company average," +
+                "Number of Investors,Average Investor Risk," +
+                "Number of Low Risk Investors,Average Risk Of Low Risk " +
+                "Investors," +
+                "Number of average risk investors, Average risk of average " +
+                "risk investors," +
+                "Number of high risk investors,Average Risk of High Risk " +
+                "Investors";
     }
 }
