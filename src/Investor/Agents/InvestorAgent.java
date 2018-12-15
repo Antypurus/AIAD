@@ -71,8 +71,8 @@ public class InvestorAgent extends Agent
     public void newDayProtocol()
     {
         this.investor.stockSync();
-        //this.addBehaviour(new CheckForBankruptcyBehavior(this.investor,
-            //this.index));
+        this.addBehaviour(new CheckForBankruptcyBehavior(this.investor,
+            this.index));
         this.addBehaviour(new FindCompanyToInvestBehavior(this.investor,
                 this.index, this.agency));
         this.addBehaviour(new ExecuteYieldPayoutBehavior(this.investor));
